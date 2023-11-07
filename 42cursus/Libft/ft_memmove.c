@@ -6,23 +6,22 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:32:18 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/07 10:36:30 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:16:29 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
+#include "libft.h"
 
-void	*ft_memmove(void *str1, const void *str2, size_t size)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	long unsigned int	i;
+	size_t	i;
+	unsigned char	*temp_dest;
 
 	i = 0;
-	if (i > size)
+	temp_dest = (unsigned char *) dest;
+	if (n > i)
 	{
-		while (i <= size)
-		{
-			str1[i] = str2[i];
-			i++;
-		}
+		ft_memcpy(temp_dest, src, ft_strlen(src));
+		ft_memcpy(dest, temp_dest, n);
 	}
-	return (&str1);
+	return (dest);
 }

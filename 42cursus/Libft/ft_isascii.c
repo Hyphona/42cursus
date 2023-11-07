@@ -6,13 +6,13 @@
 /*   By: alperrot <alperrot@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:10:20 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/06 16:11:31 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/07 19:06:21 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int arg)
+int	ft_isascii(int c)
 {
-	if (arg >= 0 && arg <= 127)
+	if (c >= 0 && c <= 127)
 		return (1);
 	return (0);
 }

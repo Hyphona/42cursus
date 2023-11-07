@@ -6,24 +6,24 @@
 /*   By: alperrot <alperrot@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:48:58 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/06 18:17:44 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:33:21 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
+#include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	long unsigned int	i;
+	size_t	i;
 
 	i = 0;
-	if (size != 0)
+	if (size > i)
 	{
-		while (i < n && src[i] != '\0')
+		while (i <= size - 1 && src[i] != '\0')
 		{
-			dest[i] = src[i];
+			dst[i] = src[i];
 			i++;
 		}
 	}
-	dest[i] = '\0';
-	return (i + 1);
+	dst[i] = '\0';
+	return (i);
 }

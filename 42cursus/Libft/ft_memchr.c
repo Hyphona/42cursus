@@ -6,22 +6,24 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:46:43 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/07 09:51:34 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:14:11 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
+#include "libft.h"
 
-void	*ft_memchr(const void *str, int c, size_t size)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	long unsigned int	i;
+	size_t	i;
+	unsigned char	*ptr;
 
 	i = 0;
-	if (size > 0)
+	ptr = (unsigned char *) s;
+	if (n > 0)
 	{
-		while (i <= size && str[i] != '\0')
+		while (i <= n && ptr[i] != '\0')
 		{
-			if (str[i] == c)
-				return (&str[i]);
+			if (ptr[i] == c)
+				return (&ptr[i]);
 			i++;
 		}
 	}

@@ -6,13 +6,13 @@
 /*   By: alperrot <alperrot@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:22:45 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/06 18:24:26 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:41:40 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower(int arg)
+int	ft_tolower(int c)
 {
-	if (arg >= 65 && arg <= 90)
-		return (arg + 32);
-	return (arg);
+	if (c >= 65 && c <= 90)
+		return (c + 32);
+	return (c);
 }

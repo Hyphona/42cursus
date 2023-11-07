@@ -6,13 +6,13 @@
 /*   By: alperrot <alperrot@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:11:46 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/06 16:13:51 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/07 19:07:09 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int arg)
+int	ft_isprint(int c)
 {
-	if (arg >= 32)
+	if (c >= 32)
 		return (1);
 	return (0);
 }

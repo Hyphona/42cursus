@@ -6,15 +6,13 @@
 /*   By: alperrot <alperrot@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:57:12 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/06 16:01:35 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/07 19:05:45 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int arg)
+int	ft_isalpha(int c)
 {
-	if (arg >= 65 && arg <= 90)
-		return (1);
-	else if (arg >= 97 && arg <= 122)
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
 		return (1);
 	return (0);
 }

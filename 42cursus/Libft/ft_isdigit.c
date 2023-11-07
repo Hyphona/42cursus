@@ -6,13 +6,13 @@
 /*   By: alperrot <alperrot@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:03:31 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/06 16:05:02 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/07 19:06:47 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int arg)
+int	ft_isdigit(int c)
 {
-	if (arg >= 48 && arg <= 57)
+	if (c >= 48 && c <= 57)
 		return (1);
 	return (0);
 }

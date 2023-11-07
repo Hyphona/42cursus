@@ -6,17 +6,14 @@
 /*   By: alperrot <alperrot@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:06:37 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/06 16:09:43 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/07 19:04:11 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-int	ft_isalnum(int arg)
+int	ft_isalnum(int c)
 {
-	if (arg >= 48 && arg <= 57)
-		return (1);
-	else if (arg >= 65 && arg <= 90)
-		return (1);
-	else if (arg >= 97 && arg <= 122)
+	if (ft_isalpha(c) || ft_isdigit(c))
 		return (1);
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: alperrot <alperrot@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:18:52 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/06 18:24:42 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:41:23 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int arg)
+int	ft_toupper(int c)
 {
-	if (arg >= 97 && arg <= 122)
-		return (arg - 32);
-	return (arg);
+	if (c >= 97 && c <= 122)
+		return (c - 32);
+	return (c);
 }

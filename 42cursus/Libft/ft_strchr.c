@@ -6,21 +6,21 @@
 /*   By: alperrot <alperrot@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:40:11 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/06 18:47:23 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:23:52 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	int	i;
 
 	i = 0;
-	if (str[i] != '\0')
+	if (s[i] != '\0')
 	{
-		while (str[i])
+		while (s[i])
 		{
-			if (str[i] == c)
-				return (&str[i]);
+			if (s[i] == c)
+				return ((char *) &s[i]);
 			i++;
 		}
 	}

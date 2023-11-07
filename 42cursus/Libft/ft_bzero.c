@@ -6,18 +6,12 @@
 /*   By: alperrot <alperrot@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:28:21 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/06 16:32:42 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/07 17:47:40 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-void	ft_bzero(void *src, int n)
+void	ft_bzero(void *s, size_t n)
 {
-	int	i;
-
-	i = 0;
-	while (i != n)
-	{
-		src[i] = '\0';
-		i++;
-	}
+	ft_memset(s, '\0', n);
 }
