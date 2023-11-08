@@ -6,7 +6,7 @@
 #    By: alperrot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 13:15:26 by alperrot          #+#    #+#              #
-#    Updated: 2023/11/08 11:45:57 by alperrot         ###   ########.fr        #
+#    Updated: 2023/11/08 12:37:14 by alperrot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,10 @@ NAME = libft.a
 
 $(NAME): $(OFILES)
 	ar -rcs $(NAME) $(OFILES)
+
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
+	gcc -nostartfiles -shared -o libft.so $(OFILES)
 
 all:
 	$(NAME) clean
