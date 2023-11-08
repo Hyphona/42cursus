@@ -6,25 +6,27 @@
 #    By: alperrot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 13:15:26 by alperrot          #+#    #+#              #
-#    Updated: 2023/11/07 20:43:27 by alperrot         ###   ########.fr        #
+#    Updated: 2023/11/08 11:45:57 by alperrot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = $(wildcard ./*.c)
-CFLAGS += -Wall -Werror -Wextra -I -g
-OBJ = $(SRC:.c=.o)
-NAME = libft
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra -I./
+OFILES = $(SRC:.c=.o)
+NAME = libft.a
 
-$(NAME): $(OBJ)
-	gcc -o $(NAME) $(OBJ)
+$(NAME): $(OFILES)
+	ar -rcs $(NAME) $(OFILES)
 
 all:
-	$(NAME)
+	$(NAME) clean
 
 clean:
-	rm $(OBJ)
+	rm -f $(OFILES)
 
-fclean:
+fclean: 
+	clean
 	rm -f $(NAME)
 
 re:

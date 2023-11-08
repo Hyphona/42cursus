@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:48:28 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/06 21:41:38 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/08 10:49:34 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,4 @@ char	*ft_strrchr(const char *str, int c)
 		}
 	}
 	return ((void *) 0);
-}
-#include <stdio.h>
-int	main()
-{
-	const char str[] = "test1test1test";
-	printf("%s\n", ft_strrchr(str, '1'));
-	return (0);
 }
