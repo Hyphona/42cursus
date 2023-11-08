@@ -6,26 +6,35 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:04:58 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/07 10:29:14 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/08 10:16:34 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 int	ft_atoi(const char *str)
 {
 	int	i;
-	int	final;
+	int	n;
+	int	neg;
 
 	i = 0;
-	if (str[i] != 0)
+	n = 0;
+	neg = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\r')
+		i++;
+	if (str[i] == '+' && ft_isdigit(str[i + 1]))
+		i++;
+	else if (str[i] == '-' && ft_isdigit(str[i + 1]))
 	{
-		while (str[i] == ' ' || str[i] == '\t' || str[i] == '\r')
-			i++;
-		while (str[i] >= '0' && str[i] <= '9')
-		{
-			final = (final * 10) + (str[i] - 0 - 48);
-			i++;
-		}
-		return (final);
+		neg = 1;
+		i++;
 	}
-	return (0);
+	while (ft_isdigit(str[i]))
+	{
+		n = (n * 10) + (str[i] - 48);
+		i++;
+	}
+	if (neg)
+		n = n * -1;
+	return (n);
 }
