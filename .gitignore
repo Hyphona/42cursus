@@ -1,1 +1,6 @@
-**/.git
+42cursus/libft-unit-test/
+*.o
+*.a
+*.so
+*.swp
+*.out
