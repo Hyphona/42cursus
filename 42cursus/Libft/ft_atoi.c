@@ -6,9 +6,10 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:04:58 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/08 10:16:34 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/11 14:44:08 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 int	ft_atoi(const char *str)
