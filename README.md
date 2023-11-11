@@ -19,6 +19,6 @@ For more informations, visit the [42 website](https://42.fr/en/homepage/)
 > [!NOTE]
 > Some parts may not work properly unless I marked it as finished
 ### Common Core
-- [ ] Libft (compilation ok using `make` - not tested - in progress)
+- [ ] Libft
 
       The goal is to create our own functions library as we are not allowed to use pre-made functions
