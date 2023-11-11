@@ -6,9 +6,10 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:40:19 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/07 20:39:50 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/11 13:03:41 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <stdlib.h>
 
 int	ft_atoi(const char *str);
