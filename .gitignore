@@ -1,4 +1,5 @@
 42cursus/libft-unit-test/
+42cursus/Libft/.vscode/*
 *.o
 *.a
 *.so
