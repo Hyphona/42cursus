@@ -6,41 +6,33 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:32:18 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/07 20:16:29 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/11 10:47:57 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t n)
 {
-	size_t	i;
-	size_t	j;
-	unsigned char	*ptr_dest;
-	unsigned char	*ptr_src;
+	int		i;
+	char	*p_dst;
+	char	*p_src;
 
+	if ((!dst && !src) || !n)
+		return (dst);
 	i = 0;
-	ptr_dest = (unsigned char *) dest;
-	ptr_src = (unsigned char *) src;
-	if (n > i && (ptr_dest > ptr_src))
+	p_dst = (char *) dst;
+	p_src = (char *) src;
+	if (p_dst > p_src)
+		while (n--)
+			p_dst[n] = p_src[n];
+	else
 	{
-		j = ft_strlen((const char *) ptr_src);
-		while (j != 0)
+		while (i < (int) n)
 		{
-			ptr_dest[i] = ptr_src[j];
-			j--;
+			p_dst[i] = p_src[i];
 			i++;
 		}
-		return (dest);
 	}
-	else
-		ft_memcpy(dest, src, n);
-	return (dest);
-}
-#include <stdio.h>
-#include <string.h>
-int	main(int argc, char **argv)
-{
-	(void) argc;
-	printf("%s\n", (unsigned char *) ft_memmove(argv[1], argv[2], atoi(argv[3])));
-	printf("%s\n", (unsigned char *) memmove(argv[1], argv[2], atoi(argv[3])));
+	return (dst);
 }
