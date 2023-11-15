@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:30:10 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/15 19:42:30 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/15 20:59:21 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	**ft_split(char const *s, char c)
 	size_t	k;
 	char	**tab;
 
-	if ((!s || !c))
+	if (!s)
 		return ((char **) 0);
 	i = 0;
 	j = 0;
@@ -58,7 +58,7 @@ char	**ft_split(char const *s, char c)
 		if (s[i] != c)
 		{
 			k = i;
-			while (s[i] && s[i] != c)
+			while (s[i] != c)
 				i++;
 			tab[j] = ft_substr(s, k, i - k);
 			if (!tab[j])
