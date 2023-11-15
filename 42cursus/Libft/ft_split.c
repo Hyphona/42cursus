@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:30:10 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/15 11:15:11 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/15 12:06:35 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,16 @@ static int	ft_countword(char const *s, char c)
 	while (s[i])
 	{
 		if (s[i] == c)
-			w++;
+		{
+			while (s[i] == c)
+				i++;
+			if (s[i])
+				w++;
+		}
 		i++;
 	}
-	printf("(ft_countword) return value: %d\n", w + 1);
-	return (w + 1);
+	printf("(ft_countword) return value: %d\n", w); //DEBUG
+	return (w);
 }
 
 static char	**ft_free(char **tab)
@@ -38,13 +43,13 @@ static char	**ft_free(char **tab)
 	i = 0;
 	while (tab[i])
 	{
-		//printf("(ft_free) Attempt to free tab[%d]", i);
+		printf("(ft_free) Attempt to free tab[%d]", i); //DEBUG
 		free(tab[i]);
-		//printf(" | tab[%d] got free!\n", i);
+		printf(" | tab[%d] got free!\n", i); //DEBUG
 		i++;
 	}
 	free(tab);
-	//printf("(ft_free) **tab got completely free!\n");
+	printf("(ft_free) **tab got completely free!\n"); //DEBUG
 	return ((char **) 0);
 }
 
@@ -59,13 +64,13 @@ char	**ft_split(char const *s, char c)
 		return ((char **) 0);
 	i = 0;
 	j = 0;
-	wcount = 0;
+	wcount = 1;
 	astr = malloc(sizeof(char *) * ft_countword(s, c) + 1);
 	if (!astr)
 		return ((char **) 0);
 	while (s[i])
 	{
-		while (s[j] != c && s[j])
+		while (s[j] != c && s[j + 1])
 			j++;
 		astr[wcount] = ft_substr(s, i, j - i);
 		if (!astr[wcount])
@@ -84,7 +89,7 @@ int	main()
 	char	**tab;
 
 	i = 0;
-	tab = ft_split("ab.bcd.cdefg.defghi", '.');
+	tab = ft_split("........aifl....ab...000.bcd.cdefg..defghi....", '.');
 	while (tab[i])
 	{
 		printf("(ft_split) Value of tab[%d] : %s\n", i, tab[i]);
