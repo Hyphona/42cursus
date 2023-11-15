@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:33:31 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/12 13:57:24 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/15 19:45:05 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int		i;
+	size_t	i;
 	char	*ptr_dest;
 	char	*ptr_src;
 
@@ -23,7 +23,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	if (n && (ptr_dest || ptr_src))
 	{
 		i = 0;
-		while (i != (int) n)
+		while (i !=  n)
 		{
 			ptr_dest[i] = ptr_src[i];
 			i++;

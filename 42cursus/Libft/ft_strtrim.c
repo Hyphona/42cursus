@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 14:12:34 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/12 16:04:22 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/15 19:49:57 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_isspace(char const *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (str[i])
@@ -28,9 +28,9 @@ static int	ft_isspace(char const *str)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		i;
-	int		j;
-	int		len;
+	size_t	i;
+	size_t	j;
+	size_t	len;
 	char	*nstr;
 
 	if ((!s1 || !set) || (ft_isspace(s1) && ft_isspace(set)))

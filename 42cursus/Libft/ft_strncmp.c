@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:34:02 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/12 14:02:33 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/15 19:48:36 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	ft_strncmp(const char *str1, const char *str2, size_t size)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	if (i < (int) size)
+	if (i < size)
 	{
-		while (i < (int) size && (str1[i] || str2[i]))
+		while (i < size && (str1[i] || str2[i]))
 		{
 			if (str1[i] == str2[i])
 				i++;

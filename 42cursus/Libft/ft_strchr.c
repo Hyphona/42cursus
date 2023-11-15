@@ -6,13 +6,15 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:40:11 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/11 10:55:48 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/15 19:46:44 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (s[i])
