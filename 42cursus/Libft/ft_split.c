@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:30:10 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/15 12:06:35 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/15 13:30:26 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,18 +64,29 @@ char	**ft_split(char const *s, char c)
 		return ((char **) 0);
 	i = 0;
 	j = 0;
-	wcount = 1;
+	wcount = 0;
 	astr = malloc(sizeof(char *) * ft_countword(s, c) + 1);
 	if (!astr)
 		return ((char **) 0);
 	while (s[i])
 	{
-		while (s[j] != c && s[j + 1])
+		if (s[j] == c && s[j + 1] == c && s[j])
+		{
+			while (s[j] == c)
+			{
+				i++;
+				j++;
+			}
+		}
+		while (s[j] != c && s[j])
 			j++;
-		astr[wcount] = ft_substr(s, i, j - i);
-		if (!astr[wcount])
-			return (ft_free(astr));
-		wcount++;
+		if (s[j - 1] != c)
+		{
+			astr[wcount] = ft_substr(s, i, j - i);
+			if (!astr[wcount])
+				return (ft_free(astr));
+			wcount++;
+		}
 		j++;
 		i = j;
 	}
@@ -89,7 +100,7 @@ int	main()
 	char	**tab;
 
 	i = 0;
-	tab = ft_split("........aifl....ab...000.bcd.cdefg..defghi....", '.');
+	tab = ft_split("alexis.....l..e.....x.......i....s........", '.');
 	while (tab[i])
 	{
 		printf("(ft_split) Value of tab[%d] : %s\n", i, tab[i]);
