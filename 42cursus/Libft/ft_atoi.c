@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:04:58 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/15 19:43:34 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:18:22 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	ft_atoi(const char *str)
 {
 	size_t	i;
-	int	n;
-	int	neg;
+	int		n;
+	int		neg;
 
 	i = 0;
 	n = 0;
