@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:30:10 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/15 20:59:21 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:23:09 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static size_t	ft_countword(char const *s, char c)
 	return (count);
 }
 
-static char	**ft_freeall(char **tab, size_t j)
+static char	**ft_freearray(char **tab, size_t j)
 {
 	while (j > 0)
 	{
@@ -62,7 +62,7 @@ char	**ft_split(char const *s, char c)
 				i++;
 			tab[j] = ft_substr(s, k, i - k);
 			if (!tab[j])
-				return (ft_freeall(tab, j));
+				return (ft_freearray(tab, j));
 			j++;
 		}
 		else
