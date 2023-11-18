@@ -6,7 +6,7 @@
 #    By: alperrot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 13:15:26 by alperrot          #+#    #+#              #
-#    Updated: 2023/11/18 13:48:43 by alperrot         ###   ########.fr        #
+#    Updated: 2023/11/18 13:49:57 by alperrot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,7 @@ all:
 clean:
 	rm -f $(OFILES)
 
-fclean: 
-	clean
+fclean: clean
 	rm -f $(NAME)
 
 re:
