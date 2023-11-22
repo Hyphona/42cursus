@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-size_t	ft_intlen(int n)
+static size_t	ft_intlen(int n)
 {
 	size_t	i;
 
@@ -44,11 +44,9 @@ char	*ft_itoa(int n)
 	if (n < 0)
 	{
 		str[0] = '-';
-		len--;
 		n = -n;
 	}
-	else
-		len--;
+	len--;
 	while (n > 9)
 	{
 		str[len] = (n % 10) + '0';

@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:05:25 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/15 19:49:04 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/22 09:39:42 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ char	*ft_strnstr(const char *str1, const char *str2, size_t size)
 	size_t	j;
 
 	i = 0;
-	if (!str2[i] || !size)
+	if (!str2[i])
 		return ((char *) str1);
+	if (!size)
+		return (0);
 	while (str1[i] && (i < size))
 	{
 		j = 0;

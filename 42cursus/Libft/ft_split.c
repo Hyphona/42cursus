@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:30:10 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/20 10:09:19 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/21 09:42:11 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static char	**ft_freearray(char **tab, size_t j)
 	return ((char **) 0);
 }
 
-char	**ft_splitloop(char const *s, char c, char **tab)
+static char	**ft_splitloop(char const *s, char c, char **tab)
 {
 	size_t	i;
 	size_t	j;
@@ -52,7 +52,7 @@ char	**ft_splitloop(char const *s, char c, char **tab)
 		if (s[i] != c)
 		{
 			k = i;
-			while (s[i] != c)
+			while (s[i] != c && s[i])
 				i++;
 			tab[j] = ft_substr(s, k, i - k);
 			if (!tab[j])

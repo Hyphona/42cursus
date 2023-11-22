@@ -19,13 +19,19 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return ((void *) 0);
-	if (start > ft_strlen(s))
+	if (len == 0)
+		return (ft_strdup(""));
+	if (start > ft_strlen(s) || len > ft_strlen(s))
 		return (ft_strdup(""));
 	str = ft_calloc(sizeof(char), len + 1);
 	if (!str)
 		return ((void *) 0);
 	i = 0;
-	while (i < len)
-		str[i++] = s[start++];
+	while (start < len)
+	{
+		str[i] = s[start];
+		i++;
+		start++;
+	}
 	return (str);
 }
