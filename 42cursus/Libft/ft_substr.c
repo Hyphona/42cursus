@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 13:12:47 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/12 13:50:56 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/11/25 12:30:15 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,19 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return ((void *) 0);
-	if (start > ft_strlen(s) || len == 0)
+	if (start > ft_strlen(s))
 		return (ft_strdup(""));
-	if (start == len)
-		str = ft_calloc(sizeof(char), 2);
-	else
-		str = ft_calloc(sizeof(char), (ft_strlen(s) - start) + 1);
+	if (len > ft_strlen(s) - start)
+		len = ft_strlen(s) - start;
+	str = ft_calloc(sizeof(char), len + 1);
 	if (!str)
 		return ((void *) 0);
 	i = 0;
-	while (start <= len && s[start])
+	while (s[start] && i < len)
 	{
 		str[i] = s[start];
-		i++;
 		start++;
+		i++;
 	}
 	return (str);
 }
