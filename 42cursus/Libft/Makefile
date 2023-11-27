@@ -13,8 +13,7 @@ NAME = libft.a
 $(NAME): $(OFILES)
 	ar -rcs $(NAME) $(OFILES)
 
-all:
-	$(NAME)
+all: $(NAME)
 
 clean:
 	rm -f $(OFILES)
@@ -22,8 +21,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean
-	$(NAME)
+re: fclean all
 
 .PHONY:
 	all
