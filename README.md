@@ -19,5 +19,5 @@ For more informations, visit the [42 website](https://42.fr/en/homepage/)
 > [!NOTE]
 > Some parts may not work properly unless I marked it as finished
 ### Common Core
-- [x] libft - (100 points) Added more custom functions
+- [x] libft - (Finished)
 - [ ] ft_printf - (WIP) Will be part of libft when finished
