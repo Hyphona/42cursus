@@ -19,6 +19,5 @@ For more informations, visit the [42 website](https://42.fr/en/homepage/)
 > [!NOTE]
 > Some parts may not work properly unless I marked it as finished
 ### Common Core
-- [x] Libft
-
-      The goal is to create our own functions library as we are not allowed to use pre-made functions
+- [x] libft - (100 points) Added more custom functions
+- [ ] ft_printf - (WIP) Will be part of libft when finished
