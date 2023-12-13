@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:33:18 by alperrot          #+#    #+#             */
-/*   Updated: 2023/12/13 15:40:08 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/12/13 15:47:40 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ static int	ft_printf_parser(const char c, void *value)
 	{
 		write(1, (char *) &value, 1);
 		return (1);
+	}
+	if (c == 's')
+	{
+		write(1, (char *) value, ft_strlen((char *) value));
+		return (ft_strlen((char *) value));
 	}
 	return (lenght);
 }
