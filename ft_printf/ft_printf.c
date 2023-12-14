@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:33:18 by alperrot          #+#    #+#             */
-/*   Updated: 2023/12/14 09:56:31 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/12/14 11:41:12 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,17 @@
 //#include <unistd.h>
 //#include <stddef.h>
 
-static const char	*ft_printf_parser(const char *str)
+static char	*ft_printf_parser(const char *str)
 {
 	char	*types;
 
 	types = "cspdiuxX%";
-	while (*str)
+	str++;
+	while (*types)
 	{
-		while (*types)
-		{
-			if (*str == *types)
-				return (ft_substr(str, 1, 2));
-			types++;
-		}
-		str++;
+		if (*str == *types)
+			return (ft_substr(str, 0, 1));
+		types++;
 	}
 	return ((void *) 0);
 }
@@ -46,7 +43,7 @@ int	ft_printf(const char *format, ...)
 {
 	va_list		args;
 	size_t		lenght;
-	const char	*type;
+	char	*type;
 
 	lenght = 0;
 	va_start(args, format);
@@ -61,6 +58,7 @@ int	ft_printf(const char *format, ...)
 					lenght += write(1, &"%", 1);
 				else
 					lenght += ft_printf_formatter(type, va_arg(args, void *));
+				free(type);
 			}
 			format += 2;
 		}
@@ -73,6 +71,6 @@ int	ft_printf(const char *format, ...)
 
 //int	main(void)
 //{
-//	ft_printf("Hello %s! | %c%c | %% | %%%s%c\n", "World", 'A', 'B', "CDE", 'F');
+//	ft_printf("%s | %c%c | %% | %%%s%c | \n", "Hello World!", 'A', 'B', "CDE", 'F');
 //	return (0);
 //}
