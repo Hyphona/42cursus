@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:33:18 by alperrot          #+#    #+#             */
-/*   Updated: 2023/12/13 17:04:01 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/12/14 09:56:31 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,42 +15,56 @@
 //#include <unistd.h>
 //#include <stddef.h>
 
-static int	ft_printf_parser(const char c, void *value)
+static const char	*ft_printf_parser(const char *str)
 {
-	if (c == 'c')
+	char	*types;
+
+	types = "cspdiuxX%";
+	while (*str)
 	{
-		write(1, (char *) &value, 1);
-		return (1);
+		while (*types)
+		{
+			if (*str == *types)
+				return (ft_substr(str, 1, 2));
+			types++;
+		}
+		str++;
 	}
-	if (c == 's')
-	{
-		write(1, (char *) value, ft_strlen((char *) value));
-		return (ft_strlen((char *) value));
-	}
+	return ((void *) 0);
+}
+
+static int	ft_printf_formatter(const char *type, void *value)
+{
+	if (*type == 'c')
+		return (write(1, (char *) &value, 1));
+	if (*type == 's')
+		return (write(1, (char *) value, ft_strlen((char *) value)));
 	return (0);
 }
 
 int	ft_printf(const char *format, ...)
 {
-	va_list	args;
-	size_t	lenght;
+	va_list		args;
+	size_t		lenght;
+	const char	*type;
 
+	lenght = 0;
 	va_start(args, format);
 	while (*format)
 	{
-		if (*format == '%')
+		while (*format == '%')
 		{
-			format++;
-			if (*format == '%')
+			type = ft_printf_parser(format);
+			if (type)
 			{
-				write(1, format, 1);
-				lenght++;
+				if (*type == '%')
+					lenght += write(1, &"%", 1);
+				else
+					lenght += ft_printf_formatter(type, va_arg(args, void *));
 			}
-			else
-				lenght += ft_printf_parser(*format, va_arg(args, void *));
+			format += 2;
 		}
-		write(1, format, 1);
-		lenght++;
+		lenght += write(1, format, 1);
 		format++;
 	}
 	va_end(args);
@@ -59,6 +73,6 @@ int	ft_printf(const char *format, ...)
 
 //int	main(void)
 //{
-//	ft_printf("Hello %s! | %c%c | %% |\n", "World", 'A', 'B');
+//	ft_printf("Hello %s! | %c%c | %% | %%%s%c\n", "World", 'A', 'B', "CDE", 'F');
 //	return (0);
 //}
