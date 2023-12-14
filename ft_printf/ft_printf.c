@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:33:18 by alperrot          #+#    #+#             */
-/*   Updated: 2023/12/14 12:13:55 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:32:52 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	ft_printf_formatter(const char type, void *value)
 		return (write(1, (char *) &value, 1));
 	if (type == 's')
 		return (write(1, (char *) value, ft_strlen((char *) value)));
-	if (type == 'i')
+	if (type == 'i' || type == 'd')
 	{
 		ft_putnbr_fd(*((int *) &value), 1);
 		return (ft_intlen(*((int *) &value)));
@@ -71,6 +71,6 @@ int	ft_printf(const char *format, ...)
 
 //int	main(void)
 //{
-//	ft_printf("%s | %c | %% | %%%s%c | %i\n", "Hello World!", 'A', "BCD", 'E', 123456);
+//	ft_printf("%s | %c | %% | %%%s%c | %i | %d\n", "Hello World!", 'A', "BCD", 'E', 123456, 654321);
 //	return (0);
 //}
