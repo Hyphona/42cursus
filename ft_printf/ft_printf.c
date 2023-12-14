@@ -6,16 +6,16 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:33:18 by alperrot          #+#    #+#             */
-/*   Updated: 2023/12/14 11:41:12 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/12/14 11:54:55 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include <stdarg.h>
-//#include <unistd.h>
-//#include <stddef.h>
+#include <unistd.h>
+#include <stddef.h>
 
-static char	*ft_printf_parser(const char *str)
+static char	ft_printf_parser(const char *str)
 {
 	char	*types;
 
@@ -24,26 +24,26 @@ static char	*ft_printf_parser(const char *str)
 	while (*types)
 	{
 		if (*str == *types)
-			return (ft_substr(str, 0, 1));
+			return (*types);
 		types++;
 	}
-	return ((void *) 0);
+	return (0);
 }
 
-static int	ft_printf_formatter(const char *type, void *value)
+static int	ft_printf_formatter(const char type, void *value)
 {
-	if (*type == 'c')
+	if (type == 'c')
 		return (write(1, (char *) &value, 1));
-	if (*type == 's')
+	if (type == 's')
 		return (write(1, (char *) value, ft_strlen((char *) value)));
 	return (0);
 }
 
 int	ft_printf(const char *format, ...)
 {
-	va_list		args;
-	size_t		lenght;
-	char	*type;
+	va_list	args;
+	size_t	lenght;
+	char	type;
 
 	lenght = 0;
 	va_start(args, format);
@@ -54,11 +54,10 @@ int	ft_printf(const char *format, ...)
 			type = ft_printf_parser(format);
 			if (type)
 			{
-				if (*type == '%')
+				if (type == '%')
 					lenght += write(1, &"%", 1);
 				else
 					lenght += ft_printf_formatter(type, va_arg(args, void *));
-				free(type);
 			}
 			format += 2;
 		}
