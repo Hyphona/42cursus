@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:33:18 by alperrot          #+#    #+#             */
-/*   Updated: 2023/12/14 12:05:31 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:09:45 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static char	ft_printf_parser(const char *str)
 	char	*types;
 
 	types = "cspdiuxX%";
-	str++;
 	while (*types)
 	{
 		if (*str == *types)
@@ -56,7 +55,7 @@ int	ft_printf(const char *format, ...)
 	{
 		while (*format == '%')
 		{
-			type = ft_printf_parser(format);
+			type = ft_printf_parser(format + 1);
 			if (type)
 			{
 				if (type == '%')
@@ -75,6 +74,6 @@ int	ft_printf(const char *format, ...)
 
 //int	main(void)
 //{
-//	ft_printf("%i\n", 123456);
+//	ft_printf("%s | %c | %% | %%%s%c | %i\n", "Hello World!", 'A', "BCD", 'E', 123456);
 //	return (0);
 //}
