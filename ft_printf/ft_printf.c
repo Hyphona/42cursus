@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:33:18 by alperrot          #+#    #+#             */
-/*   Updated: 2023/12/14 12:32:52 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/12/15 13:47:38 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static char	ft_printf_parser(const char *str)
 static int	ft_printf_formatter(const char type, void *value)
 {
 	if (type == 'c')
-		return (write(1, (char *) &value, 1));
+		return (ft_putchar_fd((char *) &value, 1));
+		//return (write(1, (char *) &value, 1));
 	if (type == 's')
 		return (write(1, (char *) value, ft_strlen((char *) value)));
 	if (type == 'i' || type == 'd')

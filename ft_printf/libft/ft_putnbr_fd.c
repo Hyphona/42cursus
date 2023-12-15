@@ -6,18 +6,20 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:57:58 by alperrot          #+#    #+#             */
-/*   Updated: 2023/11/18 13:41:25 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/12/15 13:38:56 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_putnbr_fd(int n, int fd)
 {
+	size_t	n_lenght;
 	char	c;
 
 	if (!fd)
 		return ;
+	n_lenght = ft_intlen(n);
 	c = '0';
 	if (n == -2147483648)
 	{
@@ -33,4 +35,5 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd(n / 10, fd);
 	c = (n % 10) + '0';
 	ft_putchar_fd(c, fd);
+	return (n_lenght);
 }
