@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:33:18 by alperrot          #+#    #+#             */
-/*   Updated: 2023/12/17 15:47:50 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/12/17 16:26:10 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	ft_printf_formatter(const char type, void *value)
 		return (ft_putnbr_base_fd(*((int *) &value), "0123456789abcdef", 1) + 2);
 	}
 	if (type == 'i' || type == 'd')
-		return (ft_putnbr_fd(*((int *) &value), 1));
+		return (ft_putnbr_base_fd(*((int *) &value), "0123456789", 1));
 	if (type == 'x')
 		return (ft_putnbr_base_fd(*((int *) &value), "0123456789abcdef", 1));
 	if (type == 'X')
@@ -77,9 +77,10 @@ int	ft_printf(const char *format, ...)
 
 //int	main(void)
 //{
-//	char	*p;
-//
-//	p = "Hello World!";
-//	ft_printf("%s | %c | %% | %%%s%c | %i | %d | %x | %X | %p\n", "Hello World!", 'A', "BCD", 'E', 123456, 654321, 0x36fe2a, 0x36fe2a, p);
-//	return (0);
+	//char	*p;
+
+	//p = "Hello World!";
+	//ft_printf("%s | %c | %% | %%%s%c | %i | %d | %x | %X | %p\n", "Hello World!", 'A', "BCD", 'E', 123456, 654321, 0x36FE2A, 0x36fe2a, p);
+	//ft_printf("%i\n", 20);
+	//return (0);
 //}

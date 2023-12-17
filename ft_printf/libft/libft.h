@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:40:19 by alperrot          #+#    #+#             */
-/*   Updated: 2023/12/17 12:09:06 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/12/17 16:14:53 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
+int		ft_check_base(char *base);
 size_t	ft_countword(char const *s, char c);
 size_t	ft_intlen(int n);
 int		ft_isalnum(int c);
@@ -41,7 +42,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memset(void *s, int c, size_t n);
 int		ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *s, int fd);
-int		ft_putnbr_base_fd(unsigned int n, char *base, int fd);
+int		ft_putnbr_base_fd(int n, char *base, int fd);
 int		ft_putnbr_fd(int n, int fd);
 int		ft_putstr_fd(char *s, int fd);
 char	**ft_split(char const *s, char c);
