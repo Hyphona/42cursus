@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:33:18 by alperrot          #+#    #+#             */
-/*   Updated: 2023/12/15 13:49:43 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/12/17 11:10:54 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static char	ft_printf_parser(const char *str)
 {
 	char	*types;
 
-	types = "cspdiuxX%";
+	types = "cspdiuxX";
 	while (*types)
 	{
 		if (*str == *types)
