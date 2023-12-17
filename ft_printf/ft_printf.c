@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:33:18 by alperrot          #+#    #+#             */
-/*   Updated: 2023/12/17 12:19:24 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/12/17 15:47:50 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,17 @@ static int	ft_printf_formatter(const char type, void *value)
 		return (write(1, (char *) &value, 1));
 	if (type == 's')
 		return (ft_putstr_fd((char *) value, 1));
+	if (type == 'p')
+	{
+		write(1, "0x", 2);
+		return (ft_putnbr_base_fd(*((int *) &value), "0123456789abcdef", 1) + 2);
+	}
 	if (type == 'i' || type == 'd')
 		return (ft_putnbr_fd(*((int *) &value), 1));
 	if (type == 'x')
 		return (ft_putnbr_base_fd(*((int *) &value), "0123456789abcdef", 1));
+	if (type == 'X')
+		return (ft_putnbr_base_fd(*((int *) &value), "0123456789ABCDEF", 1));
 	return (0);
 }
 
@@ -70,6 +77,9 @@ int	ft_printf(const char *format, ...)
 
 //int	main(void)
 //{
-//	ft_printf("%s | %c | %% | %%%s%c | %i | %d | %x\n", "Hello World!", 'A', "BCD", 'E', 123456, 654321, 0x36fe2a);
+//	char	*p;
+//
+//	p = "Hello World!";
+//	ft_printf("%s | %c | %% | %%%s%c | %i | %d | %x | %X | %p\n", "Hello World!", 'A', "BCD", 'E', 123456, 654321, 0x36fe2a, 0x36fe2a, p);
 //	return (0);
 //}
