@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:57:58 by alperrot          #+#    #+#             */
-/*   Updated: 2023/12/15 13:38:56 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/12/17 11:26:37 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ int	ft_putnbr_fd(int n, int fd)
 	char	c;
 
 	if (!fd)
-		return ;
+		return (0);
 	n_lenght = ft_intlen(n);
 	c = '0';
 	if (n == -2147483648)
 	{
 		ft_putstr_fd("-2147483648", fd);
-		return ;
+		return (0);
 	}
 	else if (n < 0)
 	{

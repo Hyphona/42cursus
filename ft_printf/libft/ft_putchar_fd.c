@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 13:08:10 by alperrot          #+#    #+#             */
-/*   Updated: 2023/12/15 13:35:55 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/12/17 11:15:28 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 int	ft_putchar_fd(char c, int fd)
 {
 	if (!ft_isascii(c) || !fd)
-		return ;
+		return (0);
 	return (write(fd, &c, 1));
 }

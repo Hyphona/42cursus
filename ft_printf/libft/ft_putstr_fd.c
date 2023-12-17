@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:44:33 by alperrot          #+#    #+#             */
-/*   Updated: 2023/12/15 13:36:42 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/12/17 11:15:35 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_putstr_fd(char *s, int fd)
 	size_t	len;
 
 	if (!s || !fd)
-		return ;
+		return (0);
 	i = 0;
 	len = ft_strlen(s);
 	while (i < len)
