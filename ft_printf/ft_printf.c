@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:33:18 by alperrot          #+#    #+#             */
-/*   Updated: 2023/12/18 12:34:56 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/12/18 12:41:00 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ static char	ft_printf_parser(const char *str)
 
 static int	ft_printf_formatter(const char type, void *value)
 {
+	char	*upper_base;
+	char	*lower_base;
+
+	upper_base = "0123456789ABCDEF";
+	lower_base = "0123456789abcdef";
 	if (type == 'c')
 		return (write(1, (char *) &value, 1));
 	if (type == 's')
@@ -35,14 +40,14 @@ static int	ft_printf_formatter(const char type, void *value)
 	if (type == 'p')
 	{
 		write(1, "0x", 2);
-		return (ft_putnbr_base_fd(*((int *) &value), "0123456789abcdef", 1) + 2);
+		return (ft_putnbr_base_fd(*((int *) &value), lower_base, 1) + 2);
 	}
 	if (type == 'i' || type == 'd')
 		return (ft_putnbr_base_fd(*((int *) &value), "0123456789", 1));
 	if (type == 'x')
-		return (ft_putnbr_base_fd(*((int *) &value), "0123456789abcdef", 1));
+		return (ft_putnbr_base_fd(*((int *) &value), lower_base, 1));
 	if (type == 'X')
-		return (ft_putnbr_base_fd(*((int *) &value), "0123456789ABCDEF", 1));
+		return (ft_putnbr_base_fd(*((int *) &value), upper_base, 1));
 	return (0);
 }
 
