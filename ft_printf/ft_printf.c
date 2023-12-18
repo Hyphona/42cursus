@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:33:18 by alperrot          #+#    #+#             */
-/*   Updated: 2023/12/17 16:26:10 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/12/18 12:34:56 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,9 @@ int	ft_printf(const char *format, ...)
 
 //int	main(void)
 //{
-	//char	*p;
-
-	//p = "Hello World!";
-	//ft_printf("%s | %c | %% | %%%s%c | %i | %d | %x | %X | %p\n", "Hello World!", 'A', "BCD", 'E', 123456, 654321, 0x36FE2A, 0x36fe2a, p);
-	//ft_printf("%i\n", 20);
-	//return (0);
+//	char	*p;
+//
+//	p = "Hello World!";
+//	ft_printf("%s | %c | %% | %%%s%c | %i | %d | %x | %X | %p\n", "Hello World!", 'A', "BCD", 'E', 123456, 654321, ft_atoi_base("36fe2a", "0123456789abcdef"), 0x36fe2a, p);
+//	return (0);
 //}
