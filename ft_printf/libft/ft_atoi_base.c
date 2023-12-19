@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:13:52 by alperrot          #+#    #+#             */
-/*   Updated: 2023/12/18 12:30:54 by alperrot         ###   ########.fr       */
+/*   Updated: 2023/12/19 12:56:12 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,26 @@
 
 int	ft_atoi_base(const char *str, char *base)
 {
-	size_t	i;
 	int		n;
 	int		neg;
-	int		base_len;
 
-	i = 0;
+	if (!base || !ft_check_base(base))
+		return (0);
 	n = 0;
 	neg = 1;
-	base_len = ft_strlen(base);
-	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
-		i++;
-	if (str[i] == '+')
-		i++;
-	else if (str[i] == '-')
+	while (ft_isspace(*str))
+		str++;
+	if (*str == '+')
+		str++;
+	else if (*str == '-')
 	{
 		neg = -1;
-		i++;
+		str++;
 	}
-	while (*ft_strchr(base, str[i]) != '\0')
+	while (ft_strchr(base, *str) && *ft_strchr(base, *str) != '\0')
 	{
-		n = (n * base_len) + (ft_strchr(base, str[i]) - base);
-		i++;
+		n = (n * ft_strlen(base)) + (ft_strchr(base, *str) - base);
+		str++;
 	}
-	n = n * neg;
-	return (n);
+	return (n * neg);
 }
