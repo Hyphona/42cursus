@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:33:18 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/02 09:36:10 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/02 10:30:15 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,30 @@ static char	ft_printf_parser(const char *str)
 	return (0);
 }
 
-static int	ft_printf_formatter(const char type, void *value)
+static int	ft_printf_formatter(const char type, void *v)
 {
-	char	*upper_base;
-	char	*lower_base;
+	char	*b_upper;
+	char	*b_lower;
 
-	upper_base = "0123456789ABCDEF";
-	lower_base = "0123456789abcdef";
+	b_upper = "0123456789ABCDEF";
+	b_lower = "0123456789abcdef";
 	if (type == 'c')
-		return (write(1, (char *) &value, 1));
+		return (write(1, (char *) &v, 1));
 	if (type == 's')
-		return (ft_putstr_fd((char *) value, 1));
+		return (ft_putstr_fd((char *) v, 1));
 	if (type == 'p')
 	{
 		write(1, "0x", 2);
-		return (ft_putnbr_base_fd(*((unsigned long int *) &value), lower_base, 1) + 2);
+		return (ft_putnbr_base_fd(*((unsigned long int *) &v), b_lower, 1) + 2);
 	}
 	if (type == 'i' || type == 'd')
-		return (ft_putnbr_fd(*((int *) &value), 1));
+		return (ft_putnbr_fd(*((int *) &v), 1));
 	if (type == 'u')
-		return (ft_putnbr_base_fd(*((unsigned long int *) &value), "0123456789", 1));
+		return (ft_putnbr_base_fd(*((unsigned long int *) &v), "0123456789", 1));
 	if (type == 'x')
-		return (ft_putnbr_base_fd(*((unsigned long int *) &value), lower_base, 1));
+		return (ft_putnbr_base_fd(*((unsigned long int *) &v), b_lower, 1));
 	if (type == 'X')
-		return (ft_putnbr_base_fd(*((unsigned long int *) &value), upper_base, 1));
+		return (ft_putnbr_base_fd(*((unsigned long int *) &v), b_upper, 1));
 	return (0);
 }
 
