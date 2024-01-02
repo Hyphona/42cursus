@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:33:18 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/02 10:30:15 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/02 10:40:41 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,11 @@ static int	ft_printf_formatter(const char type, void *v)
 {
 	char	*b_upper;
 	char	*b_lower;
+	char	*b_ten;
 
 	b_upper = "0123456789ABCDEF";
 	b_lower = "0123456789abcdef";
+	b_ten = "0123456789";
 	if (type == 'c')
 		return (write(1, (char *) &v, 1));
 	if (type == 's')
@@ -45,7 +47,7 @@ static int	ft_printf_formatter(const char type, void *v)
 	if (type == 'i' || type == 'd')
 		return (ft_putnbr_fd(*((int *) &v), 1));
 	if (type == 'u')
-		return (ft_putnbr_base_fd(*((unsigned long int *) &v), "0123456789", 1));
+		return (ft_putnbr_base_fd(*((unsigned long int *) &v), b_ten, 1));
 	if (type == 'x')
 		return (ft_putnbr_base_fd(*((unsigned long int *) &v), b_lower, 1));
 	if (type == 'X')
