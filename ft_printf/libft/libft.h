@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:40:19 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/03 09:54:20 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/03 10:03:45 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	*ft_memset(void *s, int c, size_t n);
 int		ft_power(int nb, int power);
 int		ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *s, int fd);
-int		ft_putnbr_base_fd(long unsigned int n, char *base, int fd);
+int		ft_putbase_fd(long unsigned int n, char *base, int fd);
 int		ft_putnbr_fd(int n, int fd);
 int		ft_putstr_fd(char *s, int fd);
 char	**ft_split(char const *s, char c);
