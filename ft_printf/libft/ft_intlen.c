@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 20:37:18 by alperrot          #+#    #+#             */
-/*   Updated: 2023/12/11 20:38:08 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/03 11:59:34 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 size_t	ft_intlen(int n)
 {
-	size_t	i;
+	size_t	len;
 
-	i = 0;
+	len = 0;
 	if (n < 0)
 	{
-		i++;
+		len++;
 		n = -n;
 	}
 	while (n > 9)
 	{
 		n = n / 10;
-		i++;
+		len++;
 	}
-	return (i + 1);
+	return (len + 1);
 }

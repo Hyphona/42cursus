@@ -6,13 +6,15 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 20:18:23 by alperrot          #+#    #+#             */
-/*   Updated: 2023/12/11 20:22:19 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/03 12:15:32 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int	ft_isxdigit(int c)
 {
-	if ((c >= 48 && c <= 57) || (c >= 65 && c <= 70) || (c >= 97 && c <= 102))
+	if (ft_isdigit(c) || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f'))
 		return (1);
 	return (0);
 }

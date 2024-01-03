@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:40:19 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/03 10:03:45 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/03 12:17:16 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memset(void *s, int c, size_t n);
 int		ft_power(int nb, int power);
-int		ft_putchar_fd(char c, int fd);
-void	ft_putendl_fd(char *s, int fd);
-int		ft_putbase_fd(long unsigned int n, char *base, int fd);
-int		ft_putnbr_fd(int n, int fd);
-int		ft_putstr_fd(char *s, int fd);
+size_t	ft_putchar_fd(char c, int fd);
+size_t	ft_putendl_fd(char *s, int fd);
+size_t	ft_putbase_fd(long unsigned int n, char *base, int fd);
+size_t	ft_putnbr_fd(int n, int fd);
+size_t	ft_putstr_fd(char *s, int fd);
 char	**ft_split(char const *s, char c);
 int		ft_sqrt(int nb);
 char	*ft_strchr(const char *s, int c);

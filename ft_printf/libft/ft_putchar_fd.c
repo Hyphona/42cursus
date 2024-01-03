@@ -6,13 +6,13 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 13:08:10 by alperrot          #+#    #+#             */
-/*   Updated: 2023/12/17 11:15:28 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/03 12:20:36 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_putchar_fd(char c, int fd)
+size_t	ft_putchar_fd(char c, int fd)
 {
 	if (!ft_isascii(c) || !fd)
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 20:35:04 by alperrot          #+#    #+#             */
-/*   Updated: 2023/12/19 13:05:43 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/03 11:58:57 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 size_t	ft_countword(char const *s, char c)
 {
 	size_t	i;
-	size_t	count;
+	size_t	word;
 
 	i = 0;
-	count = 0;
+	word = 0;
 	while (s[i])
 	{
 		if ((i == 0 && s[i] != c) || (s[i] != c && s[i - 1] == c))
-			count++;
+			word++;
 		i++;
 	}
-	return (count);
+	return (word);
 }

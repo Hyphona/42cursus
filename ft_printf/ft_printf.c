@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:33:18 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/03 10:27:53 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/03 12:23:20 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,15 +93,15 @@ int	main(void)
 	ft_printf("ft_printf : %%s : %s\n", "0123456789abcdef");
 	printf("   printf : %%p : %p\n", &p);
 	ft_printf("ft_printf : %%p : %p\n", &p);
-	printf("   printf : %%i : %i\n", -42);
-	ft_printf("ft_printf : %%i : %i\n", -42);
-	printf("   printf : %%d : %d\n", 42);
-	ft_printf("ft_printf : %%d : %d\n", 42);
+	printf("   printf : %%i : %i\n", -2147483647 - 1);
+	ft_printf("ft_printf : %%i : %i\n", -2147483647 - 1);
+	printf("   printf : %%d : %d\n", 2147483647);
+	ft_printf("ft_printf : %%d : %d\n", 2147483647);
 	printf("   printf : %%u : %u\n", i);
 	ft_printf("ft_printf : %%u : %u\n", i);
-	printf("   printf : %%x : %x\n", 0x45de6fa);
-	ft_printf("ft_printf : %%x : %x\n", 0x45de6fa);
-	printf("   printf : %%X : %X\n", 0xFFFFFFFF);
-	ft_printf("ft_printf : %%X : %X\n", 0xFFFFFFFF);
+	printf("   printf : %%x : %x\n", 0xFFFFFFFF);
+	ft_printf("ft_printf : %%x : %x\n", 0xFFFFFFFF);
+	printf("   printf : %%X : %X\n", 0xffffffff);
+	ft_printf("ft_printf : %%X : %X\n", 0xffffffff);
 }
 */
