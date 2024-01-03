@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 12:01:31 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/03 10:03:44 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/03 10:15:25 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	ft_putbase_fd(long unsigned int n, char *base, int fd)
 	base_len = ft_strlen(base);
 	if (n >= base_len)
 	{
-		lenght = ft_putnbr_base_fd(n / base_len, base, fd);
-		lenght += ft_putnbr_base_fd(n % base_len, base, fd);
+		lenght = ft_putbase_fd(n / base_len, base, fd);
+		lenght += ft_putbase_fd(n % base_len, base, fd);
 	}
 	else
 		lenght += ft_putchar_fd(base[n], fd);
