@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:33:18 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/03 12:23:20 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/03 13:08:53 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	ft_printf_formatter(const char type, void *v)
 	else if (type == 'p')
 	{
 		l += write(1, "0x", 2);
-		l += ft_putbase_fd(*((long unsigned int *) &v), "0123456789abcdef" ,1);
+		l += ft_putbase_fd(*((long unsigned int *) &v), "0123456789abcdef", 1);
 	}
 	else if (type == 'i' || type == 'd')
 		l += ft_putnbr_fd(*((int *) &v), 1);
@@ -48,6 +48,8 @@ static int	ft_printf_formatter(const char type, void *v)
 		l += ft_putbase_fd(*((unsigned int *) &v), "0123456789abcdef", 1);
 	else if (type == 'X')
 		l += ft_putbase_fd(*((unsigned int *) &v), "0123456789ABCDEF", 1);
+	else
+		l += ft_putstr_fd("Success", 1);
 	return (l);
 }
 
@@ -64,13 +66,10 @@ int	ft_printf(const char *format, ...)
 		while (*format == '%')
 		{
 			type = ft_printf_parser(format + 1);
-			if (type)
-			{
-				if (type == '%')
-					len += write(1, "%", 1);
-				else
-					len += ft_printf_formatter(type, va_arg(args, void *));
-			}
+			if (type == '%')
+				len += write(1, "%", 1);
+			else
+				len += ft_printf_formatter(type, va_arg(args, void *));
 			format += 2;
 		}
 		len += write(1, format, 1);
@@ -103,5 +102,7 @@ int	main(void)
 	ft_printf("ft_printf : %%x : %x\n", 0xFFFFFFFF);
 	printf("   printf : %%X : %X\n", 0xffffffff);
 	ft_printf("ft_printf : %%X : %X\n", 0xffffffff);
+	printf("(unknow type test)    printf : %%m : %m\n");
+	ft_printf("(unknow type test) ft_printf : %%m : %m\n");
 }
 */
