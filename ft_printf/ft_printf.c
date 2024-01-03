@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:33:18 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/03 10:04:02 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/03 10:27:53 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,27 +28,27 @@ static char	ft_printf_parser(const char *str)
 
 static int	ft_printf_formatter(const char type, void *v)
 {
-	size_t	len;
+	size_t	l;
 
-	len = 0;
+	l = 0;
 	if (type == 'c')
-		len += write(1, (char *) &v, 1);
+		l += write(1, (char *) &v, 1);
 	else if (type == 's')
-		len += ft_putstr_fd((char *) v, 1);
+		l += ft_putstr_fd((char *) v, 1);
 	else if (type == 'p')
 	{
-		len += write(1, "0x", 2);
-		len += ft_putbase_fd(*((long unsigned int *) &v), "0123456789abcdef", 1);
+		l += write(1, "0x", 2);
+		l += ft_putbase_fd(*((long unsigned int *) &v), "0123456789abcdef" ,1);
 	}
 	else if (type == 'i' || type == 'd')
-		len += ft_putnbr_fd(*((int *) &v), 1);
+		l += ft_putnbr_fd(*((int *) &v), 1);
 	else if (type == 'u')
-		len += ft_putbase_fd(*((unsigned int *) &v), "0123456789", 1);
+		l += ft_putbase_fd(*((unsigned int *) &v), "0123456789", 1);
 	else if (type == 'x')
-		len += ft_putbase_fd(*((unsigned int *) &v), "0123456789abcdef", 1);
+		l += ft_putbase_fd(*((unsigned int *) &v), "0123456789abcdef", 1);
 	else if (type == 'X')
-		len += ft_putbase_fd(*((unsigned int *) &v), "0123456789ABCDEF", 1);
-	return (len);
+		l += ft_putbase_fd(*((unsigned int *) &v), "0123456789ABCDEF", 1);
+	return (l);
 }
 
 int	ft_printf(const char *format, ...)
