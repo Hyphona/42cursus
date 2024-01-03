@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:33:18 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/02 10:40:41 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/03 09:59:50 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,40 +28,36 @@ static char	ft_printf_parser(const char *str)
 
 static int	ft_printf_formatter(const char type, void *v)
 {
-	char	*b_upper;
-	char	*b_lower;
-	char	*b_ten;
+	size_t	len;
 
-	b_upper = "0123456789ABCDEF";
-	b_lower = "0123456789abcdef";
-	b_ten = "0123456789";
+	len = 0;
 	if (type == 'c')
-		return (write(1, (char *) &v, 1));
-	if (type == 's')
-		return (ft_putstr_fd((char *) v, 1));
-	if (type == 'p')
+		len += write(1, (char *) &v, 1);
+	else if (type == 's')
+		len += ft_putstr_fd((char *) v, 1);
+	else if (type == 'p')
 	{
-		write(1, "0x", 2);
-		return (ft_putnbr_base_fd(*((unsigned long int *) &v), b_lower, 1) + 2);
+		len += write(1, "0x", 2);
+		len += ft_putnbr_base_fd(*((long unsigned int *) &v), "0123456789abcdef", 1);
 	}
-	if (type == 'i' || type == 'd')
-		return (ft_putnbr_fd(*((int *) &v), 1));
-	if (type == 'u')
-		return (ft_putnbr_base_fd(*((unsigned long int *) &v), b_ten, 1));
-	if (type == 'x')
-		return (ft_putnbr_base_fd(*((unsigned long int *) &v), b_lower, 1));
-	if (type == 'X')
-		return (ft_putnbr_base_fd(*((unsigned long int *) &v), b_upper, 1));
-	return (0);
+	else if (type == 'i' || type == 'd')
+		len += ft_putnbr_fd(*((int *) &v), 1);
+	else if (type == 'u')
+		len += ft_putnbr_base_fd(*((unsigned int *) &v), "0123456789", 1);
+	else if (type == 'x')
+		len += ft_putnbr_base_fd(*((unsigned int *) &v), "0123456789abcdef", 1);
+	else if (type == 'X')
+		len += ft_putnbr_base_fd(*((unsigned int *) &v), "0123456789ABCDEF", 1);
+	return (len);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
-	size_t	lenght;
+	size_t	len;
 	char	type;
 
-	lenght = 0;
+	len = 0;
 	va_start(args, format);
 	while (*format)
 	{
@@ -71,17 +67,17 @@ int	ft_printf(const char *format, ...)
 			if (type)
 			{
 				if (type == '%')
-					lenght += write(1, &"%", 1);
+					len += write(1, "%", 1);
 				else
-					lenght += ft_printf_formatter(type, va_arg(args, void *));
+					len += ft_printf_formatter(type, va_arg(args, void *));
 			}
 			format += 2;
 		}
-		lenght += write(1, format, 1);
+		len += write(1, format, 1);
 		format++;
 	}
 	va_end(args);
-	return (lenght);
+	return (len);
 }
 /*
 #include <stdio.h>
@@ -105,7 +101,7 @@ int	main(void)
 	ft_printf("ft_printf : %%u : %u\n", i);
 	printf("   printf : %%x : %x\n", 0x45de6fa);
 	ft_printf("ft_printf : %%x : %x\n", 0x45de6fa);
-	printf("   printf : %%X : %X\n", 0x45de6fa);
-	ft_printf("ft_printf : %%X : %X\n", 0x45de6fa);
+	printf("   printf : %%X : %X\n", 0xFFFFFFFF);
+	ft_printf("ft_printf : %%X : %X\n", 0xFFFFFFFF);
 }
 */
