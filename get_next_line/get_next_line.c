@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:03:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/08 09:28:58 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/08 09:37:04 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,13 @@ char    *get_next_line(int fd)
 {
     if (!fd || BUFFER_SIZE <= 0)
         return ((void *) 0);
+    return ((void *) 0);
 }
+
+/*
+#include <stdio.h>
+int main(void)
+{
+    printf("BUFFER_SIZE = %i\n", BUFFER_SIZE);
+}
+*/
