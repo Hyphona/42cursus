@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:03:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/08 09:37:04 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/08 10:01:18 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 char    *get_next_line(int fd)
 {
+    //static int  line;
+    
     if (!fd || BUFFER_SIZE <= 0)
         return ((void *) 0);
     return ((void *) 0);
