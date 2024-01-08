@@ -6,12 +6,14 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:03:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/08 09:07:06 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/08 09:28:58 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
+
 char    *get_next_line(int fd)
 {
-    if (!fd)
+    if (!fd || BUFFER_SIZE <= 0)
         return ((void *) 0);
 }
