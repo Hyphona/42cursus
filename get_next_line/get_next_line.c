@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:03:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/09 14:06:57 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/09 14:11:10 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static char    *ft_linecpy(char *buffer, char *dst)
 
 char    *get_next_line(int fd)
 {
-    size_t      l_len;
     char        *buffer;
     char        *dst;
     int         file;
@@ -61,8 +60,7 @@ char    *get_next_line(int fd)
     file = read(fd, buffer, BUFFER_SIZE);
     if (!file)
         return ((void *) 0);
-    l_len = ft_linelen(buffer);
-    dst = malloc((sizeof(char) * l_len) + 1);
+    dst = malloc((sizeof(char) * ft_linelen(buffer)) + 1);
     if (!dst)
         return ((void *) 0);
     return (ft_linecpy(buffer, dst));
