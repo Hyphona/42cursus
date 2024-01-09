@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:03:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/09 14:11:10 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/09 14:21:02 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,13 @@ static char    *ft_linecpy(char *buffer, char *dst)
     while (buffer[i])
     {
         if (buffer[i] == '\n')
+        {
+            dst[i - last] = buffer[i];
             break ;
+        }
         dst[i - last] = buffer[i];
         i++;
     }
-    dst[i - last] = buffer[i];
     last = i + 1;
     free(buffer);
     return (dst);
