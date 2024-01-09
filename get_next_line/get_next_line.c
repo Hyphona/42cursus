@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:03:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/09 13:49:01 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/09 14:06:57 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,31 @@ static size_t   ft_linelen(char *file)
     return (len);
 }
 
-char    *get_next_line(int fd)
+static char    *ft_linecpy(char *buffer, char *dst)
 {
     static int  last;
+    int         i;
+
+    i = last;
+    while (buffer[i])
+    {
+        if (buffer[i] == '\n')
+            break ;
+        dst[i - last] = buffer[i];
+        i++;
+    }
+    dst[i - last] = buffer[i];
+    last = i + 1;
+    free(buffer);
+    return (dst);
+}
+
+char    *get_next_line(int fd)
+{
     size_t      l_len;
     char        *buffer;
-    char        *line;
+    char        *dst;
     int         file;
-    int         i;
 
     if (!fd || !BUFFER_SIZE)
         return ((void *) 0);
@@ -45,25 +62,10 @@ char    *get_next_line(int fd)
     if (!file)
         return ((void *) 0);
     l_len = ft_linelen(buffer);
-    line = malloc((sizeof(char) * l_len) + 1);
-    if (!line)
+    dst = malloc((sizeof(char) * l_len) + 1);
+    if (!dst)
         return ((void *) 0);
-    i = last;
-    while (buffer[i])
-    {
-        if (buffer[i] == '\n')
-        {
-            line[i - last] = '\n';
-            free(buffer);
-            last = i + 1;
-            return (line);
-        }
-        line[i - last] = buffer[i];
-        i++;
-    }
-    last = i + 1;
-    free(buffer);
-    return (line);
+    return (ft_linecpy(buffer, dst));
 }
 /*
 #include <stdio.h>
@@ -71,6 +73,9 @@ char    *get_next_line(int fd)
 int main(void)
 {
     printf("BUFFER_SIZE = %i\n", BUFFER_SIZE);
+    printf("%s", get_next_line(open("text.txt", O_RDONLY)));
+    printf("%s", get_next_line(open("text.txt", O_RDONLY)));
+    printf("%s", get_next_line(open("text.txt", O_RDONLY)));
     printf("%s", get_next_line(open("text.txt", O_RDONLY)));
     printf("%s", get_next_line(open("text.txt", O_RDONLY)));
 }
