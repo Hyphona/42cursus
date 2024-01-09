@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:03:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/09 13:15:58 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/09 13:49:01 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,20 @@ char    *get_next_line(int fd)
     line = malloc((sizeof(char) * l_len) + 1);
     if (!line)
         return ((void *) 0);
-    i = 0;
+    i = last;
     while (buffer[i])
     {
         if (buffer[i] == '\n')
         {
-            line[i] = '\n';
-            last++;
+            line[i - last] = '\n';
             free(buffer);
+            last = i + 1;
             return (line);
         }
-        line[i] = buffer[i];
+        line[i - last] = buffer[i];
         i++;
-        last++;
     }
+    last = i + 1;
     free(buffer);
     return (line);
 }
@@ -71,6 +71,7 @@ char    *get_next_line(int fd)
 int main(void)
 {
     printf("BUFFER_SIZE = %i\n", BUFFER_SIZE);
+    printf("%s", get_next_line(open("text.txt", O_RDONLY)));
     printf("%s", get_next_line(open("text.txt", O_RDONLY)));
 }
 */
