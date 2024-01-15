@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:33:18 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/03 13:08:53 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/15 10:00:07 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,36 @@ static char	ft_printf_parser(const char *str)
 	return (0);
 }
 
-static int	ft_printf_formatter(const char type, void *v)
+static size_t	ft_print_s(void *v)
+{
+	if (!(char *) v)
+		return(ft_putstr_fd("(null)", 1));
+	else
+		return(ft_putstr_fd((char *) v, 1));
+}
+
+static size_t	ft_print_p(void *v)
+{
+	if (!*((long unsigned int *) &v))
+			return(ft_putstr_fd("(nil)", 1));
+	else
+	{
+		write(1, "0x", 2);
+		return(ft_putbase_fd(*((long unsigned int *) &v), "0123456789abcdef", 1) + 2);
+	}
+}
+
+static size_t	ft_printf_formatter(const char type, void *v)
 {
 	size_t	l;
 
 	l = 0;
 	if (type == 'c')
-		l += write(1, (char *) &v, 1);
+		l += write (1, (char *) &v, 1);
 	else if (type == 's')
-		l += ft_putstr_fd((char *) v, 1);
+		l += ft_print_s(v);
 	else if (type == 'p')
-	{
-		l += write(1, "0x", 2);
-		l += ft_putbase_fd(*((long unsigned int *) &v), "0123456789abcdef", 1);
-	}
+		l += ft_print_p(v);
 	else if (type == 'i' || type == 'd')
 		l += ft_putnbr_fd(*((int *) &v), 1);
 	else if (type == 'u')
