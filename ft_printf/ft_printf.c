@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:33:18 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/15 10:03:51 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/15 10:12:14 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,19 @@ static char	ft_printf_parser(const char *str)
 static size_t	ft_print_s(void *v)
 {
 	if (!(char *) v)
-		return(ft_putstr_fd("(null)", 1));
-	else
-		return(ft_putstr_fd((char *) v, 1));
+		return (ft_putstr_fd("(null)", 1));
+	return (ft_putstr_fd((char *) v, 1));
 }
 
 static size_t	ft_print_p(void *v)
 {
+	char	*base;
+
 	if (!*((long unsigned int *) &v))
-			return(ft_putstr_fd("(nil)", 1));
-	else
-	{
-		write(1, "0x", 2);
-		return(ft_putbase_fd(*((long unsigned int *) &v), "0123456789abcdef", 1) + 2);
-	}
+		return (ft_putstr_fd("(nil)", 1));
+	base = "0123456789abcdef";
+	write(1, "0x", 2);
+	return (ft_putbase_fd(*((long unsigned int *) &v), base, 1) + 2);
 }
 
 static size_t	ft_printf_formatter(const char type, void *v)
