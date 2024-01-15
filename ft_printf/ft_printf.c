@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:33:18 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/15 10:00:07 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/15 10:03:51 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,11 @@ int	ft_printf(const char *format, ...)
 				len += ft_printf_formatter(type, va_arg(args, void *));
 			format += 2;
 		}
-		len += write(1, format, 1);
-		format++;
+		if (*format)
+		{
+			len += write(1, format, 1);
+			format++;
+		}
 	}
 	va_end(args);
 	return (len);
