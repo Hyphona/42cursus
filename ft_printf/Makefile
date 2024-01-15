@@ -7,8 +7,7 @@ SRC	:= ./libft/ft_atoi.c ./libft/ft_bzero.c ./libft/ft_calloc.c ./libft/ft_isaln
 	./libft/ft_substr.c ./libft/ft_tolower.c ./libft/ft_toupper.c ./libft/ft_isxdigit.c ./libft/ft_isblank.c\
 	./libft/ft_iscntrl.c ./libft/ft_ispunct.c ./libft/ft_isspace.c ./libft/ft_countword.c ./libft/ft_intlen.c\
 	./libft/ft_putbase_fd.c ./libft/ft_atoi_base.c ./libft/ft_check_base.c ./libft/ft_sqrt.c ./libft/ft_power.c\
-	./libft/ft_isprime.c ./libft/ft_factorial.c ./libft/ft_find_next_prime.c
-	ft_printf.c
+	./libft/ft_isprime.c ./libft/ft_factorial.c ./libft/ft_find_next_prime.c ft_printf.c
 CC	:= gcc
 CFLAGS	:= -Wall -Werror -Wextra -I./libft
 OFILES	:= $(SRC:.c=.o)
