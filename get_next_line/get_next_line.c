@@ -6,11 +6,56 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:03:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/09 14:21:02 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/16 10:25:16 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+static size_t   ft_strlen(char const *str)
+{
+    size_t  i;
+
+    i = 0;
+    while(*str)
+    {
+        str++;
+        i++;
+    }
+    return(i);
+}
+
+char	*ft_strjoin(char const *s1, char const*s2)
+{
+	char	*str;
+	size_t	i;
+	size_t	j;
+
+	if (!s1 || !s2)
+		return ((void *) 0);
+	str = malloc((sizeof(char) * (ft_strlen(s1) + ft_strlen(s2))) + 1);
+	if (!str)
+		return ((void *) 0);
+	i = 0;
+	j = 0;
+	while (s1[i])
+		str[j++] = s1[i++];
+	i = 0;
+	while (s2[i])
+		str[j++] = s2[i++];
+	return (str);
+}
+
+static int  ft_hasline(char *line)
+{
+    while (*line)
+    {
+        if (*line == '\n')
+            return (1);
+        line++;
+    }
+    return (0);
+}
 
 static size_t   ft_linelen(char *file)
 {
@@ -27,45 +72,56 @@ static size_t   ft_linelen(char *file)
     return (len);
 }
 
-static char    *ft_linecpy(char *buffer, char *dst)
+static char    *ft_linecpy(char *tmp)
 {
-    static int  last;
     int         i;
+    char        *dst;
 
-    i = last;
-    while (buffer[i])
+    i = 0;
+    dst = malloc((sizeof(char) * ft_linelen(tmp)) + 1);
+    if (!dst)
+        return((void *) 0);
+    while (tmp[i])
     {
-        if (buffer[i] == '\n')
+        if (tmp[i] == '\n')
         {
-            dst[i - last] = buffer[i];
+            dst[i] = tmp[i];
+            dst[i + 1] = '\0';
             break ;
         }
-        dst[i - last] = buffer[i];
+        dst[i] = tmp[i];
         i++;
     }
-    last = i + 1;
-    free(buffer);
+    free(tmp);
     return (dst);
 }
 
 char    *get_next_line(int fd)
 {
-    char        *buffer;
-    char        *dst;
-    int         file;
+    static size_t   offset;
+    char            *buf;
+    char            *tmp;
+    int             state;
 
     if (!fd || !BUFFER_SIZE)
         return ((void *) 0);
-    buffer = malloc((sizeof(char) * BUFFER_SIZE) + 1);
-    if (!buffer)
-        return ((void *) 0);
-    file = read(fd, buffer, BUFFER_SIZE);
-    if (!file)
-        return ((void *) 0);
-    dst = malloc((sizeof(char) * ft_linelen(buffer)) + 1);
-    if (!dst)
-        return ((void *) 0);
-    return (ft_linecpy(buffer, dst));
+    buf = malloc((sizeof(char) * BUFFER_SIZE) + 1);
+    if (!buf)
+        return((void *) 0);
+    state = -1;
+    tmp = "";
+    if (offset > 0)
+            state = read(fd, buf, offset);
+    while (state != 0)
+    {
+        state = read(fd, buf, BUFFER_SIZE);
+        tmp = ft_strjoin(tmp, buf);
+        offset = offset + ft_linelen(tmp);
+        if (ft_hasline(buf))
+            break ;
+    }
+    free(buf);
+    return (ft_linecpy(tmp));
 }
 /*
 #include <stdio.h>
