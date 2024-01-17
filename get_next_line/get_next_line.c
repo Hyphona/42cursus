@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:03:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/17 10:31:01 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/17 12:04:05 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,28 @@ static char    *ft_linecpy(char *tmp)
     return (dst);
 }
 
+static void ft_savelast(char *buf, char *dst)
+{
+    size_t  i;
+    size_t  j;
+
+    i = 0;
+    j = 0;
+    while (buf[i] != '\n')
+        i++;
+    i++;
+    while (buf[i])
+    {
+        dst[j] = buf[i];
+        i++;
+        j++;
+    }
+    dst[j] = '\0';
+}
+
 char    *get_next_line(int fd)
 {
-    //static size_t   offset;
+    static char     *last;
     char            *buf;
     char            *tmp;
     int             state;
@@ -78,17 +97,20 @@ char    *get_next_line(int fd)
         return ((void *) 0);
     state = -1;
     tmp = "";
-    /*if (offset > 0)
-        state = read(fd, buf, offset);*/
     while (state)
     {
         state = read(fd, buf, BUFFER_SIZE);
-        buf[state] = 0;
+        buf[state] = '\0';
+        if (last)
+            tmp = ft_strjoin(tmp, last);
         tmp = ft_strjoin(tmp, buf);
-        //offset = offset + ft_linelen(buf);
         if (ft_hasline(buf))
             break ;
     }
+    last = malloc((sizeof(char) * (BUFFER_SIZE - ft_hasline(buf))) + 1);
+    if (!last)
+        return ((void *) 0);
+    ft_savelast(buf, last);
     free(buf);
     return (ft_linecpy(tmp));
 }
