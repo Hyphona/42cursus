@@ -6,88 +6,117 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:03:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/22 08:47:52 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/24 09:23:05 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int  ft_hasline(char *buf)
+static size_t   ft_hasline(char *str)
 {
-    size_t  len;
+    size_t  i;
 
-    len = 0;
-    while (buf[len])
+    i = 0;
+    while (str[i])
     {
-        if (buf[len] == '\n')
-            return (len);
-        len++;
+        if (str[i] == '\n')
+            return (i);
+        i++;
     }
     return (0);
 }
 
 static size_t   ft_linelen(char *str)
 {
-    size_t  len;
-
-    len = 0;
-    while (str[len])
-    {
-        if (str[len] == '\n')
-            return (len + 1);
-        len++;
-    }
-    return (len);
-}
-
-static char    *ft_linecpy(char *tmp)
-{
-    int         i;
-    char        *dst;
+    size_t  i;
 
     i = 0;
-    dst = malloc((sizeof(char) * ft_linelen(tmp)) + 1);
-    if (!dst)
-        return((void *) 0);
-    while (tmp[i])
+    while (str[i])
     {
-        if (tmp[i] == '\n')
-        {
-            dst[i] = tmp[i];
-            dst[i + 1] = '\0';
-            break ;
-        }
-        dst[i] = tmp[i];
+        if (str[i] == '\n')
+            return (i);
         i++;
     }
+    return (i);
+}
+
+static char *ft_uptmp(char  *tmp)
+{
+    size_t  i;
+    size_t  size;
+    char    *n_tmp;
+
+    i = ft_linelen(tmp);
+    size = 0;
+    while (tmp[size])
+        size++;
+    size = size - i;
+    n_tmp = malloc((sizeof(char) * size) + 1);
+    if (!n_tmp)
+        return (0);
+    size = 0;
+    while (tmp[i])
+    {
+        n_tmp[size] = tmp[i];
+        size++;
+        i++;
+    }
+    n_tmp[size] = '\0';
     free(tmp);
+    return (n_tmp);
+}
+
+static char *ft_sendline(char *str)
+{
+    size_t  i;
+    char    *dst;
+    
+    i = 0;
+    dst = malloc((sizeof(char) * ft_linelen(str)) + 1);
+    if (!dst)
+        return (0);
+    dst[ft_linelen(str) + 1] = '\0';
+    while (i <= ft_linelen(str))
+    {
+        dst[i] = str[i];
+        i++;
+    }
+    if (str[i + 1])
+        ft_uptmp(str);
+    else
+        free(str);
     return (dst);
 }
 
 char    *get_next_line(int fd)
 {
-    static char     *buf;
-    char            *tmp;
+    char            *buf;
+    static char     *tmp;
     int             state;
 
     if (!fd || !BUFFER_SIZE)
-        return((void *) 0);
-    buf = malloc((sizeof(char) * BUFFER_SIZE) + 1);
+        return(0);
+    if (tmp)
+    {
+        if (ft_hasline(tmp))
+            return (ft_sendline(tmp));
+    }
+    else
+        tmp = "";
+    buf = malloc((sizeof(char) + BUFFER_SIZE) + 1);
     if (!buf)
-        return ((void *) 0);
+        return (0);
+    buf[BUFFER_SIZE + 1] = '\0';
     state = -1;
-    tmp = "";
     while (state)
     {
         state = read(fd, buf, BUFFER_SIZE);
-        buf[state] = '\0';
-        tmp = ft_strjoin(tmp, buf);
         if (ft_hasline(buf))
             break ;
     }
-    if (buf == 0)
-        free(buf);
-    return (ft_linecpy(tmp));
+    tmp = ft_strjoin(buf, tmp);
+    free(buf);
+    return (ft_sendline(tmp));
 }
 
 #include <stdio.h>

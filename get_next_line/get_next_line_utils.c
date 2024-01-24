@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 08:38:41 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/17 09:15:56 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/24 09:26:04 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ char	*ft_strjoin(char const *s1, char const*s2)
 	i = 0;
 	while (s2[i])
 		str[j++] = s2[i++];
-    str[j] = '\0';
+	str[j] = '\0';
 	return (str);
 }
