@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 08:38:41 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/24 09:26:04 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/29 10:23:52 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ char	*ft_strjoin(char const *s1, char const*s2)
 	size_t	j;
 
 	if (!s1 || !s2)
-		return ((void *) 0);
+		return (0);
 	str = malloc((sizeof(char) * (ft_strlen(s1) + ft_strlen(s2))) + 1);
 	if (!str)
-		return ((void *) 0);
+		return (0);
 	i = 0;
 	j = 0;
 	while (s1[i])

@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:03:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/29 09:48:49 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/29 10:36:38 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,17 @@ static size_t   ft_linelen(char *str)
 static void ft_uptmp(char  *tmp)
 {
     size_t  i;
-    size_t  size;
+    size_t  j;
 
     i = ft_linelen(tmp) + 1;
-    size = 0;
+    j = 0;
     while (tmp[i])
     {
-        tmp[size] = tmp[i];
-        size++;
+        tmp[j] = tmp[i];
+        j++;
         i++;
     }
-    tmp[size] = '\0';
+    tmp[j] = '\0';
 }
 
 static char *ft_sendline(char *str)
@@ -95,6 +95,7 @@ char    *get_next_line(int fd)
         return (0);
     buf[BUFFER_SIZE] = '\0';
     state = -1;
+    tmp = ft_strjoin(tmp, "");
     while (state)
     {
         state = read(fd, buf, BUFFER_SIZE);
