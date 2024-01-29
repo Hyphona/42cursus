@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:03:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/24 09:23:05 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/29 09:48:49 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,30 +40,20 @@ static size_t   ft_linelen(char *str)
     return (i);
 }
 
-static char *ft_uptmp(char  *tmp)
+static void ft_uptmp(char  *tmp)
 {
     size_t  i;
     size_t  size;
-    char    *n_tmp;
 
-    i = ft_linelen(tmp);
-    size = 0;
-    while (tmp[size])
-        size++;
-    size = size - i;
-    n_tmp = malloc((sizeof(char) * size) + 1);
-    if (!n_tmp)
-        return (0);
+    i = ft_linelen(tmp) + 1;
     size = 0;
     while (tmp[i])
     {
-        n_tmp[size] = tmp[i];
+        tmp[size] = tmp[i];
         size++;
         i++;
     }
-    n_tmp[size] = '\0';
-    free(tmp);
-    return (n_tmp);
+    tmp[size] = '\0';
 }
 
 static char *ft_sendline(char *str)
@@ -75,13 +65,13 @@ static char *ft_sendline(char *str)
     dst = malloc((sizeof(char) * ft_linelen(str)) + 1);
     if (!dst)
         return (0);
-    dst[ft_linelen(str) + 1] = '\0';
+    dst[ft_linelen(str)] = '\0';
     while (i <= ft_linelen(str))
     {
         dst[i] = str[i];
         i++;
     }
-    if (str[i + 1])
+    if (str[i])
         ft_uptmp(str);
     else
         free(str);
@@ -95,26 +85,23 @@ char    *get_next_line(int fd)
     int             state;
 
     if (!fd || !BUFFER_SIZE)
-        return(0);
-    if (tmp)
-    {
-        if (ft_hasline(tmp))
-            return (ft_sendline(tmp));
-    }
-    else
+        return (0);
+    if (!tmp)
         tmp = "";
-    buf = malloc((sizeof(char) + BUFFER_SIZE) + 1);
+    if (tmp && ft_hasline(tmp))
+        return (ft_sendline(tmp));
+    buf = malloc((sizeof(char) * BUFFER_SIZE) + 1);
     if (!buf)
         return (0);
-    buf[BUFFER_SIZE + 1] = '\0';
+    buf[BUFFER_SIZE] = '\0';
     state = -1;
     while (state)
     {
         state = read(fd, buf, BUFFER_SIZE);
+        tmp = ft_strjoin(tmp, buf);
         if (ft_hasline(buf))
             break ;
     }
-    tmp = ft_strjoin(buf, tmp);
     free(buf);
     return (ft_sendline(tmp));
 }
@@ -133,8 +120,8 @@ int main(void)
     {
         str = get_next_line(fd);
         printf("%s", str);
-        free(str);
         i++;
     }
+    free(str);
     close(fd);
 }
