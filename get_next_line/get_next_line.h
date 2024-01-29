@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:03:52 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/17 09:16:11 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/29 13:05:59 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-void    ft_bzero(char *str);
 char    *get_next_line(int fd);
 size_t  ft_strlen(const char *str);
-char    *ft_strjoin(char const *s1, char const *s2);
+char    *ft_strjoin(char *s1, char *s2);
 
 #endif
