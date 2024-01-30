@@ -12,9 +12,9 @@
 
 #include "get_next_line.h"
 
-static size_t   ft_hasline(char *str)
+static size_t	ft_hasline(char *str)
 {
-	size_t  i;
+	size_t	i;
 
 	i = 0;
 	if (!str)
@@ -28,9 +28,9 @@ static size_t   ft_hasline(char *str)
 	return (0);
 }
 
-static size_t   ft_linelen(char *str)
+static size_t	ft_linelen(char *str)
 {
-	size_t  i;
+	size_t	i;
 
 	i = 0;
 	if (!str)
@@ -44,10 +44,10 @@ static size_t   ft_linelen(char *str)
 	return (i);
 }
 
-static void ft_uptmp(char  *tmp)
+static void	ft_uptmp(char *tmp)
 {
-	size_t  i;
-	size_t  j;
+	size_t	i;
+	size_t	j;
 
 	i = ft_linelen(tmp) + 1;
 	j = 0;
@@ -60,11 +60,11 @@ static void ft_uptmp(char  *tmp)
 	tmp[j] = '\0';
 }
 
-static char *ft_sendline(char **str)
+static char	*ft_sendline(char **str)
 {
-	size_t  i;
-	char    *dst;
-	
+	size_t	i;
+	char	*dst;
+
 	if (!*str[0])
 	{
 		ft_free(str);
@@ -88,11 +88,11 @@ static char *ft_sendline(char **str)
 	return (dst);
 }
 
-char    *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-	char            *buf;
-	static char     *tmp;
-	int             state;
+	char		*buf;
+	static char	*tmp;
+	int			state;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return ((char *) '\0');

@@ -18,16 +18,16 @@ void	ft_free(char **str)
 	*str = NULL;
 }
 
-size_t  ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
-	size_t  len;
+	size_t	len;
 
 	len = 0;
 	if (!str)
 		return (0);
 	while (str[len])
 		len++;
-	return(len);
+	return (len);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
