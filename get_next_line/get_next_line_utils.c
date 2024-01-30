@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 08:38:41 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/30 09:09:50 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/30 10:12:18 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 void	ft_free(char **str)
 {
 	free(*str);
-    *str = NULL;
+	*str = NULL;
 }
 
 size_t  ft_strlen(const char *str)
 {
-    size_t  len;
+	size_t  len;
 
-    len = 0;
+	len = 0;
 	if (!str)
 		return (0);
-    while (str[len])
-        len++;
-    return(len);
+	while (str[len])
+		len++;
+	return(len);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
