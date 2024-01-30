@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:03:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/30 09:10:50 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/30 10:06:16 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static char *ft_sendline(char **str)
     else
         dst = malloc((sizeof(char) * ft_linelen(*str)) + 2);
     if (!dst)
-        return (0);
+        return ((char *) '\0');
     i = 0;
     while (i <= ft_linelen(*str))
     {
@@ -81,7 +81,7 @@ static char *ft_sendline(char **str)
         i++;
     }
     dst[i] = '\0';
-    if (str[0][i])
+    if (str[0][i - 1])
         ft_uptmp(*str);
     else
         ft_free(str);
@@ -94,19 +94,22 @@ char    *get_next_line(int fd)
     static char     *tmp;
     int             state;
 
-    if (!fd || !BUFFER_SIZE)
-        return (0);
+    if (fd < 0 || BUFFER_SIZE < 1)
+        return ((char *) '\0');
     if (tmp && ft_hasline(tmp))
         return (ft_sendline(&tmp));
     buf = malloc((sizeof(char) * BUFFER_SIZE) + 1);
     if (!buf)
-        return (0);
+        return ((char *) '\0');
     state = -1;
     while (state)
     {
         state = read(fd, buf, BUFFER_SIZE);
         if (state == -1)
-            return (0);
+        {
+		    free(buf);
+            return ((char *) '\0');
+        }
         buf[state] = '\0';
         tmp = ft_strjoin(tmp, buf);
         if (ft_hasline(buf))
@@ -125,8 +128,9 @@ int main(void)
     int i;
 
     i = 0;
-    fd = open("text.txt", O_RDONLY);
-    while (i < 30)
+    fd = open("text.txt", O_RDWR);
+    fd = 1000;
+    while (i < 5)
     {
         str = get_next_line(fd);
         printf("%s", str);
