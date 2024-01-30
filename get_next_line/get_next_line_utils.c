@@ -6,11 +6,17 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 08:38:41 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/29 14:24:45 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/30 09:09:50 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	ft_free(char **str)
+{
+	free(*str);
+    *str = NULL;
+}
 
 size_t  ft_strlen(const char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:03:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/30 08:47:21 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/30 09:10:50 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,26 +65,26 @@ static char *ft_sendline(char **str)
     size_t  i;
     char    *dst;
     
-    i = 0;
-    if (str[0][0] == 0)
-        return (*str);
+    if (!*str[0])
+    {
+        ft_free(str);
+        return ((char *) '\0');
+    }
     else
         dst = malloc((sizeof(char) * ft_linelen(*str)) + 2);
     if (!dst)
         return (0);
+    i = 0;
     while (i <= ft_linelen(*str))
     {
         dst[i] = str[0][i];
         i++;
     }
-    dst[i] = 0;
+    dst[i] = '\0';
     if (str[0][i])
         ft_uptmp(*str);
     else
-    {
-        free(*str);
-        *str = NULL;
-    }
+        ft_free(str);
     return (dst);
 }
 
@@ -116,7 +116,7 @@ char    *get_next_line(int fd)
     return (ft_sendline(&tmp));
 }
 
-#include <stdio.h>
+/*#include <stdio.h>
 #include <fcntl.h>
 int main(void)
 {
@@ -126,7 +126,7 @@ int main(void)
 
     i = 0;
     fd = open("text.txt", O_RDONLY);
-    while (i < 6)
+    while (i < 30)
     {
         str = get_next_line(fd);
         printf("%s", str);
@@ -134,4 +134,4 @@ int main(void)
         i++;
     }
     close(fd);
-}
+}*/
