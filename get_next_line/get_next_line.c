@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:03:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/30 12:59:38 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/31 09:58:36 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static char	*ft_sendline(char **str)
 	size_t	len;
 	char	*dst;
 
-	if (!*str[0])
+	if (!*str || !*str[0])
 	{
 		ft_free(str);
 		return ((char *) '\0');
@@ -107,10 +107,7 @@ char	*get_next_line(int fd)
 	{
 		state = read(fd, buf, BUFFER_SIZE);
 		if (state == -1)
-		{
-			free(buf);
-			return ((char *) '\0');
-		}
+			break ;
 		buf[state] = '\0';
 		tmp = ft_strjoin(tmp, buf);
 		if (ft_hasline(buf))
