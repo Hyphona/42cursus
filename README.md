@@ -5,9 +5,6 @@ I decided to share it so you can maybe fall in love with coding just like me, fe
 
 Start date: November 2023
 
-> [!WARNING]
-> If you are a 42 Student or actually passing the "Piscine", remember that cheating is not allowed 👀
-
 ## What is 42
 42 is a tuition-free private technical institution of higher learning based on peer to peer learning, no classes, no teachers (as long as you pass the selection process, called "piscine")
 
