@@ -16,6 +16,6 @@ For more informations, visit the [42 website](https://42.fr/en/homepage/)
 > [!NOTE]
 > Some parts may not work properly unless I marked it as finished
 ### Common Core
-- [x] libft - (Finished) See libft-original
+- [x] libft - See "libft-original" for the original one or "libft" for the tweaks (Modified + new useful functions)
 - [x] ft_printf - (Waiting for defense) Will be part of libft when valided
 - [x] get_next_line - (Waiting for defense) Will be part of libft when valided
