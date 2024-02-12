@@ -4,28 +4,35 @@ SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c\
 	ft_putnbr_fd.c ft_putstr_fd.c ft_split.c ft_strchr.c ft_strdup.c\
 	ft_striteri.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_strlen.c\
 	ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c\
-	ft_substr.c ft_tolower.c ft_toupper.c ft_lstadd_back.c ft_lstadd_front.c\
-	ft_lstlast.c ft_lstnew.c ft_lstsize.c ft_lstdelone.c ft_lstclear.c\
-	ft_lstiter.c ft_lstmap.c
+	ft_substr.c ft_tolower.c ft_toupper.c
+SRC_BONUS = ft_lstadd_back.c ft_lstadd_front.c ft_lstlast.c ft_lstnew.c\
+		ft_lstsize.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -I./
 OFILES = $(SRC:.c=.o)
+OFILES_BONUS = $(SRC_BONUS:.c=.o)
 NAME = libft.a
+NAME_BONUS = libft.a
 
 $(NAME): $(OFILES)
 	ar -rcs $(NAME) $(OFILES)
+
+$(NAME_BONUS): $(OFILES_BONUS)
+	ar -rcs $(NAME_BONUS) $(OFILES_BONUS)
 
 all: $(NAME)
 
 clean:
 	rm -f $(OFILES)
+	rm -f $(OFILES_BONUS)
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f $(NAME_BONUS)
 
 re: fclean all
 
-bonus: $(NAME)
+bonus: $(NAME_BONUS)
 
 
 .PHONY:
@@ -33,3 +40,4 @@ bonus: $(NAME)
 	clean
 	fclean
 	re
+	bonus
