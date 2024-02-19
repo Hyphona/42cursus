@@ -16,6 +16,6 @@ For more informations, visit the [42 website](https://42.fr/en/homepage/)
 > [!NOTE]
 > Some parts may not work properly unless I marked it as finished
 ### Common Core
-- [x] libft - See "libft-original" for the original one or [here](https://github.com/Hyphona/libft/tree/79689739a3c6e1a92553dfa4b01718da7f1b561b) for the tweaks
+- [x] libft - 125/100 See "libft-original" for the original one or [here](https://github.com/Hyphona/libft/tree/79689739a3c6e1a92553dfa4b01718da7f1b561b) for the tweaks
 - [x] ft_printf - (Waiting for defense) Will be part of [libft](https://github.com/Hyphona/libft/tree/79689739a3c6e1a92553dfa4b01718da7f1b561b) when valided
-- [x] get_next_line - (Waiting for defense) Will be part of [libft](https://github.com/Hyphona/libft/tree/79689739a3c6e1a92553dfa4b01718da7f1b561b) when valided
+- [x] get_next_line - 125/100 Will be part of [libft](https://github.com/Hyphona/libft/tree/79689739a3c6e1a92553dfa4b01718da7f1b561b)
