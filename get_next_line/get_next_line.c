@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:03:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/01/31 09:58:36 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/02/19 08:30:45 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static size_t	ft_hasline(char *str)
 	while (str[i])
 	{
 		if (str[i] == '\n')
-			return (i);
+			return (1);
 		i++;
 	}
 	return (0);
@@ -82,7 +82,7 @@ static char	*ft_sendline(char **str)
 		i++;
 	}
 	dst[i] = '\0';
-	if (str[0][i - 1])
+	if (str[0][i])
 		ft_uptmp(*str);
 	else
 		ft_free(str);
@@ -92,13 +92,13 @@ static char	*ft_sendline(char **str)
 char	*get_next_line(int fd)
 {
 	char		*buf;
-	static char	*tmp;
+	static char	*tmp[1024];
 	int			state;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return ((char *) '\0');
-	if (tmp && ft_hasline(tmp))
-		return (ft_sendline(&tmp));
+	if (tmp[fd] && ft_hasline(tmp[fd]))
+		return (ft_sendline(&tmp[fd]));
 	buf = malloc((sizeof(char) * BUFFER_SIZE) + 1);
 	if (!buf)
 		return ((char *) '\0');
@@ -109,30 +109,10 @@ char	*get_next_line(int fd)
 		if (state == -1)
 			break ;
 		buf[state] = '\0';
-		tmp = ft_strjoin(tmp, buf);
+		tmp[fd] = ft_strjoin(tmp[fd], buf);
 		if (ft_hasline(buf))
 			break ;
 	}
 	free(buf);
-	return (ft_sendline(&tmp));
+	return (ft_sendline(&tmp[fd]));
 }
-
-/*#include <stdio.h>
-#include <fcntl.h>
-int main(void)
-{
-	char    *str;
-	int     fd;
-	int i;
-
-	i = 0;
-	fd = open("text.txt", O_RDWR);
-	while (i < 30)
-	{
-		str = get_next_line(fd);
-		printf("%s", str);
-		free(str);
-		i++;
-	}
-	close(fd);
-}*/
