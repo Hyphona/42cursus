@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 12:01:31 by alperrot          #+#    #+#             */
-/*   Updated: 2024/02/02 20:04:34 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/01/03 12:19:21 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,18 @@
 size_t	ft_putbase_fd(long unsigned int n, char *base, int fd)
 {
 	size_t	len;
+	size_t	b_len;
 
 	if (!base || !fd)
 		return (0);
+	if (!ft_check_base(base))
+		return (0);
 	len = 0;
-	if (n >= ft_strlen(base))
+	b_len = ft_strlen(base);
+	if (n >= b_len)
 	{
-		len = ft_putbase_fd(n / ft_strlen(base), base, fd);
-		len += ft_putbase_fd(n % ft_strlen(base), base, fd);
+		len = ft_putbase_fd(n / b_len, base, fd);
+		len += ft_putbase_fd(n % b_len, base, fd);
 	}
 	else
 		len += ft_putchar_fd(base[n], fd);
