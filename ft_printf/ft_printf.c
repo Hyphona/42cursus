@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:33:18 by alperrot          #+#    #+#             */
-/*   Updated: 2024/02/21 12:55:33 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/02/21 12:50:36 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,46 @@ int	ft_printf(const char *format, ...)
 	}
 	va_end(args);
 	return (len);
+}
+
+#include <stdio.h>
+
+int		main(void)
+{
+	ft_printf("				-> ft_printf return %i on NULL using %%s", ft_printf("%s", NULL));
+	ft_printf("\n");
+	ft_printf("				-> ft_printf return %i on empty char* using %%s", ft_printf("%s", ""));
+	ft_printf("\n");
+	ft_printf(" 	-> ft_printf return %i", ft_printf("%s", "abcdefghijklmnopqrstuvwxyz"));
+	ft_printf("\n");
+	ft_printf(" 				-> ft_printf return %i on NULL format", ft_printf(NULL));
+	ft_printf("\n");
+	ft_printf(" 				-> ft_printf return %i on empty format", ft_printf(""));
+	ft_printf("\n");
+	ft_printf(" 	-> ft_printf return %i", ft_printf("abcdefghijklmnopqrstuvwxyz"));
+	ft_printf("\n");
+	ft_printf("-> ft_printf return %i using %%s%%s + NULL", ft_printf("%s%s", "abcdefghijklmnopqrstuvwxyz", NULL));
+	ft_printf("\n");
+	ft_printf(" 	-> ft_printf return %i using %%s%%s + empty char*", ft_printf("%s%s", "abcdefghijklmnopqrstuvwxyz", ""));
+	ft_printf("\n");
+	ft_printf("\n");
+	ft_printf("\n");
+	ft_printf("\n");
+	printf("				-> printf return %i on NULL using %%s", printf("%s", NULL));
+	printf("\n");
+	printf("				-> printf return %i on empty char* using %%s", printf("%s", ""));
+	printf("\n");
+	printf(" 	-> printf return %i", printf("%s", "abcdefghijklmnopqrstuvwxyz"));
+	printf("\n");
+	printf(" 				-> printf return %i on NULL format", printf(NULL));
+	printf("\n");
+	printf(" 				-> printf return %i on empty format", printf(""));
+	printf("\n");
+	printf(" 	-> printf return %i", printf("abcdefghijklmnopqrstuvwxyz"));
+	printf("\n");
+	printf("-> printf return %i using %%s%%s + NULL", printf("%s%s", "abcdefghijklmnopqrstuvwxyz", NULL));
+	printf("\n");
+	printf(" 	-> printf return %i using %%s%%s + empty char*", printf("%s%s", "abcdefghijklmnopqrstuvwxyz", ""));
+	printf("\n");
+	return (1);
 }
