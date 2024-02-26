@@ -6,12 +6,21 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:33:18 by alperrot          #+#    #+#             */
-/*   Updated: 2024/02/26 12:40:59 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/02/26 12:57:30 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 #include "ft_printf.h"
+
+static int	ft_isvalid(const char *format)
+{
+	if (!format)
+		return (-1);
+	if (!ft_strlen(format))
+		return (0);
+	return (1);
+}
 
 static size_t	ft_print_s(char *v)
 {
@@ -52,6 +61,8 @@ static size_t	ft_format(const char type, void *v)
 		l += ft_putbase_fd(*((unsigned int *) &v), "0123456789abcdef", 1);
 	else if (type == 'X')
 		l += ft_putbase_fd(*((unsigned int *) &v), "0123456789ABCDEF", 1);
+	else if (type == '%')
+		l += write(1, "%", 1);
 	return (l);
 }
 
@@ -60,25 +71,22 @@ int	ft_printf(const char *format, ...)
 	va_list	args;
 	size_t	len;
 
-	if (!ft_isvalid(format) || ft_isvalid(format) == -1)
+	if (ft_isvalid(format) <= 0)
 		return (ft_isvalid(format));
 	len = 0;
 	va_start(args, format);
 	while (*format)
 	{
-		while (*format == '%')
+		while (*format == '%' && *(format + 1) != '\0')
 		{
-			if (ft_parser(format + 1) == '%')
-				len += write(1, "%", 1);
-			else
-				len += ft_format(ft_parser(format + 1), va_arg(args, void *));
-			format += 2;
-		}
-		if (*format)
-		{
-			len += write(1, format, 1);
+			format++;
+			len += ft_format(*format, va_arg(args, void *));
 			format++;
 		}
+		if (*format == '%' && *(format + 1) == '\0')
+			return (-1);
+		if (*format)
+			len += write(1, format++, 1);
 	}
 	va_end(args);
 	return (len);
