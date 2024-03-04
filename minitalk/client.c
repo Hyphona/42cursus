@@ -6,20 +6,20 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:35:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/02/29 13:36:05 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/03/04 09:24:58 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static int ft_isdigit(int c)
+static int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
 }
 
-static int ft_isspace(int c)
+static int	ft_isspace(int c)
 {
 	if (c == ' ' || (c >= 9 && c <= 13))
 		return (1);
