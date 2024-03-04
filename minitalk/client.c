@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:35:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/03/04 09:33:41 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/03/04 10:20:40 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,16 +76,19 @@ int	main(int ac, char **av)
 
 	if (ac != 3)
 	{
-		ft_printf("Usage: %s <PID> <string>\n", av[0]);
+		ft_printf("Usage: %s <PID> <message>\n", av[0]);
 		return (1);
 	}
 	pid = ft_atoi(av[1]);
 	i = 0;
-	while (av[2][i])
+	if (pid)
 	{
-		send_bit(pid, av[2][i]);
-		i++;
+		while (av[2][i])
+		{
+			send_bit(pid, av[2][i]);
+			i++;
+		}
+		send_bit(pid, '\0');
 	}
-	send_bit(pid, '\0');
 	return (0);
 }
