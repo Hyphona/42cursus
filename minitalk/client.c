@@ -6,25 +6,11 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:35:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/03/04 10:20:40 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/03/04 10:23:21 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
-static int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
-
-static int	ft_isspace(int c)
-{
-	if (c == ' ' || (c >= 9 && c <= 13))
-		return (1);
-	return (0);
-}
 
 static int	ft_atoi(const char *str)
 {
@@ -33,7 +19,7 @@ static int	ft_atoi(const char *str)
 
 	n = 0;
 	neg = 1;
-	while (ft_isspace(*str))
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
 		str++;
 	if (*str == '+')
 		str++;
@@ -42,7 +28,7 @@ static int	ft_atoi(const char *str)
 		neg = -1;
 		str++;
 	}
-	while (ft_isdigit(*str))
+	while ((*str >= '0' && *str <= '9'))
 	{
 		n = (n * 10) + (*str - 48);
 		str++;
