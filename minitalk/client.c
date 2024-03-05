@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:35:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/03/04 10:36:48 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/03/05 09:31:42 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	send_bit(int pid, unsigned char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(50);
+		usleep(70);
 	}
 }
 
@@ -74,8 +74,8 @@ int	main(int ac, char **av)
 			send_bit(pid, av[2][i]);
 			i++;
 		}
-		send_bit(pid, '\0');
-		ft_printf("🟢 Sent %d bits\n", i * 8);
+		send_bit(pid, '\n');
+		ft_printf("🟢 Sent %d bits\n", (i * 8) + 8);
 	}
 	else
 		ft_printf("🟠 PID is not valid\n🟠 Usage: %s <PID> <message>\n", av[0]);

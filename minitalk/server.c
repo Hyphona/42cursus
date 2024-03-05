@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:36:03 by alperrot          #+#    #+#             */
-/*   Updated: 2024/03/04 09:25:07 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/03/04 11:33:01 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ static void	handler(int signum)
 	bit++;
 	if (bit == 8)
 	{
-		if (c == '\0')
-			ft_printf("\n");
-		else
-			ft_printf("%c", c);
+		write(1, &c, 1);
 		bit = 0;
 		c = 0;
 	}
