@@ -6,17 +6,18 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:36:03 by alperrot          #+#    #+#             */
-/*   Updated: 2024/03/04 11:33:01 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/03/05 11:52:05 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static void	handler(int signum)
+static void	handler(int signum, siginfo_t *siginfo, void *context)
 {
 	static unsigned char	c;
 	static int				bit;
 
+	(void) context;
 	c |= (signum == SIGUSR1);
 	bit++;
 	if (bit == 8)
@@ -27,13 +28,18 @@ static void	handler(int signum)
 	}
 	else
 		c <<= 1;
+	kill(siginfo->si_pid, SIGUSR1);
 }
 
 int	main(void)
-{
+{	
+	struct sigaction	act;
+
 	ft_printf("Server PID: %d\n", getpid());
-	signal(SIGUSR1, handler);
-	signal(SIGUSR2, handler);
+	act.sa_sigaction = &handler;
+	act.sa_flags = SA_SIGINFO;
+	sigaction(SIGUSR1, &act, NULL);
+	sigaction(SIGUSR2, &act, NULL);
 	while (1)
 		pause();
 	return (0);

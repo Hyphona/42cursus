@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:35:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/03/05 09:38:32 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/03/05 12:11:23 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_atoi(const char *str)
 
 	n = 0;
 	neg = 1;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
+	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
 		str++;
 	if (*str == '+')
 		str++;
@@ -51,8 +51,12 @@ static void	send_bit(int pid, unsigned char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(70);
+		pause();
 	}
+}
+static void	handler(int signum)
+{
+	(void) signum;
 }
 
 int	main(int ac, char **av)
@@ -62,13 +66,14 @@ int	main(int ac, char **av)
 
 	if (ac != 3)
 	{
-		ft_printf("🟠 Usage: %s <PID> <message>\n", av[0]);
+		ft_printf("Usage: %s <PID> <message>\n", av[0]);
 		return (1);
 	}
 	pid = ft_atoi(av[1]);
-	i = 0;
 	if (pid)
 	{
+		i = 0;
+		signal(SIGUSR1, handler);
 		while (av[2][i])
 		{
 			send_bit(pid, av[2][i]);
@@ -77,6 +82,6 @@ int	main(int ac, char **av)
 		send_bit(pid, '\n');
 	}
 	else
-		ft_printf("🟠 PID is not valid\n🟠 Usage: %s <PID> <message>\n", av[0]);
+		ft_printf("PID is not valid\nUsage: %s <PID> <message>\n", av[0]);
 	return (0);
 }
