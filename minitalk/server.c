@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:36:03 by alperrot          #+#    #+#             */
-/*   Updated: 2024/03/05 11:52:05 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/03/06 09:38:17 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	handler(int signum, siginfo_t *siginfo, void *context)
 }
 
 int	main(void)
-{	
+{
 	struct sigaction	act;
 
 	ft_printf("Server PID: %d\n", getpid());
