@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:07:33 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/17 16:05:42 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/17 16:17:34 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void static	rev_rotate(t_stack **head)
 	t_stack	*current;
 	int		tmp;
 
-	current = getLast(*head);
+	current = get_last(*head);
 	tmp = current->nb;
 	while (current->prev)
 	{
