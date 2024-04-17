@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/19 09:09:11 by alperrot          #+#    #+#             */
-/*   Updated: 2024/02/19 09:40:02 by alperrot         ###   ########.fr       */
+/*   Created: 2024/04/17 13:23:46 by alperrot          #+#    #+#             */
+/*   Updated: 2024/04/17 16:13:12 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
-size_t	ft_ssize(t_stack *s)
+void	push_a(t_stack **s_a, t_stack **s_b)
 {
-	size_t	len;
+	t_stack	*tmp;
 
-	if (!s)
-		return (0);
-	len = 0;
-	while (s)
-	{
-		len++;
-		s = s->next;
-	}
-	return (len);
+	if (!*s_b)
+		return ;
+	tmp = *s_a;
+	*s_a = *s_b;
+	*s_b = (*s_b)->next;
+	(*s_a)->next = tmp;
+	write(1, "pa\n", 3);
+}
+
+void	push_b(t_stack **s_a, t_stack **s_b)
+{
+	t_stack	*tmp;
+
+	if (!*s_a)
+		return ;
+	tmp = *s_b;
+	*s_b = *s_a;
+	*s_a = (*s_a)->next;
+	(*s_b)->next = tmp;
+	write(1, "pb\n", 3);
 }

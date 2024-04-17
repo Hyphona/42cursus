@@ -6,37 +6,42 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 09:02:56 by alperrot          #+#    #+#             */
-/*   Updated: 2024/02/19 09:40:08 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/17 16:05:17 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
-void	swap(t_stack *s, char c, int print)
+void static	swap(t_stack *s)
 {
-	t_stack	*tmp;
-	size_t	size;
-	
+	int	tmp;
+
+	tmp = s->nb;
+	s->nb = s->next->nb;
+	s->next->nb = tmp;
+}
+
+void	swap_a(t_stack *s)
+{
 	if (!s || !s->next)
 		return ;
-	size = ft_ssize(s);
-	tmp = s;
-	tmp->next = NULL;
-	while (size > 0)
-	{
-		s = s->next;
-		size--;
-	}
-	s->next = tmp;
-	if (print)
-		ft_printf("s%c\n", c);
+	swap(s);
+	write(1, "sa\n", 3);
+}
+
+void	swap_b(t_stack *s)
+{
+	if (!s || !s->next)
+		return ;
+	swap(s);
+	write(1, "sb\n", 3);
 }
 
 void	swap_s(t_stack *s_a, t_stack *s_b)
 {
 	if (!s_a || !s_a->next || !s_b || !s_b->next)
 		return ;
-	swap(s_a, 'a', 0);
-	swap(s_b, 'b', 0);
-	ft_printf("ss\n");
+	swap(s_a);
+	swap(s_b);
+	write(1, "ss\n", 3);
 }
