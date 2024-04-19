@@ -6,21 +6,11 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:27:56 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/19 14:50:00 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/19 14:50:44 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
-
-static int	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
 
 static void	sub_parsing(char *av, t_stack *s_a)
 {
