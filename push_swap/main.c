@@ -6,11 +6,11 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:27:56 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/17 22:04:28 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/18 01:08:59 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "./includes/push_swap.h"
 
 int	main(int ac, char **av)
 {

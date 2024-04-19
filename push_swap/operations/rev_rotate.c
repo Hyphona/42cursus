@@ -6,13 +6,13 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:07:33 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/17 16:17:34 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/18 01:07:27 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void static	rev_rotate(t_stack **head)
+static void	rev_rotate(t_stack **head)
 {
 	t_stack	*current;
 	int		tmp;

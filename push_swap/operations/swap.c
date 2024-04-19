@@ -6,13 +6,13 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 09:02:56 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/17 16:05:17 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/18 01:07:47 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void static	swap(t_stack *s)
+static void	swap(t_stack *s)
 {
 	int	tmp;
 
