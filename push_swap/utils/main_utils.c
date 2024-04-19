@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 22:03:09 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/19 12:14:47 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/19 15:06:31 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,26 @@ int	ft_hasspace(char *str)
 
 int	ft_atoi(const char *str)
 {
+	int		i;
 	int		n;
 	int		neg;
 
+	i = 0;
 	n = 0;
 	neg = 1;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '+')
-		str++;
-	else if (*str == '-')
+	while (ft_isspace(str[i]))
+		i++;
+	if (str[i] == '+')
+		i++;
+	else if (str[i] == '-')
 	{
 		neg = -1;
-		str++;
+		i++;
 	}
-	while (*str >= '0' && *str <= '9')
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		n = (n * 10) + (*str - 48);
-		str++;
+		n = (n * 10) + (str[i] - 48);
+		i++;
 	}
 	return (n * neg);
 }
@@ -61,13 +63,13 @@ int	check_args(char **av)
 	while (av[i])
 	{
 		j = 0;
-		if (av[i][j] == '-' || av[i][j] == '+')
-			j++;
 		while (av[i][j])
 		{
+			if (av[i][j] == '-' || av[i][j] == '+')
+				j++;
 			if (!(av[i][j] >= '0' && av[i][j] <= '9'))
 			{
-				if (av[i][j] != ' ' && !ft_isspace(av[i][j]))
+				if (!ft_isspace(av[i][j]))
 					return (0);
 			}
 			j++;
