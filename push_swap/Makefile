@@ -12,7 +12,7 @@ OFILES	:= $(SRC:.c=.o)
 NAME	:= push_swap
 
 $(NAME): $(OFILES)
-	ar -rcs $(NAME) $(OFILES)
+	${CC} ${CFLAGS} ${OFILES} -o ${NAME}
 
 all: $(NAME)
 
