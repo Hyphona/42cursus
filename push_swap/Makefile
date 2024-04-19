@@ -3,11 +3,12 @@ SRC	:= 	./operations/push.c\
 		./operations/rotate.c\
 		./operations/swap.c\
 		./utils/main_utils.c\
+		./utils/main_utils2.c\
 		./utils/node_utils.c\
 		main.c
 
 CC	:= gcc
-CFLAGS	:= -Wall -Werror -Wextra -I./includes
+CFLAGS	:= -Wall -Werror -Wextra -I./includes -g
 OFILES	:= $(SRC:.c=.o)
 NAME	:= push_swap
 

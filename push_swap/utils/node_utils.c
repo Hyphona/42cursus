@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 13:55:31 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/18 01:09:45 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/19 13:48:00 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,10 @@ t_stack	*create_node(int nb)
 
 void	add_node(t_stack **s, t_stack *new)
 {
-	t_stack	*last;
-
 	if (!*s)
 		*s = new;
-	last = get_last(*s);
-	last->next = new;
-	new->prev = last;
+	else
+		(get_last(*s))->next = new;
 }
 
 t_stack	*get_last(t_stack *s)

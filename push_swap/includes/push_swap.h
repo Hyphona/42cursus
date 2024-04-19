@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 09:04:02 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/17 22:03:59 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/19 13:49:41 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ void	add_node(t_stack **s, t_stack *new);
 int		check_args(char **av);
 t_stack	*create_node(int nb);
 int		ft_atoi(const char *str);
+int		ft_hasspace(char *str);
+int		ft_isspace(char c);
+char	*ft_strjoin(char const *s1, char const s2);
 t_stack	*get_last(t_stack *s);
 void	push_a(t_stack **s_a, t_stack **s_b);
 void	push_b(t_stack **s_a, t_stack **s_b);
