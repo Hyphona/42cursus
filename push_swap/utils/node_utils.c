@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 13:55:31 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/19 13:48:00 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:03:50 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,16 @@ t_stack	*get_last(t_stack *s)
 	while (s->next)
 		s = s->next;
 	return (s);
+}
+
+void	free_stack(t_stack *s)
+{
+	t_stack	*tmp;
+
+	while (s)
+	{
+		tmp = s;
+		s = s->next;
+		free(tmp);
+	}
 }

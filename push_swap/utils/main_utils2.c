@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 12:33:32 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/19 14:50:06 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/24 16:18:00 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,10 @@ static size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const s2)
+char	*ft_joinchar(char *s1, char s2)
 {
 	char	*str;
 	size_t	i;
-	size_t	j;
 
 	if (!s1 || !s2)
 		return ((void *) 0);
@@ -35,10 +34,14 @@ char	*ft_strjoin(char const *s1, char const s2)
 	if (!str)
 		return ((void *) 0);
 	i = 0;
-	j = 0;
 	while (s1[i])
-		str[j++] = s1[i++];
-	str[j++] = s2;
-	str[j++] = '\0';
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	str[i] = s2;
+	str[i + 1] = '\0';
+	if (ft_strlen(s1) > 0)
+		free(s1);
 	return (str);
 }

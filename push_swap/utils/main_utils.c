@@ -6,22 +6,22 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 22:03:09 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/19 15:06:31 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/24 16:24:47 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isspace(char c)
+int	is_space(char c)
 {
 	if (c == ' ' || (c >= 9 && c <= 13))
 		return (1);
 	return (0);
 }
 
-int	ft_hasspace(char *str)
+int	has_space(char *str)
 {
 	while (*str)
 	{
-		if (ft_isspace(*str))
+		if (is_space(*str))
 			return (1);
 		str++;
 	}
@@ -37,7 +37,7 @@ int	ft_atoi(const char *str)
 	i = 0;
 	n = 0;
 	neg = 1;
-	while (ft_isspace(str[i]))
+	while (is_space(str[i]))
 		i++;
 	if (str[i] == '+')
 		i++;
@@ -69,7 +69,7 @@ int	check_args(char **av)
 				j++;
 			if (!(av[i][j] >= '0' && av[i][j] <= '9'))
 			{
-				if (!ft_isspace(av[i][j]))
+				if (!is_space(av[i][j]))
 					return (0);
 			}
 			j++;
