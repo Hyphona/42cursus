@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 09:04:02 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/24 16:32:14 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/24 17:01:44 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,12 @@ t_stack	*get_last(t_stack *s);
 t_stack	*parse(char **av, t_stack **s_a);
 void	push_a(t_stack **s_a, t_stack **s_b);
 void	push_b(t_stack **s_a, t_stack **s_b);
-void	rotate_a(t_stack **head);
-void	rotate_b(t_stack **head);
-void	rotate_r(t_stack **s_a, t_stack **s_b);
+void	rev_rotate_a(t_stack *s);
+void	rev_rotate_b(t_stack *s);
+void	rev_rotate_r(t_stack *s_a, t_stack *s_b);
+void	rotate_a(t_stack *s);
+void	rotate_b(t_stack *s);
+void	rotate_r(t_stack *s_a, t_stack *s_b);
 void	swap_a(t_stack *s);
 void	swap_b(t_stack *s);
 void	swap_s(t_stack *s_a, t_stack *s_b);
