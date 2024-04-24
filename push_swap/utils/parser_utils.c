@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_utils2.c                                      :+:      :+:    :+:   */
+/*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/19 12:33:32 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/24 16:18:00 by alperrot         ###   ########.fr       */
+/*   Created: 2024/04/24 16:28:48 by alperrot          #+#    #+#             */
+/*   Updated: 2024/04/24 16:30:44 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,24 @@ static size_t	ft_strlen(const char *s)
 	while (s[i])
 		i++;
 	return (i);
+}
+
+int	is_space(char c)
+{
+	if (c == ' ' || (c >= 9 && c <= 13))
+		return (1);
+	return (0);
+}
+
+int	has_space(char *str)
+{
+	while (*str)
+	{
+		if (is_space(*str))
+			return (1);
+		str++;
+	}
+	return (0);
 }
 
 char	*ft_joinchar(char *s1, char s2)

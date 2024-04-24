@@ -6,27 +6,11 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 22:03:09 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/24 16:24:47 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/24 16:34:02 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_space(char c)
-{
-	if (c == ' ' || (c >= 9 && c <= 13))
-		return (1);
-	return (0);
-}
-
-int	has_space(char *str)
-{
-	while (*str)
-	{
-		if (is_space(*str))
-			return (1);
-		str++;
-	}
-	return (0);
-}
+#include "../includes/push_swap.h"
 
 int	ft_atoi(const char *str)
 {
