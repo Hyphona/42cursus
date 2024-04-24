@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:27:56 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/24 21:42:46 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/24 21:46:11 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ static t_stack	*init_stack_b(t_stack **s_a)
 
 	s_b = NULL;
 	push_b(s_a, &s_b);
-	print_stack(*s_a, s_b);
 	push_b(s_a, &s_b);
 	return (s_b);
 }
@@ -88,6 +87,7 @@ int	main(int ac, char **av)
 	}
 	s_b = NULL;
 	s_b = init_stack_b(&s_a);
+	print_stack(s_a, s_b);
 	free_stack(s_a);
 	free_stack(s_b);
 	return (0);
