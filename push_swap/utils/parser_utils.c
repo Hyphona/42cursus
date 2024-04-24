@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:28:48 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/24 19:03:21 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/24 19:30:58 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ char	*ft_joinchar(char *s1, char s2)
 	size_t	i;
 
 	if (!s1 || !s2)
-		return ((void *) 0);
+		return (NULL);
 	str = malloc((sizeof(char) * (ft_strlen(s1))) + 2);
 	if (!str)
 	{
 		write(2, "Error\n", 6);
 		if (ft_strlen(s1) > 0)
 			free(s1);
-		return ((void *) 0);
+		return (NULL);
 	}
 	i = 0;
 	while (s1[i])
