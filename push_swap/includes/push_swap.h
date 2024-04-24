@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 09:04:02 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/24 17:01:44 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/24 19:03:39 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	free_stack(t_stack *s);
 int		ft_atoi(const char *str);
 char	*ft_joinchar(char *s1, char const s2);
 int		has_space(char *str);
+int		is_sorted(t_stack *s);
 int		is_space(char c);
 t_stack	*get_last(t_stack *s);
 t_stack	*parse(char **av, t_stack **s_a);

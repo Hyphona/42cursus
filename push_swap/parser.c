@@ -6,11 +6,17 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:26:47 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/24 16:30:51 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/24 19:27:39 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
+
+static void	error(t_stack **s)
+{
+	free_stack(*s);
+	exit(0);
+}
 
 static void	sub_parsing(char *av, t_stack **s_a)
 {
@@ -28,6 +34,8 @@ static void	sub_parsing(char *av, t_stack **s_a)
 			while (av[i] && !is_space(av[i]))
 			{
 				nb = ft_joinchar(nb, av[i]);
+				if (!nb)
+					error(s_a);
 				i++;
 			}
 			add_node(s_a, create_node(ft_atoi(nb)));
