@@ -6,12 +6,13 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:48:50 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/25 16:06:39 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/25 19:56:15 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/so_long.h"
 
+// Load the level
 static void	load_level(t_game *g)
 {
 	int			x;
@@ -38,6 +39,7 @@ static void	load_level(t_game *g)
 	g->level = level;
 }
 
+// Load the textures and the level
 void	load_textures(t_game *g)
 {
 	mlx_image_t	*player_img;

@@ -6,13 +6,13 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 15:53:40 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/25 16:02:08 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/25 19:52:54 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./include/so_long.h"
 
-// Clear all game data, except the t_game structure.
+// Clear the game level and image data, except the t_game structure
 // The t_game structure need to be freed after calling this function
 void	ft_clear(t_game *g)
 {

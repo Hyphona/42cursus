@@ -6,13 +6,14 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 10:26:35 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/25 14:15:09 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/25 20:05:47 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./lib/MLX42/include/MLX42/MLX42.h"
 #include "include/so_long.h"
 
+// Just a function to know if the pressed key is a 'move' key
 static int	ft_is_move_key(mlx_key_data_t keydata)
 {
 	if (keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_DOWN
@@ -24,6 +25,7 @@ static int	ft_is_move_key(mlx_key_data_t keydata)
 	return (0);
 }
 
+// Close the window if the escape key is pressed
 void	ft_hook_close(void *param)
 {
 	mlx_t	*mlx;
@@ -33,6 +35,8 @@ void	ft_hook_close(void *param)
 		mlx_close_window(mlx);
 }
 
+// Listen to input and update the player position
+// A sub-function is used to know if the player can actually move to the new position
 void	ft_hook_move(mlx_key_data_t keydata, void *param)
 {
 	t_game			*g;

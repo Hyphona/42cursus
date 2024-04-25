@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:57:15 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/25 16:16:31 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/25 19:54:01 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 #define WIDTH 512
 #define HEIGHT 512
 
+// In case MLX fail to initialize
 static void	ft_mlx_init_error(void)
 {
 	ft_printf("%s", mlx_strerror(mlx_errno));
 	exit(EXIT_FAILURE);
 }
 
+// In case the t_game structure fail to initialize
 static void	ft_game_init_error(mlx_t *mlx)
 {
 	ft_printf("%s", mlx_strerror(mlx_errno));
