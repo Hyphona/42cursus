@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:57:15 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/25 14:16:19 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/25 16:16:31 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,17 @@
 #define WIDTH 512
 #define HEIGHT 512
 
-static void	ft_error(void)
+static void	ft_mlx_init_error(void)
 {
 	ft_printf("%s", mlx_strerror(mlx_errno));
 	exit(EXIT_FAILURE);
 }
 
-void	ft_exit(t_game *g)
+static void	ft_game_init_error(mlx_t *mlx)
 {
-	t_level	*level;
-
-	level = g->level;
-	if (level)
-	{
-		while (level->next)
-		{
-			mlx_delete_image(g->mlx, level->img);
-			level = level->next;
-		}
-		free_level(g->level);
-	}
-	if (g->player)
-		mlx_delete_image(g->mlx, g->player);
-	mlx_terminate(g->mlx);
-	free(g);
-	exit(EXIT_SUCCESS);
+	ft_printf("%s", mlx_strerror(mlx_errno));
+	mlx_terminate(mlx);
+	exit(EXIT_FAILURE);
 }
 
 int32_t	main(void)
@@ -49,10 +35,10 @@ int32_t	main(void)
 
 	mlx = mlx_init(WIDTH, HEIGHT, "Super Adventure Plus Ultra", false);
 	if (!mlx)
-		ft_error();
+		ft_mlx_init_error();
 	g = malloc(sizeof(t_game));
 	if (!g)
-		ft_error();
+		ft_game_init_error(mlx);
 	g->mlx = mlx;
 	load_textures(g);
 	mlx_loop_hook(mlx, ft_hook_close, mlx);

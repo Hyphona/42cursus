@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   level.c                                            :+:      :+:    :+:   */
+/*   node.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 13:30:34 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/25 14:22:58 by alperrot         ###   ########.fr       */
+/*   Created: 2024/04/25 15:41:45 by alperrot          #+#    #+#             */
+/*   Updated: 2024/04/25 16:14:32 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/so_long.h"
+#include "../include/so_long.h"
 
-t_level	*create_node(mlx_image_t *img, int x, int y)
+t_level	*create_node(mlx_image_t *img, int x, int y, int type)
 {
 	t_level	*new;
 
@@ -24,6 +24,7 @@ t_level	*create_node(mlx_image_t *img, int x, int y)
 	new->prev = NULL;
 	new->pos_x = x;
 	new->pos_y = y;
+	new->type = type;
 	return (new);
 }
 
