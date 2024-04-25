@@ -1,58 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   node_utils.c                                       :+:      :+:    :+:   */
+/*   node.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 13:55:31 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/25 13:32:48 by alperrot         ###   ########.fr       */
+/*   Created: 2024/04/25 13:30:34 by alperrot          #+#    #+#             */
+/*   Updated: 2024/04/25 13:42:22 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "./include/so_long.h"
 
-t_stack	*create_node(int nb)
+t_level	*create_node(mlx_image_t *img)
 {
-	t_stack	*new;
+	t_level	*new;
 
-	new = malloc(sizeof(t_stack));
+	new = malloc(sizeof(t_level));
 	if (!new)
 		return (NULL);
-	new->nb = nb;
+	new->img = img;
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);
 }
 
-void	add_node(t_stack **s, t_stack *new)
+t_level	*get_last(t_level *l)
 {
-	if (!*s)
-		*s = new;
+	if (!l)
+		return (NULL);
+	while (l->next)
+		l = l->next;
+	return (l);
+}
+
+void	add_node(t_level **l, t_level *new)
+{
+	if (!*l)
+		*l = new;
 	else
 	{
-		new->prev = get_last(*s);
+		new->prev = get_last(*l);
 		new->prev->next = new;
 	}
 }
 
-t_stack	*get_last(t_stack *s)
+void	free_stack(t_level *l)
 {
-	if (!s)
-		return (NULL);
-	while (s->next)
-		s = s->next;
-	return (s);
-}
+	t_level	*tmp;
 
-void	free_stack(t_stack *s)
-{
-	t_stack	*tmp;
-
-	while (s)
+	while (l)
 	{
-		tmp = s;
-		s = s->next;
+		tmp = l;
+		l = l->next;
 		free(tmp);
 	}
 }

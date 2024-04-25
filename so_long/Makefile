@@ -1,6 +1,8 @@
 NAME	:= so_long
-SRC		:= main.c\
-			hook.c
+SRC		:= 	loader.c\
+			main.c\
+			hook.c\
+			node.c
 OFILES	:= $(SRC:.c=.o)
 PRINTF	:= lib/ft_printf/libftprintf.a
 LIBMLX	:= ./lib/MLX42
