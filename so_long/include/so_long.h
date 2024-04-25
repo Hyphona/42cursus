@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:19:25 by alperrot          #+#    #+#             */
-/*   Updated: 2024/03/06 13:28:05 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:57:33 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,14 @@
 # include "../lib/ft_printf/ft_printf.h"
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include <stdlib.h>
+
+typedef struct s_game
+{
+	mlx_t	*mlx;
+	mlx_image_t *player;
+}					t_game;
+
+void	ft_hook_close(void *param);
+void	ft_hook_move(mlx_key_data_t keydata, void* param);
 
 #endif
