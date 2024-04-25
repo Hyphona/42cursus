@@ -6,16 +6,14 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:27:56 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/24 21:46:11 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/24 22:00:05 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
-#include <stdio.h> //DEBUG ONLY
+#include <stdio.h> // DEBUG ONLY
 
-/*
- * This function prints the stacks A and B (just for debug purposes)
- */
+// This function prints the stacks A and B (just for debug purposes)
 static void print_stack(t_stack *s_a, t_stack *s_b)
 {
 	while (s_a)
@@ -39,7 +37,7 @@ static void print_stack(t_stack *s_a, t_stack *s_b)
 			s_b = s_b->next;
 		}
 	}
-	printf("_  _\nA  B\n------------\n");
+	printf("_  _\nA  B\n\n");
 }
 
 static t_stack	*init_stack_a(char **av)
