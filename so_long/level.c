@@ -6,13 +6,13 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 13:30:34 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/25 14:08:35 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/25 14:22:58 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./include/so_long.h"
 
-t_level	*create_node(mlx_image_t *img)
+t_level	*create_node(mlx_image_t *img, int x, int y)
 {
 	t_level	*new;
 
@@ -22,6 +22,8 @@ t_level	*create_node(mlx_image_t *img)
 	new->img = img;
 	new->next = NULL;
 	new->prev = NULL;
+	new->pos_x = x;
+	new->pos_y = y;
 	return (new);
 }
 

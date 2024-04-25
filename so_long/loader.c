@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:48:50 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/25 14:13:36 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/25 14:23:57 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	ft_error(t_game *g)
 	exit(EXIT_FAILURE);
 }
 
-static void	load_background(t_game *g)
+static void	load_level(t_game *g)
 {
 	int			x;
 	int			y;
@@ -51,7 +51,7 @@ static void	load_background(t_game *g)
 			b_img = mlx_texture_to_image(g->mlx, mlx_load_png("./img/1.png"));
 			if (!b_img || (mlx_image_to_window(g->mlx, b_img, x, y) < 0))
 				ft_error(g);
-			add_node(&level, create_node(b_img));
+			add_node(&level, create_node(b_img, x, y));
 			x += 32;
 		}
 		y += 32;
@@ -64,7 +64,7 @@ void	load_textures(t_game *g)
 {
 	mlx_image_t	*player_img;
 
-	load_background(g);
+	load_level(g);
 	player_img = mlx_texture_to_image(g->mlx, mlx_load_png("./img/0.png"));
 	if (!player_img || (mlx_image_to_window(g->mlx, player_img, 0, 0) < 0))
 		ft_error(g);
