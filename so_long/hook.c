@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 10:26:35 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/25 20:05:47 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/26 13:16:44 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ static int	ft_is_move_key(mlx_key_data_t keydata)
 // Close the window if the escape key is pressed
 void	ft_hook_close(void *param)
 {
-	mlx_t	*mlx;
+	t_game	*g;
 
-	mlx = param;
-	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(mlx);
+	g = param;
+	if (mlx_is_key_down(g->mlx, MLX_KEY_ESCAPE))
+		ft_exit(g);
 }
 
 // Listen to input and update the player position

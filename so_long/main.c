@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:57:15 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/25 19:54:01 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/26 13:13:01 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int32_t	main(void)
 		ft_game_init_error(mlx);
 	g->mlx = mlx;
 	load_textures(g);
-	mlx_loop_hook(mlx, ft_hook_close, mlx);
+	mlx_loop_hook(mlx, ft_hook_close, g);
 	mlx_key_hook(mlx, ft_hook_move, g);
 	mlx_loop(mlx);
 	ft_exit(g);
