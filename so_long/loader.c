@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loader.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:48:50 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/25 19:56:15 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:05:39 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static void	load_level(t_game *g)
 	x = 0;
 	y = 0;
 	level = NULL;
-	while (y < 512)
+	while (y <= 512)
 	{
-		while (x < 512)
+		while (x <= 512)
 		{
 			b_img = mlx_texture_to_image(g->mlx, mlx_load_png("./img/1.png"));
 			if (!b_img || (mlx_image_to_window(g->mlx, b_img, x, y) < 0))
@@ -39,14 +39,23 @@ static void	load_level(t_game *g)
 	g->level = level;
 }
 
-// Load the textures and the level
-void	load_textures(t_game *g)
+// Spawn the player at x:y pos
+// Also used to update the player texture in case the level is updated
+void	spawn_player(t_game *g, int x, int y)
 {
 	mlx_image_t	*player_img;
 
-	load_level(g);
+	if (g->player)
+		mlx_delete_image(g->mlx, g->player);
 	player_img = mlx_texture_to_image(g->mlx, mlx_load_png("./img/0.png"));
-	if (!player_img || (mlx_image_to_window(g->mlx, player_img, 0, 0) < 0))
+	if (!player_img || (mlx_image_to_window(g->mlx, player_img, x, y) < 0))
 		ft_error(g);
 	g->player = player_img;
+}
+
+// Load the textures and the level
+void	load_textures(t_game *g)
+{
+	load_level(g);
+	spawn_player(g, 0, 0);
 }

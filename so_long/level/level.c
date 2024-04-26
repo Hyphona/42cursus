@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   level.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 13:30:34 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/25 19:59:05 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:13:35 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ t_level	*get_block_at(t_level *l, int x, int y)
 {
 	if (!l)
 		return (NULL);
-	while ((l->pos_x != x) && (l->pos_y != y))
+	while (l->pos_y != y)
 		l = l->next;
-	if ((l->pos_x != x) && (l->pos_y != y))
+	while (l->pos_x != x)
+		l = l->next;
+	if ((l->pos_x != x) || (l->pos_y != y))
 		return (NULL);
 	return (l);
 }
@@ -30,13 +32,14 @@ t_level	*get_block_at(t_level *l, int x, int y)
 // Type 2: Object that can be taken by player
 // Type 3: Wall
 // Do nothing if the type is not valid or if the block does not exist
-void	update_block_at(t_game *g, t_level *l, int x, int y, int type)
+void	update_block_at(t_game *g, int x, int y, int type)
 {
-	mlx_image_t *img;
+	mlx_image_t	*img;
+	t_level		*l;
 
 	if (type < 1 || type > 3)
 		return ;
-	l = get_block_at(l, x, y);
+	l = get_block_at(g->level, x, y);
 	if (!l)
 		return ;
 	img = NULL;
@@ -46,9 +49,10 @@ void	update_block_at(t_game *g, t_level *l, int x, int y, int type)
 		img = mlx_texture_to_image(g->mlx, mlx_load_png("./img/2.png"));
 	else if (type == 3)
 		img = mlx_texture_to_image(g->mlx, mlx_load_png("./img/3.png"));
+	mlx_delete_image(g->mlx, l->img);
 	if (!img || (mlx_image_to_window(g->mlx, img, x, y) < 0))
 		ft_error(g);
-	mlx_delete_image(g->mlx, l->img);
 	l->img = img;
 	l->type = type;
+	spawn_player(g, g->player->instances[0].x, g->player->instances[0].y);
 }

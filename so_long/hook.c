@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 10:26:35 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/26 13:16:44 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:12:22 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	ft_hook_close(void *param)
 }
 
 // Listen to input and update the player position
-// A sub-function is used to know if the player can actually move to the new position
 void	ft_hook_move(mlx_key_data_t keydata, void *param)
 {
 	t_game			*g;
