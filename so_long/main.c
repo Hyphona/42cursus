@@ -6,14 +6,11 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:57:15 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/26 13:32:54 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/26 19:35:34 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/so_long.h"
-
-#define WIDTH 512
-#define HEIGHT 512
 
 // In case MLX fail to initialize
 static void	ft_mlx_init_error(void)
@@ -35,14 +32,14 @@ int32_t	main(void)
 	mlx_t		*mlx;
 	t_game		*g;
 
-	mlx = mlx_init(WIDTH, HEIGHT, "Super Adventure Plus Ultra", false);
+	mlx = mlx_init(512, 512, "Super Adventure Plus Ultra", false);
 	if (!mlx)
 		ft_mlx_init_error();
 	g = malloc(sizeof(t_game));
 	if (!g)
 		ft_game_init_error(mlx);
 	g->mlx = mlx;
-	load_textures(g);
+	load(g);
 	mlx_loop_hook(mlx, ft_hook_close, g);
 	mlx_key_hook(mlx, ft_hook_move, g);
 	mlx_loop(mlx);

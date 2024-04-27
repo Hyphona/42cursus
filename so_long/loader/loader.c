@@ -6,11 +6,11 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:48:50 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/26 15:05:39 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/27 12:58:20 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/so_long.h"
+#include "../include/so_long.h"
 
 // Load the level
 static void	load_level(t_game *g)
@@ -54,7 +54,7 @@ void	spawn_player(t_game *g, int x, int y)
 }
 
 // Load the textures and the level
-void	load_textures(t_game *g)
+void	load(t_game *g)
 {
 	load_level(g);
 	spawn_player(g, 0, 0);

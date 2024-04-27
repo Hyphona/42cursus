@@ -1,12 +1,13 @@
 NAME	:= so_long
-SRC		:= 	./level/level.c\
+SRC		:= 	./level/block.c\
+			./level/level.c\
 			./level/node.c\
-			hook.c\
-			loader.c\
-			main.c\
-			utils.c
+			./loader/loader.c\
+			./hook.c\
+			./main.c\
+			./utils.c
 OFILES	:= $(SRC:.c=.o)
-PRINTF	:= lib/ft_printf/libftprintf.a
+PRINTF	:= ./lib/ft_printf/libftprintf.a
 LIBMLX	:= ./lib/MLX42
 MLX		:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 CC		:= cc

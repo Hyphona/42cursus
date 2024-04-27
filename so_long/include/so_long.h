@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:19:25 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/26 15:02:37 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/27 13:45:43 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include "../lib/ft_printf/ft_printf.h"
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include <stdlib.h>
+
+# define T_WIDTH 32
+# define T_HEIGHT 32
 
 typedef struct s_level
 {
@@ -34,6 +37,11 @@ typedef struct s_game
 	struct s_level 	*level;
 }					t_game;
 
+//block.c
+int		is_wall(t_game *game, int x, int y);
+int		is_grass(t_game *game, int x, int y);
+int		is_collectible(t_game *game, int x, int y);
+int		is_exit(t_game *game, int x, int y);
 //level.c
 t_level	*get_block_at(t_level *t, int x, int y);
 void	update_block_at(t_game *g, int x, int y, int type);
@@ -47,7 +55,7 @@ void	ft_hook_close(void *param);
 void	ft_hook_move(mlx_key_data_t keydata, void *param);
 //loader.c
 void	spawn_player(t_game *g, int x, int y);
-void	load_textures(t_game *g);
+void	load(t_game *g);
 //utils.c
 void	ft_clear(t_game *g);
 void	ft_error(t_game *g);
