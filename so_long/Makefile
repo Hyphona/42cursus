@@ -6,6 +6,7 @@ SRC		:= 	./hook/close_window_listener.c\
 			./level/node.c\
 			./loader/loader.c\
 			./main.c\
+			./player.c\
 			./utils.c
 OFILES	:= $(SRC:.c=.o)
 PRINTF	:= ./lib/ft_printf/libftprintf.a

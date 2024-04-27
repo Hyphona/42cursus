@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:19:25 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/27 14:13:49 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/27 14:45:41 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_game
 {
 	mlx_t			*mlx;
 	mlx_image_t 	*player;
+	int				collectibles;
 	struct s_level 	*level;
 }					t_game;
 
@@ -55,8 +56,11 @@ void	close_window_listener(void *param);
 //player_move_listener.c
 void	p_move_listener(mlx_key_data_t keydata, void *param);
 //loader.c
-void	spawn_player(t_game *g, int x, int y);
 void	load(t_game *g);
+//player.c
+int		can_move_to(t_game *game, int x, int y);
+void	spawn_player(t_game *g, int x, int y);
+int		update_player_pos(t_game *g, int x, int y);
 //utils.c
 void	ft_clear(t_game *g);
 void	ft_error(t_game *g);
