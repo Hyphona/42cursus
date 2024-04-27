@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:48:50 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/27 12:58:20 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/27 14:16:39 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	load_level(t_game *g)
 	{
 		while (x <= 512)
 		{
-			b_img = mlx_texture_to_image(g->mlx, mlx_load_png("./img/1.png"));
+			b_img = mlx_texture_to_image(g->mlx, mlx_load_png("./img/2.png"));
 			if (!b_img || (mlx_image_to_window(g->mlx, b_img, x, y) < 0))
 				ft_error(g);
 			add_node(&level, create_node(b_img, x, y, 1));

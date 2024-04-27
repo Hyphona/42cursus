@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:19:25 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/27 13:45:43 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/27 14:13:49 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,10 @@ t_level	*create_node(mlx_image_t *img, int x, int y, int type);
 t_level	*get_last(t_level *l);
 void	add_node(t_level **l, t_level *new);
 void	free_level(t_level *l);
-//hook.c
-void	ft_hook_close(void *param);
-void	ft_hook_move(mlx_key_data_t keydata, void *param);
+//close_window_listener.c
+void	close_window_listener(void *param);
+//player_move_listener.c
+void	p_move_listener(mlx_key_data_t keydata, void *param);
 //loader.c
 void	spawn_player(t_game *g, int x, int y);
 void	load(t_game *g);

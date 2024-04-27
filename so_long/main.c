@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:57:15 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/26 19:35:34 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/04/27 14:15:50 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int32_t	main(void)
 		ft_game_init_error(mlx);
 	g->mlx = mlx;
 	load(g);
-	mlx_loop_hook(mlx, ft_hook_close, g);
-	mlx_key_hook(mlx, ft_hook_move, g);
+	mlx_loop_hook(mlx, close_window_listener, g);
+	mlx_key_hook(mlx, p_move_listener, g);
 	mlx_loop(mlx);
 	ft_exit(g);
 	return (EXIT_SUCCESS);

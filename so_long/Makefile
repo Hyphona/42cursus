@@ -1,9 +1,10 @@
 NAME	:= so_long
-SRC		:= 	./level/block.c\
+SRC		:= 	./hook/close_window_listener.c\
+			./hook/player_move_listener.c\
+			./level/block.c\
 			./level/level.c\
 			./level/node.c\
 			./loader/loader.c\
-			./hook.c\
 			./main.c\
 			./utils.c
 OFILES	:= $(SRC:.c=.o)
