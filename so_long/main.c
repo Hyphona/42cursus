@@ -6,40 +6,48 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:57:15 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/27 14:15:50 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/01 15:21:33 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/so_long.h"
 
+// In case t_game fail to initialize
+static void	ft_g_init_error(void)
+{
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
+}
+
 // In case MLX fail to initialize
-static void	ft_mlx_init_error(void)
+static void	ft_mlx_init_error(t_game *g)
 {
-	ft_printf("%s", mlx_strerror(mlx_errno));
+	write(2, "Error\n", 6);
+	free(g);
 	exit(EXIT_FAILURE);
 }
 
-// In case the t_game structure fail to initialize
-static void	ft_game_init_error(mlx_t *mlx)
-{
-	ft_printf("%s", mlx_strerror(mlx_errno));
-	mlx_terminate(mlx);
-	exit(EXIT_FAILURE);
-}
-
-int32_t	main(void)
+int32_t	main(int argc, char **argv)
 {
 	mlx_t		*mlx;
 	t_game		*g;
 
-	mlx = mlx_init(512, 512, "Super Adventure Plus Ultra", false);
-	if (!mlx)
-		ft_mlx_init_error();
 	g = malloc(sizeof(t_game));
 	if (!g)
-		ft_game_init_error(mlx);
+		ft_g_init_error();
+	g->map_h = 0;
+	g->map_w = 0;
+	if (argc == 1)
+		parse_map(g, "./custom_map/default.ber");
+	else if (check_args(g, argc, argv))
+		parse_map(g, argv[1]);
+	else
+		ft_parse_error(g);
+	mlx = mlx_init(g->map_w * 32, g->map_h * 32, "SAPU", false);
+	if (!mlx)
+		ft_mlx_init_error(g);
 	g->mlx = mlx;
-	load(g);
+	load(g, "./custom_map/default.ber");
 	mlx_loop_hook(mlx, close_window_listener, g);
 	mlx_key_hook(mlx, p_move_listener, g);
 	mlx_loop(mlx);

@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:19:25 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/27 14:45:41 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/01 15:22:37 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 # define SO_LONG_H
 
 # include "../lib/ft_printf/ft_printf.h"
+# include "../lib/get_next_line/get_next_line.h"
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include <stdlib.h>
-
-# define T_WIDTH 32
-# define T_HEIGHT 32
+# include <fcntl.h>
 
 typedef struct s_level
 {
@@ -34,36 +33,50 @@ typedef struct s_game
 {
 	mlx_t			*mlx;
 	mlx_image_t 	*player;
+	size_t			spawn_x;
+	size_t			spawn_y;
 	int				collectibles;
+	size_t			map_w;
+	size_t			map_h;
 	struct s_level 	*level;
 }					t_game;
 
 //block.c
-int		is_wall(t_game *game, int x, int y);
-int		is_grass(t_game *game, int x, int y);
-int		is_collectible(t_game *game, int x, int y);
-int		is_exit(t_game *game, int x, int y);
+int			is_wall(t_game *game, int x, int y);
+int			is_grass(t_game *game, int x, int y);
+int			is_collectible(t_game *game, int x, int y);
+int			is_exit(t_game *game, int x, int y);
 //level.c
-t_level	*get_block_at(t_level *t, int x, int y);
-void	update_block_at(t_game *g, int x, int y, int type);
+t_level		*get_block_at(t_level *t, int x, int y);
+void		update_block_at(t_game *g, int x, int y, int type);
 //node.c
-t_level	*create_node(mlx_image_t *img, int x, int y, int type);
-t_level	*get_last(t_level *l);
-void	add_node(t_level **l, t_level *new);
-void	free_level(t_level *l);
+t_level		*create_node(mlx_image_t *img, int x, int y, int type);
+t_level		*get_last(t_level *l);
+void		add_node(t_level **l, t_level *new);
+void		free_level(t_level *l);
 //close_window_listener.c
-void	close_window_listener(void *param);
+void		close_window_listener(void *param);
 //player_move_listener.c
-void	p_move_listener(mlx_key_data_t keydata, void *param);
+void		p_move_listener(mlx_key_data_t keydata, void *param);
+//loader_utils.c
+mlx_image_t	*get_texture(t_game *g, char c);
+int			get_type(char c);
 //loader.c
-void	load(t_game *g);
+void		load(t_game *g, char *map_name);
+//args_parsing.c
+int			check_args(t_game *g, int argc, char **argv);
+//level_parsing.c
+void		parse_map(t_game *g, char *map_name);
 //player.c
-int		can_move_to(t_game *game, int x, int y);
-void	spawn_player(t_game *g, int x, int y);
-int		update_player_pos(t_game *g, int x, int y);
+int			can_move_to(t_game *game, int x, int y);
+void		spawn_player(t_game *g, int x, int y);
+int			update_player_pos(t_game *g, int x, int y);
+void		set_spawn(t_game *g, int x, int y);
 //utils.c
-void	ft_clear(t_game *g);
-void	ft_error(t_game *g);
-void	ft_exit(t_game *g);
+void		ft_clear(t_game *g);
+void		ft_error(t_game *g);
+void		ft_exit(t_game *g);
+void		ft_map_error(t_game *g, char *map_file);
+void		ft_parse_error(t_game *g);
 
 #endif

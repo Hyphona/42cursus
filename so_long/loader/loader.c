@@ -6,42 +6,66 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:48:50 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/27 14:43:53 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/01 13:03:27 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-// Load the level
-static void	load_level(t_game *g)
+// Just here to save line from load_level_loop()
+static void load_error(t_game *g, char *line)
 {
-	int			x;
-	int			y;
-	mlx_image_t	*b_img;
-	t_level		*level;
+	free(line);
+	ft_error(g);
+}
 
-	x = 0;
-	y = 0;
-	level = NULL;
-	while (y <= 512)
+// The while loop
+static t_level *load_level_loop(t_game *g, t_level *level, size_t x, size_t y, int fd)
+{
+	char		*line;
+	mlx_image_t	*b_img;
+
+	line = get_next_line(fd);
+	while (y <= g->map_h * 32)
 	{
-		while (x <= 512)
+		while (x <= g->map_w * 32)
 		{
-			b_img = mlx_texture_to_image(g->mlx, mlx_load_png("./img/2.png"));
-			if (!b_img || (mlx_image_to_window(g->mlx, b_img, x, y) < 0))
-				ft_error(g);
-			add_node(&level, create_node(b_img, x, y, 2));
+			if (line && (line[x / 32] || line[x / 32] != '\n'))
+			{
+				if (line[x / 32] == 'P')
+					set_spawn(g, x, y);
+				b_img = get_texture(g, line[x / 32]);
+				if (!b_img || (mlx_image_to_window(g->mlx, b_img, x, y) < 0))
+					load_error(g, line);
+				add_node(&level, create_node(b_img, x, y, get_type(line[x / 32])));
+			}
 			x += 32;
 		}
 		y += 32;
 		x = 0;
+		free(line);
+		line = get_next_line(fd);
 	}
-	g->level = level;
+	free(line);
+	return (level);
+}
+
+// Load the level
+static void	load_level(t_game *g, char *map_name)
+{
+	int			fd;
+	t_level		*level;
+
+	level = NULL;
+	fd = open(map_name, O_RDONLY);
+	if (fd < 0)
+		ft_error(g);
+	g->level = load_level_loop(g, level, 0, 0, fd);
 }
 
 // Load the textures and the level
-void	load(t_game *g)
+void	load(t_game *g, char *map_name)
 {
-	load_level(g);
-	spawn_player(g, 0, 0);
+	load_level(g, map_name);
+	spawn_player(g, g->spawn_x, g->spawn_y);
 }

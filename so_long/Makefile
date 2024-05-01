@@ -4,16 +4,20 @@ SRC		:= 	./hook/close_window_listener.c\
 			./level/block.c\
 			./level/level.c\
 			./level/node.c\
+			./loader/loader_utils.c\
 			./loader/loader.c\
+			./parsing/args_parsing.c\
+			./parsing/level_parsing.c\
 			./main.c\
 			./player.c\
 			./utils.c
 OFILES	:= $(SRC:.c=.o)
 PRINTF	:= ./lib/ft_printf/libftprintf.a
+GNL		:= ./lib/get_next_line/gnl.a
 LIBMLX	:= ./lib/MLX42
 MLX		:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 CC		:= cc
-CFLAGS	:= -Wall -Werror -Wextra
+CFLAGS	:= -Wall -Werror -Wextra -g
 
 all: libmlx $(NAME)
 
@@ -22,7 +26,8 @@ libmlx:
 
 $(NAME): $(OFILES)
 	@make -C lib/ft_printf
-	$(CC) $(CFLAGS) $(OFILES) $(PRINTF) $(MLX) -I./include -lXext -lX11 -lm -lz -o $(NAME)
+	@make -C lib/get_next_line
+	$(CC) $(CFLAGS) $(OFILES) $(PRINTF) $(GNL) $(MLX) -I./include -lXext -lX11 -lm -lz -o $(NAME)
 
 $(MLX):
 	@make -s -C lib/minilibx-linux

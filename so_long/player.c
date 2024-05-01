@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:27:20 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/27 14:45:28 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/01 13:07:03 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int	can_move_to(t_game *game, int x, int y)
 {
 	if (is_wall(game, x, y))
 		return (0);
-	else if (is_collectible(game, x, y))
-		game->collectibles--;
 	else if (is_exit(game, x, y))
 	{
 		if (game->collectibles == 0)
@@ -29,6 +27,7 @@ int	can_move_to(t_game *game, int x, int y)
 }
 
 // Spawn the player at x:y
+// Can also be used to update the player texture
 void	spawn_player(t_game *g, int x, int y)
 {
 	mlx_image_t	*player_img;
@@ -48,9 +47,23 @@ int	update_player_pos(t_game *g, int x, int y)
 {
 	if (can_move_to(g, x, y))
 	{
+		if (is_collectible(g, x, y))
+		{
+			update_block_at(g, x, y, 2);
+			g->collectibles--;
+			spawn_player(g, x, y);
+			return (1);
+		}
 		g->player->instances[0].x = x;
 		g->player->instances[0].y = y;
 		return (1);
 	}
 	return (0);
+}
+
+// Set the spawn position of the player
+void	set_spawn(t_game *g, int x, int y)
+{
+	g->spawn_x = x;
+	g->spawn_y = y;
 }
