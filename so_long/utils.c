@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 15:53:40 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/01 15:13:42 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/01 17:35:45 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void	ft_map_error(t_game *g, char *map_file)
 void	ft_parse_error(t_game *g)
 {
 	write(2, "Error\n", 6);
-	mlx_terminate(g->mlx);
 	free(g);
 	exit(EXIT_FAILURE);
 }

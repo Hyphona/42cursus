@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 10:06:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/01 12:04:27 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/01 17:37:58 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	set_map_size(t_game *g, char *map_name)
 
 	fd = open(map_name, O_RDONLY);
 	if (fd < 0)
-		ft_error(g);
+		ft_parse_error(g);
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -69,7 +69,7 @@ static void	parse_char(t_game *g, char *map_name)
 
 	fd = open(map_name, O_RDONLY);
 	if (fd < 0)
-		ft_error(g);
+		ft_parse_error(g);
 	line = get_next_line(fd);
 	g->collectibles = 0;
 	while (line)
