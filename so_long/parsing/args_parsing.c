@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   args_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:20:49 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/01 17:32:07 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:12:55 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 int	check_args(t_game *g, int argc, char **argv)
 {
 	int		i;
-	
+
 	if (argc > 2)
 		ft_parse_error(g);
 	if (argc == 1)
-		return (1);
+		return (0);
 	i = 0;
 	while (argv[1][i])
 	{

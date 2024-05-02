@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   level_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 10:06:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/01 17:37:58 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:13:54 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static size_t ft_strlen_lp(char *str)
+static size_t	ft_strlen_lp(char *str)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (str[len])
 	{
 		if (str[len] == '\n')
-			break;
+			break ;
 		len++;
 	}
 	return (len);
@@ -65,7 +65,7 @@ static void	parse_char(t_game *g, char *map_name)
 {
 	int		fd;
 	char	*line;
-	int 	i;
+	int		i;
 
 	fd = open(map_name, O_RDONLY);
 	if (fd < 0)

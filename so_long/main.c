@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:57:15 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/01 17:27:05 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:07:43 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,10 @@ int32_t	main(int argc, char **argv)
 		ft_g_init_error();
 	g->map_h = 0;
 	g->map_w = 0;
-	if (argc == 1)
-		map_name = "./custom_map/default.ber";
-	else if (check_args(g, argc, argv))
+	map_name = "./custom_map/default.ber";
+	if (check_args(g, argc, argv))
 		map_name = argv[1];
-	else
+	else if (check_args(g, argc, argv) && argc != 1)
 		ft_parse_error(g);
 	parse_map(g, map_name);
 	mlx = mlx_init(g->map_w * 32, g->map_h * 32, "SAPU", false);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loader.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:48:50 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/01 13:03:27 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:10:29 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static t_level *load_level_loop(t_game *g, t_level *level, size_t x, size_t y, i
 	char		*line;
 	mlx_image_t	*b_img;
 
-	line = get_next_line(fd);
 	while (y <= g->map_h * 32)
 	{
+		line = get_next_line(fd);
 		while (x <= g->map_w * 32)
 		{
 			if (line && (line[x / 32] || line[x / 32] != '\n'))
@@ -44,9 +44,7 @@ static t_level *load_level_loop(t_game *g, t_level *level, size_t x, size_t y, i
 		y += 32;
 		x = 0;
 		free(line);
-		line = get_next_line(fd);
 	}
-	free(line);
 	return (level);
 }
 
