@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 10:06:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/02 11:13:54 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:43:38 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,26 @@ static void	set_map_size(t_game *g, char *map_name)
 }
 
 // Check if the character is a valid character
-static char	check_char(char c)
+static char	is_valid(t_game *g, char c)
 {
-	if (c == '1' || c == '0' || c == 'C' || c == 'E' || c == 'P')
+	if (c == '1' || c == '0' || c == 'C' || c == 'E' || c == 'P' || c == '\n')
+	{
+		if (c == 'C')
+			g->collectibles++;
+		else if (c == 'P')
+		{
+			if (g->has_spawn)
+				return (0);
+			g->has_spawn = 1;
+		}
+		else if (c == 'E')
+		{
+			if (g->has_exit)
+				return (0);
+			g->has_exit = 1;
+		}
 		return (c);
-	if (c == '\n')
-		return (c);
+	}
 	return (0);
 }
 
@@ -77,10 +91,8 @@ static void	parse_char(t_game *g, char *map_name)
 		i = 0;
 		while (line[i])
 		{
-			if (!check_char(line[i]))
+			if (!is_valid(g, line[i]))
 				ft_map_error(g, line);
-			if (check_char(line[i]) == 'C')
-				g->collectibles++;
 			i++;
 		}
 		free(line);

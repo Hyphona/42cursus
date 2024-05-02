@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:19:25 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/01 15:22:37 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:37:12 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ typedef struct s_game
 	int				collectibles;
 	size_t			map_w;
 	size_t			map_h;
+	int				has_spawn;
+	int				has_exit;
 	struct s_level 	*level;
 }					t_game;
 
