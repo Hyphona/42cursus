@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 15:53:40 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/01 17:35:45 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/03 08:08:55 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ void	ft_map_error(t_game *g, char *map_file)
 }
 
 // Exit the program if there is a parsing error
-void	ft_parse_error(t_game *g)
+void	ft_parse_error(t_game *g, char *text)
 {
-	write(2, "Error\n", 6);
+	ft_printf("Error - %s\n", text);
 	free(g);
 	exit(EXIT_FAILURE);
 }

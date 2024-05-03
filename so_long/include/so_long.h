@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:19:25 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/02 11:37:12 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/03 08:09:07 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,6 @@ void		ft_clear(t_game *g);
 void		ft_error(t_game *g);
 void		ft_exit(t_game *g);
 void		ft_map_error(t_game *g, char *map_file);
-void		ft_parse_error(t_game *g);
+void		ft_parse_error(t_game *g, char *text);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:57:15 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/02 11:07:43 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/03 08:13:15 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,31 @@
 // In case t_game fail to initialize
 static void	ft_g_init_error(void)
 {
-	write(2, "Error\n", 6);
+	ft_printf("Error - t_game structure failed to initialize\n");
 	exit(EXIT_FAILURE);
 }
 
 // In case MLX fail to initialize
 static void	ft_mlx_init_error(t_game *g)
 {
-	write(2, "Error\n", 6);
+	ft_printf("Error - MLX failed to initialize\n");
 	free(g);
 	exit(EXIT_FAILURE);
+}
+
+// Avoid memory leaks by setting up t_game structure
+static t_game	*init_game(t_game *g)
+{
+	g->mlx = NULL;
+	g->map_h = 0;
+	g->map_w = 0;
+	g->collectibles = 0;
+	g->has_spawn = 0;
+	g->has_exit = 0;
+	g->level = NULL;
+	g->spawn_x = 0;
+	g->spawn_y = 0;
+	return (g);
 }
 
 int32_t	main(int argc, char **argv)
@@ -36,13 +51,12 @@ int32_t	main(int argc, char **argv)
 	g = malloc(sizeof(t_game));
 	if (!g)
 		ft_g_init_error();
-	g->map_h = 0;
-	g->map_w = 0;
+	g = init_game(g);
 	map_name = "./custom_map/default.ber";
 	if (check_args(g, argc, argv))
 		map_name = argv[1];
-	else if (check_args(g, argc, argv) && argc != 1)
-		ft_parse_error(g);
+	else if (!check_args(g, argc, argv) && argc != 1)
+		ft_parse_error(g, "Invalid map file");
 	parse_map(g, map_name);
 	mlx = mlx_init(g->map_w * 32, g->map_h * 32, "SAPU", false);
 	if (!mlx)
@@ -52,6 +66,5 @@ int32_t	main(int argc, char **argv)
 	mlx_loop_hook(mlx, close_window_listener, g);
 	mlx_key_hook(mlx, p_move_listener, g);
 	mlx_loop(mlx);
-	ft_exit(g);
 	return (EXIT_SUCCESS);
 }

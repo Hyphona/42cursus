@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   level_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 10:06:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/02 11:43:38 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/03 08:10:18 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	set_map_size(t_game *g, char *map_name)
 
 	fd = open(map_name, O_RDONLY);
 	if (fd < 0)
-		ft_parse_error(g);
+		ft_parse_error(g, "Cannot open the map file");
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -83,7 +83,7 @@ static void	parse_char(t_game *g, char *map_name)
 
 	fd = open(map_name, O_RDONLY);
 	if (fd < 0)
-		ft_parse_error(g);
+		ft_parse_error(g, "Cannot open the map file");
 	line = get_next_line(fd);
 	g->collectibles = 0;
 	while (line)
