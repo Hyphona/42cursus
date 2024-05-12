@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 14:04:38 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/12 17:20:54 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/12 17:33:06 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,14 @@ static t_map	*create_map(t_map *map_node, char *map)
 	return (map_node);
 }
 
-static t_map	*get_node_at(t_map *map, int x, int y)
+static t_map	*get_node_at(t_game *g, t_map *map, int x, int y)
 {
+	ft_printf("gna\n");
 	if (!map)
+		return (NULL);
+	if (map->x == x && map->y == y)
+		return (map);
+	if (x > (int)g->map_w * 32 || y > (int)g->map_h * 32 || x < 0 || y < 0)
 		return (NULL);
 	while (map->y != y)
 		if (map->next)
@@ -48,7 +53,7 @@ static t_map	*get_node_at(t_map *map, int x, int y)
 	while (map->x != x)
 		if (map->next)
 			map = map->next;
-	if ((map->x == x) && (map->y == y))
+	if (map->x == x && map->y == y)
 		return (map);
 	while (map->y != y)
 		if (map->prev)
@@ -61,25 +66,25 @@ static t_map	*get_node_at(t_map *map, int x, int y)
 	return (map);
 }
 
-int	backtrack_path(t_game *g, t_map *map_node, int x, int y)
+void	backtrack_path(t_game *g, t_map *map_node, int x, int y)
 {
 	if (!map_node)
-		return (0);
+		return ;
+	ft_printf("x: %d y: %d\n", x, y);
 	if (x <= (int)g->map_w * 32 && y <= (int)g->map_h * 32 && x >= 0 && y >= 0)
 	{
 		if (map_node->block_type == '1')
-			return (0);
+			return ;
 		map_node->block_type = '1';
-		if (get_node_at(map_node, x + 32, y))
-			backtrack_path(g, get_node_at(map_node, x + 32, y), x + 32, y);
-		if (get_node_at(map_node, x, y + 32))
-			backtrack_path(g, get_node_at(map_node, x, y + 32), x, y + 32);
-		if (get_node_at(map_node, x, y - 32))
-			backtrack_path(g, get_node_at(map_node, x, y - 32), x, y - 32);
-		if (get_node_at(map_node, x - 32, y))
-			backtrack_path(g, get_node_at(map_node, x - 32, y), x - 32, y);
+		if (get_node_at(g, map_node, x + 32, y))
+			backtrack_path(g, get_node_at(g, map_node, x + 32, y), x + 32, y);
+		if (get_node_at(g, map_node, x, y + 32))
+			backtrack_path(g, get_node_at(g, map_node, x, y + 32), x, y + 32);
+		if (get_node_at(g, map_node, x, y - 32))
+			backtrack_path(g, get_node_at(g, map_node, x, y - 32), x, y - 32);
+		if (get_node_at(g, map_node, x - 32, y))
+			backtrack_path(g, get_node_at(g, map_node, x - 32, y), x - 32, y);
 	}
-	return (1);
 }
 
 int	check_path(t_game *g, char *map)
