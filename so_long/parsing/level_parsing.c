@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 10:06:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/03 08:10:18 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/12 10:32:31 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	set_map_size(t_game *g, char *map_name)
 		if (g->map_w == 0)
 			g->map_w = ft_strlen_lp(line);
 		else if (g->map_w != ft_strlen_lp(line))
-			ft_map_error(g, line);
+			ft_map_error(g, line, "Map is not a rectangle/square", fd);
 		g->map_h++;
 		free(line);
 		line = get_next_line(fd);
@@ -92,12 +92,14 @@ static void	parse_char(t_game *g, char *map_name)
 		while (line[i])
 		{
 			if (!is_valid(g, line[i]))
-				ft_map_error(g, line);
+				ft_map_error(g, line, "Invalid character in the map", fd);
 			i++;
 		}
 		free(line);
 		line = get_next_line(fd);
 	}
+	if (g->collectibles == 0)
+		ft_map_error(g, line, "No collectibles in the map", fd);
 	free(line);
 	close(fd);
 }

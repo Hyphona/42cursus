@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 15:53:40 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/03 08:08:55 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/12 10:32:00 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,12 @@ void	ft_exit(t_game *g)
 }
 
 // Clear malloced line and exit the program as failure
-void	ft_map_error(t_game *g, char *map_file)
+void	ft_map_error(t_game *g, char *map_file, char *text, int fd)
 {
-	write(2, "Error\n", 6);
+	ft_printf("Error - %s\n", text);
 	free(g);
 	free(map_file);
+	close(fd);
 	exit(EXIT_FAILURE);
 }
 
