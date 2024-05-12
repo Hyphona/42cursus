@@ -8,6 +8,7 @@ SRC		:= 	./hook/close_window_listener.c\
 			./loader/loader.c\
 			./parsing/args_parsing.c\
 			./parsing/level_parsing.c\
+			./parsing/wall_checker.c\
 			./main.c\
 			./player.c\
 			./utils.c
