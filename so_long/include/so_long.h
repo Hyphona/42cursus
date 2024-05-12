@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:19:25 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/12 12:56:39 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/12 14:36:50 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,15 @@
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include <stdlib.h>
 # include <fcntl.h>
+
+typedef struct s_map
+{
+	char			block_type;
+	int				x;
+	int				y;
+	struct	s_map	*next;
+	struct	s_map	*prev;
+}				t_map;
 
 typedef struct s_level
 {
@@ -69,6 +78,12 @@ void		load(t_game *g, char *map);
 int			check_args(t_game *g, int argc, char **argv);
 //level_parsing.c
 char		*get_map(t_game *g, char *map_name);
+//map_node.c
+t_map		*create_map_node(char type, int x, int y);
+void		add_map_node(t_map **map, t_map *new);
+void		free_map(t_map *map);
+//path_checker.c
+int			check_path(char *map);
 // wall_checker.c
 int			check_wall(char *map);
 //player.c
