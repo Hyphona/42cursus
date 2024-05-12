@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:35:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/03/06 09:37:56 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/12 12:31:02 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	main(int ac, char **av)
 			send_bit(pid, av[2][i]);
 			i++;
 		}
-		send_bit(pid, '\n');
+		send_bit(pid, '\0');
 	}
 	else
 		ft_printf("PID is not valid\nUsage: %s <PID> <message>\n", av[0]);
