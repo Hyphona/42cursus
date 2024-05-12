@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 14:04:38 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/12 15:23:12 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/12 15:33:07 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,26 @@ void	backtrack_path(t_map *map_node, int x, int y)
 	if (map_node->block_type != '1')
 	{
 		map_node->block_type = '1';
-		map_node = get_node_at(map_node, x + 32, y);
-		backtrack_path(map_node, x + 32, y);
-		map_node = get_node_at(map_node, x - 32, y);
-		backtrack_path(map_node, x - 32, y);
-		map_node = get_node_at(map_node, x, y + 32);
-		backtrack_path(map_node, x, y + 32);
-		map_node = get_node_at(map_node, x, y - 32);
-		backtrack_path(map_node, x, y - 32);
+		if (get_node_at(map_node, x + 32, y))
+		{
+			map_node = get_node_at(map_node, x + 32, y);
+			backtrack_path(map_node, x + 32, y);
+		}
+		if (get_node_at(map_node, x - 32, y))
+		{
+			map_node = get_node_at(map_node, x - 32, y);
+			backtrack_path(map_node, x - 32, y);
+		}
+		if (get_node_at(map_node, x, y + 32))
+		{
+			map_node = get_node_at(map_node, x, y + 32);
+			backtrack_path(map_node, x, y + 32);
+		}
+		if (get_node_at(map_node, x, y - 32))
+		{
+			map_node = get_node_at(map_node, x, y - 32);
+			backtrack_path(map_node, x, y - 32);
+		}
 	}
 }
 
