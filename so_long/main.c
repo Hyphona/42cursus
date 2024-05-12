@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:57:15 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/03 08:13:15 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/12 12:02:35 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int32_t	main(int argc, char **argv)
 	mlx_t		*mlx;
 	t_game		*g;
 	char		*map_name;
+	char		*map;
 
 	g = malloc(sizeof(t_game));
 	if (!g)
@@ -57,12 +58,12 @@ int32_t	main(int argc, char **argv)
 		map_name = argv[1];
 	else if (!check_args(g, argc, argv) && argc != 1)
 		ft_parse_error(g, "Invalid map file");
-	parse_map(g, map_name);
+	map = get_map(g, map_name);
 	mlx = mlx_init(g->map_w * 32, g->map_h * 32, "SAPU", false);
 	if (!mlx)
 		ft_mlx_init_error(g);
 	g->mlx = mlx;
-	load(g, map_name);
+	load(g, map);
 	mlx_loop_hook(mlx, close_window_listener, g);
 	mlx_key_hook(mlx, p_move_listener, g);
 	mlx_loop(mlx);

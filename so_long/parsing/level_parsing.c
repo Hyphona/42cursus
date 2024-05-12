@@ -5,14 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/01 10:06:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/12 10:32:31 by alperrot         ###   ########.fr       */
+/*   Created: 2024/05/12 10:35:21 by alperrot          #+#    #+#             */
+/*   Updated: 2024/05/12 12:17:42 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static size_t	ft_strlen_lp(char *str)
+// Returns the line lenght without the '\n' character
+static int	ft_strlen_nonl(char *str)
 {
 	int	len;
 
@@ -26,86 +27,103 @@ static size_t	ft_strlen_lp(char *str)
 	return (len);
 }
 
-// Set the map size in the t_game structure
-static void	set_map_size(t_game *g, char *map_name)
+// Define the spawn point
+static void	create_spawn(t_game *g, char *map)
+{
+	int	i;
+	int	x;
+	int	y;
+
+	i = 0;
+	x = 0;
+	y = 0;
+	while (map[i])
+	{
+		if (map[i] == '\n')
+		{
+			y += 32;
+			x = 0;
+		}
+		else
+		{
+			if (map[i] == 'P')
+			{
+				g->spawn_x = x;
+				g->spawn_y = y;
+			}
+			x += 32;
+		}
+		i++;
+	}
+}
+
+// Check if the characters are valid
+// If no exit, spawn or collectibles, return 0
+// If more than one exit or spawn, return 0
+static int	check_char(t_game *g, char *map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		if (map[i] == '1' || map[i] == '0' || map[i] == 'C' || map[i] == 'E'
+			|| map[i] == 'P' || map[i] == '\n')
+		{
+			if (map[i] == 'E')
+				g->has_exit++;
+			else if (map[i] == 'P')
+				g->has_spawn++;
+			else if (map[i] == 'C')
+				g->collectibles++;
+		}
+		else
+			return (0);
+		i++;
+	}
+	if (g->has_exit != 1 || g->has_spawn != 1 || g->collectibles == 0)
+		return (0);
+	return (1);
+}
+
+// Open and store the map file in a string
+static char	*load_map_file(t_game *g, char *map_name)
 {
 	int		fd;
+	int		line_len;
 	char	*line;
+	char	*map;
 
 	fd = open(map_name, O_RDONLY);
 	if (fd < 0)
 		ft_parse_error(g, "Cannot open the map file");
 	line = get_next_line(fd);
+	line_len = ft_strlen_nonl(line);
+	map = NULL;
 	while (line)
 	{
-		if (g->map_w == 0)
-			g->map_w = ft_strlen_lp(line);
-		else if (g->map_w != ft_strlen_lp(line))
-			ft_map_error(g, line, "Map is not a rectangle/square", fd);
+		if (ft_strlen_nonl(line) != line_len)
+			ft_map_error(g, map, "Map is not a rectangle/square", fd);
+		map = ft_strjoin(map, line);
 		g->map_h++;
 		free(line);
 		line = get_next_line(fd);
 	}
+	g->map_w = line_len;
 	free(line);
 	close(fd);
+	return (map);
 }
 
-// Check if the character is a valid character
-static char	is_valid(t_game *g, char c)
+// Do basics checks on the map and return it
+char	*get_map(t_game *g, char *map_name)
 {
-	if (c == '1' || c == '0' || c == 'C' || c == 'E' || c == 'P' || c == '\n')
-	{
-		if (c == 'C')
-			g->collectibles++;
-		else if (c == 'P')
-		{
-			if (g->has_spawn)
-				return (0);
-			g->has_spawn = 1;
-		}
-		else if (c == 'E')
-		{
-			if (g->has_exit)
-				return (0);
-			g->has_exit = 1;
-		}
-		return (c);
-	}
-	return (0);
+	char	*map;
+
+	map = load_map_file(g, map_name);
+	if (!check_char(g, map))
+		ft_map_error(g, map, "Invalid map\n", 0);
+	create_spawn(g, map);
+	return (map);
 }
 
-// Parse the map char and count the collectibles
-static void	parse_char(t_game *g, char *map_name)
-{
-	int		fd;
-	char	*line;
-	int		i;
-
-	fd = open(map_name, O_RDONLY);
-	if (fd < 0)
-		ft_parse_error(g, "Cannot open the map file");
-	line = get_next_line(fd);
-	g->collectibles = 0;
-	while (line)
-	{
-		i = 0;
-		while (line[i])
-		{
-			if (!is_valid(g, line[i]))
-				ft_map_error(g, line, "Invalid character in the map", fd);
-			i++;
-		}
-		free(line);
-		line = get_next_line(fd);
-	}
-	if (g->collectibles == 0)
-		ft_map_error(g, line, "No collectibles in the map", fd);
-	free(line);
-	close(fd);
-}
-
-void	parse_map(t_game *g, char *map_name)
-{
-	set_map_size(g, map_name);
-	parse_char(g, map_name);
-}

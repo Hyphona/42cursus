@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:19:25 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/12 10:31:40 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/12 12:02:41 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ void		p_move_listener(mlx_key_data_t keydata, void *param);
 mlx_image_t	*get_texture(t_game *g, char c);
 int			get_type(char c);
 //loader.c
-void		load(t_game *g, char *map_name);
+void		load(t_game *g, char *map);
 //args_parsing.c
 int			check_args(t_game *g, int argc, char **argv);
 //level_parsing.c
-void		parse_map(t_game *g, char *map_name);
+char		*get_map(t_game *g, char *map_name);
 //player.c
 int			can_move_to(t_game *game, int x, int y);
 void		spawn_player(t_game *g, int x, int y);

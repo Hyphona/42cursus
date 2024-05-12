@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 15:53:40 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/12 10:32:00 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/12 11:35:40 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ void	ft_map_error(t_game *g, char *map_file, char *text, int fd)
 	ft_printf("Error - %s\n", text);
 	free(g);
 	free(map_file);
-	close(fd);
+	if (fd > 0)
+		close(fd);
 	exit(EXIT_FAILURE);
 }
 
