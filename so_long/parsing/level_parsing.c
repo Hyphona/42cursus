@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:35:21 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/12 14:37:58 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/12 17:01:45 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ char	*get_map(t_game *g, char *map_name)
 		ft_map_error(g, map, "Missing collectibles or duplicated exit/player\n", 0);
 	if (!check_wall(map))
 		ft_map_error(g, map, "Map is not surounded by walls\n", 0);
-	if (!check_path(map))
+	if (!check_path(g, map))
 		ft_map_error(g, map, "Map is not finishable\n", 0);
 	create_spawn(g, map);
 	return (map);

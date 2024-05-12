@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:19:25 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/12 14:36:50 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/12 17:04:09 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ t_map		*create_map_node(char type, int x, int y);
 void		add_map_node(t_map **map, t_map *new);
 void		free_map(t_map *map);
 //path_checker.c
-int			check_path(char *map);
+int			check_path(t_game *g, char *map);
 // wall_checker.c
 int			check_wall(char *map);
 //player.c
