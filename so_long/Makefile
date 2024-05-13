@@ -37,10 +37,12 @@ $(MLX):
 
 clean:
 	@make -C lib/ft_printf clean
+	@make -C lib/get_next_line clean
 	rm -f $(OFILES)
 
 fclean: clean
 	@make -C lib/ft_printf fclean
+	@make -C lib/get_next_line fclean
 	rm -f $(NAME)
 
 re: fclean all
