@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 12:43:07 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/13 09:39:46 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/13 14:08:13 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_linelen(char *str)
 			break ;
 		len++;
 	}
-	return (len);
+	return (len + 1);
 }
 
 int check_wall(char *map)

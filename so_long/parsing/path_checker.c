@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 14:04:38 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/13 10:05:00 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/13 14:04:03 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,21 +77,20 @@ void	backtrack_path(t_game *g, t_map *map_node, int x, int y)
 {
 	if (!map_node)
 		return ;
+	if (map_node->type == '1')
+		return ;
+	ft_printf("Checking pos x:%d y:%d\n", map_node->x, map_node->y);
 	if (x <= (int)g->map_w * 32 && y <= (int)g->map_h * 32 && x >= 0 && y >= 0)
 	{
 		map_node->type = '1';
 		if (get_node_at(g, map_node, x + 32, y))
-			if (get_node_at(g, map_node, x + 32, y)->type != '1')
-				backtrack_path(g, get_node_at(g, map_node, x + 32, y), x + 32, y);
+			backtrack_path(g, get_node_at(g, map_node, x + 32, y), x + 32, y);
 		if (get_node_at(g, map_node, x, y + 32))
-			if (get_node_at(g, map_node, x, y + 32)->type != '1')
-				backtrack_path(g, get_node_at(g, map_node, x, y + 32), x, y + 32);
+			backtrack_path(g, get_node_at(g, map_node, x, y + 32), x, y + 32);
 		if (get_node_at(g, map_node, x - 32, y))
-			if (get_node_at(g, map_node, x - 32, y)->type != '1')
-				backtrack_path(g, get_node_at(g, map_node, x - 32, y), x - 32, y);
+			backtrack_path(g, get_node_at(g, map_node, x - 32, y), x - 32, y);
 		if (get_node_at(g, map_node, x, y - 32))
-			if (get_node_at(g, map_node, x, y - 32)->type != '1')
-				backtrack_path(g, get_node_at(g, map_node, x, y - 32), x, y - 32);
+			backtrack_path(g, get_node_at(g, map_node, x, y - 32), x, y - 32);
 	}
 }
 
