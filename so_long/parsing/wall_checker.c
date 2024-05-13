@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wall_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 12:43:07 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/12 13:03:08 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/13 09:39:46 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_linelen(char *str)
 			break ;
 		len++;
 	}
-	return (len + 1);
+	return (len);
 }
 
 int check_wall(char *map)

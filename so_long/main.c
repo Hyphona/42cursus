@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:57:15 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/12 12:02:35 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/13 09:44:39 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	ft_mlx_init_error(t_game *g)
 static t_game	*init_game(t_game *g)
 {
 	g->mlx = NULL;
+	g->player = NULL;
 	g->map_h = 0;
 	g->map_w = 0;
 	g->collectibles = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 14:04:38 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/12 17:33:06 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/13 09:42:50 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static t_map	*create_map(t_map *map_node, char *map)
 
 static t_map	*get_node_at(t_game *g, t_map *map, int x, int y)
 {
-	ft_printf("gna\n");
+	//ft_printf("gna\n");
 	if (!map)
 		return (NULL);
 	if (map->x == x && map->y == y)
