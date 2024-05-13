@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:19:25 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/12 17:04:09 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/13 09:52:45 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 typedef struct s_map
 {
-	char			block_type;
+	char			type;
 	int				x;
 	int				y;
 	struct	s_map	*next;
