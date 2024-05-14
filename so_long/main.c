@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:57:15 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/13 09:44:39 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/14 13:51:47 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int32_t	main(int argc, char **argv)
 	if (!g)
 		ft_g_init_error();
 	g = init_game(g);
-	map_name = "./custom_map/default.ber";
+	map_name = "./custom_map/custom.ber";
 	if (check_args(g, argc, argv))
 		map_name = argv[1];
 	else if (!check_args(g, argc, argv) && argc != 1)
