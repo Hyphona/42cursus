@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:27:20 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/01 13:07:03 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:16:58 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,20 @@ void	spawn_player(t_game *g, int x, int y)
 // Update the player position
 // Also check if the player can move to x:y
 // Return 0 if the player can't move to x:y
-int	update_player_pos(t_game *g, int x, int y)
+int	update_player_pos(t_game *g, int x, int y, int updt_texture, int texture_id)
 {
 	if (can_move_to(g, x, y))
 	{
+		if (updt_texture)
+		{
+			mlx_delete_image(g->mlx, g->player);
+			if (texture_id == 0)
+				g->player = mlx_texture_to_image(g->mlx, mlx_load_png("./img/0.png"));
+			else if (texture_id == 1)
+				g->player = mlx_texture_to_image(g->mlx, mlx_load_png("./img/0-1.png"));
+			if (!g->player || (mlx_image_to_window(g->mlx, g->player, x, y) < 0))
+				ft_error(g);
+		}
 		if (is_collectible(g, x, y))
 		{
 			update_block_at(g, x, y, 2);

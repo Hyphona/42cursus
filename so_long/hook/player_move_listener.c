@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:10:05 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/27 14:46:50 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:12:59 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ void	p_move_listener(mlx_key_data_t keydata, void *param)
 		x = g->player->instances[0].x;
 		y = g->player->instances[0].y;
 		if (keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)
-			moved = update_player_pos(g, x, y - 32);
+			moved = update_player_pos(g, x, y - 32, 0, 0);
 		if (keydata.key == MLX_KEY_DOWN || keydata.key == MLX_KEY_S)
-			moved = update_player_pos(g, x, y + 32);
+			moved = update_player_pos(g, x, y + 32, 0, 0);
 		if (keydata.key == MLX_KEY_LEFT || keydata.key == MLX_KEY_A)
-			moved = update_player_pos(g, x - 32, y);
+			moved = update_player_pos(g, x - 32, y, 1, 1);
 		if (keydata.key == MLX_KEY_RIGHT || keydata.key == MLX_KEY_D)
-			moved = update_player_pos(g, x + 32, y);
+			moved = update_player_pos(g, x + 32, y, 1, 0);
 		if (moved)
 		{
 			ft_printf("Move count: %d\n", i + 1);
