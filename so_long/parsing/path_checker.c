@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 14:04:38 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/14 13:59:49 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/14 15:46:34 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,22 @@ static char	*ft_strdup(char *str)
 	return (dst);
 }
 
-static void	is_finishable(char *map, int len)
+static void	fill_floor(char *map, int len)
 {
-	static int	i;
+	int	i;
 	
+	i = 0;
 	if (map[i] == '1' || map[i] == '\n')
 		return ;
 	map[i] = 'x';
 	if (map[i + 1] && map[i + 1] != 'x')
-		is_finishable(&map[i + 1], len);
-	if (map[i + len + 1] && map[i + len] != 'x')
-		is_finishable(&map[i + len + 1], len);
+		fill_floor(&map[i + 1], len);
+	if (map[i + len + 1] && map[i + len + 1] != 'x')
+		fill_floor(&map[i + len + 1], len);
 	if (map[i - 1] && map[i - 1] != 'x')
-		is_finishable(&map[i - 1], len);
+		fill_floor(&map[i - 1], len);
 	if (map[i - len - 1] && map[i - len - 1] != 'x')
-		is_finishable(&map[i - len], len);
+		fill_floor(&map[i - len - 1], len);
 }
 
 int	check_path(char *map)
@@ -63,7 +64,7 @@ int	check_path(char *map)
 	i = 0;
 	while (tmp[i] != 'P')
 		i++;
-	is_finishable(&tmp[i], len);
+	fill_floor(&tmp[i], len);
 	i = 0;
 	ft_printf("\n%s\n\n", tmp);
 	while (tmp[i])
