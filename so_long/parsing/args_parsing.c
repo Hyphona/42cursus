@@ -6,13 +6,12 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:20:49 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/03 08:09:24 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:30:36 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-// Check if the argument is a valid map
 int	check_args(t_game *g, int argc, char **argv)
 {
 	int		i;

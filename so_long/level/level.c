@@ -6,14 +6,12 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 13:30:34 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/01 13:05:42 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:29:42 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-// Get the block at the specified position
-// Return NULL if the block does not exist
 t_level	*get_block_at(t_level *l, int x, int y)
 {
 	if (!l)
@@ -27,12 +25,6 @@ t_level	*get_block_at(t_level *l, int x, int y)
 	return (l);
 }
 
-// Update the block at x:y to the specified type
-// Type 1: Wall
-// Type 2: Grass
-// Type 3: Collectible
-// Type 4: Exit
-// Do nothing if the type is not valid or if the block does not exist
 void	update_block_at(t_game *g, int x, int y, int type)
 {
 	mlx_image_t	*img;

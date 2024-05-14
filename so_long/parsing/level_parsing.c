@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   level_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:35:21 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/14 10:57:23 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:30:59 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-// Returns the line lenght without the '\n' character
 static int	ft_strlen_nonl(char *str)
 {
 	int	len;
@@ -27,7 +26,6 @@ static int	ft_strlen_nonl(char *str)
 	return (len);
 }
 
-// Define the spawn point
 static void	create_spawn(t_game *g, char *map)
 {
 	int	i;
@@ -57,9 +55,6 @@ static void	create_spawn(t_game *g, char *map)
 	}
 }
 
-// Check if the characters are valid
-// If no exit, spawn or collectibles, return 0
-// If more than one exit or spawn, return 0
 static int	check_char(t_game *g, char *map)
 {
 	int	i;
@@ -86,7 +81,6 @@ static int	check_char(t_game *g, char *map)
 	return (1);
 }
 
-// Open and store the map file in a string
 static char	*load_map_file(t_game *g, char *map_name)
 {
 	int		fd;
@@ -115,7 +109,6 @@ static char	*load_map_file(t_game *g, char *map_name)
 	return (map);
 }
 
-// Do basics checks on the map and return it
 char	*get_map(t_game *g, char *map_name)
 {
 	char	*map;

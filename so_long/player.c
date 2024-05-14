@@ -6,14 +6,13 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:27:20 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/14 16:16:58 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:28:52 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./lib/MLX42/include/MLX42/MLX42.h"
 #include "./include/so_long.h"
 
-// Know if the player can move to x:y
 int	can_move_to(t_game *game, int x, int y)
 {
 	if (is_wall(game, x, y))
@@ -26,8 +25,6 @@ int	can_move_to(t_game *game, int x, int y)
 	return (1);
 }
 
-// Spawn the player at x:y
-// Can also be used to update the player texture
 void	spawn_player(t_game *g, int x, int y)
 {
 	mlx_image_t	*player_img;
@@ -40,9 +37,6 @@ void	spawn_player(t_game *g, int x, int y)
 	g->player = player_img;
 }
 
-// Update the player position
-// Also check if the player can move to x:y
-// Return 0 if the player can't move to x:y
 int	update_player_pos(t_game *g, int x, int y, int updt_texture, int texture_id)
 {
 	if (can_move_to(g, x, y))
@@ -71,7 +65,6 @@ int	update_player_pos(t_game *g, int x, int y, int updt_texture, int texture_id)
 	return (0);
 }
 
-// Set the spawn position of the player
 void	set_spawn(t_game *g, int x, int y)
 {
 	g->spawn_x = x;

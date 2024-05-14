@@ -6,20 +6,18 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:48:50 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/12 13:49:39 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:30:25 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-// Just here to save line from load_level_loop()
 static void load_error(t_game *g, char *map)
 {
 	free(map);
 	ft_error(g);
 }
 
-// Load the level
 static t_level	*load_level(t_game *g, char *m, int x, int y, t_level *l)
 {
 	mlx_image_t	*b_img;
@@ -46,7 +44,6 @@ static t_level	*load_level(t_game *g, char *m, int x, int y, t_level *l)
 	return (l);
 }
 
-// Load the textures and the level
 void	load(t_game *g, char *map)
 {
 	t_level	*level;

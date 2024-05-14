@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   loader_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 11:33:01 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/02 11:12:28 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:30:14 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-// Select the right texture for the block
 mlx_image_t	*get_texture(t_game *g, char c)
 {
 	mlx_image_t	*img;
@@ -30,11 +29,6 @@ mlx_image_t	*get_texture(t_game *g, char c)
 	return (img);
 }
 
-// Get the type of the block depending on the character
-// Type 1: Wall
-// Type 2: Grass
-// Type 3: Collectible
-// Type 4: Exit
 int	get_type(char c)
 {
 	if (c == '0')

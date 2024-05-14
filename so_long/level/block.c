@@ -6,13 +6,12 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:27:31 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/01 13:04:19 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:29:31 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-// Know if the block at x:y is a wall
 int	is_wall(t_game *game, int x, int y)
 {
 	t_level	*block;
@@ -23,7 +22,6 @@ int	is_wall(t_game *game, int x, int y)
 	return (0);
 }
 
-// Know if the block at x:y is a grass block
 int	is_grass(t_game *game, int x, int y)
 {
 	t_level	*block;
@@ -34,7 +32,6 @@ int	is_grass(t_game *game, int x, int y)
 	return (0);
 }
 
-// Know if the block at x:y is a collectible
 int	is_collectible(t_game *game, int x, int y)
 {
 	t_level	*block;
@@ -45,7 +42,6 @@ int	is_collectible(t_game *game, int x, int y)
 	return (0);
 }
 
-// Know if the block at x:y is an exit block
 int	is_exit(t_game *game, int x, int y)
 {
 	t_level	*block;

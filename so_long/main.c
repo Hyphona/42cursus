@@ -3,23 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:57:15 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/14 14:01:20 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:31:17 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/so_long.h"
 
-// In case t_game fail to initialize
 static void	ft_g_init_error(void)
 {
 	ft_printf("Error - t_game structure failed to initialize\n");
 	exit(EXIT_FAILURE);
 }
 
-// In case MLX fail to initialize
 static void	ft_mlx_init_error(t_game *g)
 {
 	ft_printf("Error - MLX failed to initialize\n");
@@ -27,7 +25,6 @@ static void	ft_mlx_init_error(t_game *g)
 	exit(EXIT_FAILURE);
 }
 
-// Avoid memory leaks by setting up t_game structure
 static t_game	*init_game(t_game *g)
 {
 	g->mlx = NULL;

@@ -6,14 +6,13 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:10:05 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/14 16:12:59 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:29:11 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/MLX42/include/MLX42/MLX42.h"
 #include "../include/so_long.h"
 
-// Just a function to know if the pressed key is a 'move' key
 static int	is_move_key(mlx_key_data_t keydata)
 {
 	if (keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_DOWN
@@ -25,7 +24,6 @@ static int	is_move_key(mlx_key_data_t keydata)
 	return (0);
 }
 
-// Listen to input and update the player position
 void	p_move_listener(mlx_key_data_t keydata, void *param)
 {
 	t_game			*g;
