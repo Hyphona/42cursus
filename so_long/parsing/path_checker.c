@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 14:04:38 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/14 11:02:35 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/14 13:35:10 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,28 @@ static char	*ft_strdup(char *str)
 static void	is_finishable(char *map, int len)
 {
 	static int	i;
+	int	y;
 	
-	if (map[i] != '1' && map[i] != '\n')
+	if (map[i] == '1' || map[i] == '\n')
+		return ;
+	map[i] = 'x';
+	if (map[i + 1] && map[i + 1] != 'x')
+		is_finishable(&map[i + 1], len);
+	if (map[i + len] && map[i + len] != 'x')
+		is_finishable(&map[i + len], len);
+	if (map[i - 1] && map[i - 1] != 'x')
+		is_finishable(&map[i - 1], len);
+	if (map[i - len] && map[i - len] != 'x')
+		is_finishable(&map[i - len], len);
+	y = 0;
+	while (map[y])
 	{
-		map[i] = '1';
-		if (map[i + 1])
-			is_finishable(&map[i + 1], len);
-		if (map[i + len])
-			is_finishable(&map[i + len], len);
-		if (map[i - 1])
-			is_finishable(&map[i - 1], len);
-		if (map[i - len])
-			is_finishable(&map[i - len], len);
+		if (map[y] == '0' && (map[y + 1] == 'x' ||
+			map[y - 1] == 'x' ||
+			map[y + len] == 'x' ||
+			map[y - len] == 'x'))
+			is_finishable(&map[y], len);
+		y++;
 	}
 }
 
@@ -66,9 +76,10 @@ int	check_path(char *map)
 		i++;
 	is_finishable(&tmp[i], len);
 	i = 0;
+	ft_printf("\n%s\n\n", tmp);
 	while (tmp[i])
 	{
-		if (tmp[i] != '1' && tmp[i] != '\n')
+		if (tmp[i] == 'P' || tmp[i] == 'C' || tmp[i] == 'E')
 		{
 			free(tmp);
 			return (0);
