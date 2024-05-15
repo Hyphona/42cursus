@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   level_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:35:21 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/14 16:30:59 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/15 10:07:58 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,4 +124,3 @@ char	*get_map(t_game *g, char *map_name)
 	create_spawn(g, map);
 	return (map);
 }
-

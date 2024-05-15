@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 14:04:38 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/14 15:46:34 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/15 10:08:36 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static char	*ft_strdup(char *str)
 static void	fill_floor(char *map, int len)
 {
 	int	i;
-	
+
 	i = 0;
 	if (map[i] == '1' || map[i] == '\n')
 		return ;
@@ -53,8 +53,8 @@ static void	fill_floor(char *map, int len)
 
 int	check_path(char *map)
 {
-	int	i;
-	int	len;
+	int		i;
+	int		len;
 	char	*tmp;
 
 	len = 0;
