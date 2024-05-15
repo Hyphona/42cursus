@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 12:43:07 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/15 10:08:15 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:07:44 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,31 +26,48 @@ static int	ft_linelen(char *str)
 	return (len + 1);
 }
 
+static int	check_first(char *map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i] != '\n')
+	{
+		if (map[i] != '1')
+			return (0);
+		i++;
+	}
+	return (i);
+}
+
+static int	check_last(char *map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		if (map[i] != '1')
+			return (0);
+		i++;
+	}
+	return (i);
+}
+
 int	check_wall(char *map)
 {
 	int	i;
-	int	first;
+	int	len;
 
-	i = 0;
-	first = 0;
+	i = check_first(map);
+	if (i == 0)
+		return (0);
+	len = ft_linelen(map);
 	while (map[i])
 	{
-		if (map[i] == '\n')
-		{
-			if (map[i - ft_linelen(map)] != '1' && map[i - 1] != '1')
-				return (0);
-			first = 1;
-		}
-		if (first == 0 && map[i] != '1')
+		if (map[i] == '\n' && (map[i - (len - 1)] != '1' || map[i - 1] != '1'))
 			return (0);
 		i++;
 	}
-	i -= ft_linelen(map);
-	while (map[i + 1])
-	{
-		if (map[i + 1] != '1')
-			return (0);
-		i++;
-	}
-	return (1);
+	return (check_last(&map[i - (len - 1)]));
 }
