@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 14:04:38 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/15 10:08:36 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/15 10:13:26 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int	check_path(char *map)
 		i++;
 	fill_floor(&tmp[i], len);
 	i = 0;
-	ft_printf("\n%s\n\n", tmp);
 	while (tmp[i])
 	{
 		if (tmp[i] == 'P' || tmp[i] == 'C' || tmp[i] == 'E')

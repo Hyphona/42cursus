@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 15:53:40 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/14 16:31:38 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/15 10:14:06 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_exit(t_game *g)
 
 void	ft_map_error(t_game *g, char *map_file, char *text, int fd)
 {
-	ft_printf("Error - %s\n", text);
+	ft_printf("Error\n%s\n", text);
 	free(g);
 	free(map_file);
 	if (fd > 0)
@@ -59,7 +59,7 @@ void	ft_map_error(t_game *g, char *map_file, char *text, int fd)
 
 void	ft_parse_error(t_game *g, char *text)
 {
-	ft_printf("Error - %s\n", text);
+	ft_printf("Error\n%s\n", text);
 	free(g);
 	exit(EXIT_FAILURE);
 }

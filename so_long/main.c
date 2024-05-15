@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:57:15 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/14 16:31:17 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/15 10:14:19 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static void	ft_g_init_error(void)
 {
-	ft_printf("Error - t_game structure failed to initialize\n");
+	ft_printf("Error\nt_game structure failed to initialize\n");
 	exit(EXIT_FAILURE);
 }
 
 static void	ft_mlx_init_error(t_game *g)
 {
-	ft_printf("Error - MLX failed to initialize\n");
+	ft_printf("Error\nMLX failed to initialize\n");
 	free(g);
 	exit(EXIT_FAILURE);
 }
