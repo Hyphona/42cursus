@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:57:15 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/16 11:46:52 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/16 13:09:01 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	check_textures(char *txt, int num)
 	if (fd <= 0)
 	{
 		close(fd);
-		ft_printf("Error\nSome textures are missing/can't be open\n");
+		ft_printf("Error\n%s is missing/can't be open\n", txt);
 		exit(EXIT_FAILURE);
 	}
 	if (num == 1)
