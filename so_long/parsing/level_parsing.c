@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:35:21 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/15 11:17:02 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/16 09:30:26 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static int	ft_strlen_nonl(char *str)
 {
 	int	len;
 
+	if (!str)
+		return (0);
 	len = 0;
 	while (str[len])
 	{
@@ -114,6 +116,8 @@ char	*get_map(t_game *g, char *map_name)
 	char	*map;
 
 	map = load_map_file(g, map_name);
+	if (!map)
+		ft_map_error(g, map, "Map is empty", 0);
 	if (!check_char(g, map))
 		ft_map_error(g, map,
 			"Missing collectibles or missing/duplicated exit/player", 0);
