@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   level.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 13:30:34 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/14 16:29:42 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/16 11:46:17 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,27 +27,29 @@ t_level	*get_block_at(t_level *l, int x, int y)
 
 void	update_block_at(t_game *g, int x, int y, int type)
 {
-	mlx_image_t	*img;
-	t_level		*l;
+	mlx_image_t		*img;
+	mlx_texture_t	*png;
+	t_level			*l;
 
-	if (type < 1 || type > 4)
-		return ;
+	png = NULL;
 	l = get_block_at(g->level, x, y);
 	if (!l)
 		return ;
 	img = NULL;
 	if (type == 1)
-		img = mlx_texture_to_image(g->mlx, mlx_load_png("./img/1.png"));
+		png = mlx_load_png("./img/1.png");
 	else if (type == 2)
-		img = mlx_texture_to_image(g->mlx, mlx_load_png("./img/2.png"));
+		png = mlx_load_png("./img/2.png");
 	else if (type == 3)
-		img = mlx_texture_to_image(g->mlx, mlx_load_png("./img/3.png"));
+		png = mlx_load_png("./img/3.png");
 	else if (type == 4)
-		img = mlx_texture_to_image(g->mlx, mlx_load_png("./img/4.png"));
+		png = mlx_load_png("./img/4.png");
 	if (l->img)
 		mlx_delete_image(g->mlx, l->img);
+	img = mlx_texture_to_image(g->mlx, png);
+	mlx_delete_texture(png);
 	if (!img || (mlx_image_to_window(g->mlx, img, x, y) < 0))
-		ft_error(g);
+		ft_error(g, "Cannot display the image");
 	l->img = img;
 	l->type = type;
 }

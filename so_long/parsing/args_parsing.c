@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   args_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:20:49 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/14 16:30:36 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/16 11:34:50 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_args(t_game *g, int argc, char **argv)
 	if (argc > 2)
 		ft_parse_error(g, "Too many arguments");
 	if (argc == 1)
-		return (0);
+		ft_parse_error(g, "Map name is missing");
 	i = 0;
 	while (argv[1][i])
 	{
