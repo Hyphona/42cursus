@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:27:20 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/15 10:11:56 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/16 10:35:15 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,23 @@ int	can_move_to(t_game *game, int x, int y)
 
 void	spawn_player(t_game *g, int x, int y)
 {
-	mlx_image_t	*player_img;
+	mlx_image_t		*player_img;
+	mlx_texture_t	*png;
+	int				fd;
 
 	if (g->player)
 		mlx_delete_image(g->mlx, g->player);
-	player_img = mlx_texture_to_image(g->mlx, mlx_load_png("./img/0.png"));
+	fd = open("./img/0.png", O_RDONLY);
+	if (fd <= 0)
+	{
+		close(fd);
+		ft_error(g, "Cannot open/find player texture");
+	}
+	png = mlx_load_png("./img/0.png");
+	player_img = mlx_texture_to_image(g->mlx, png);
+	mlx_delete_texture(png);
 	if (!player_img || (mlx_image_to_window(g->mlx, player_img, x, y) < 0))
-		ft_error(g);
+		ft_error(g, "Cannot display player texture");
 	g->player = player_img;
 }
 

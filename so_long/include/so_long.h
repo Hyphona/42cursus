@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:19:25 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/15 10:11:49 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/16 09:55:00 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void		spawn_player(t_game *g, int x, int y);
 int			update_player_pos(t_game *g, int x, int y);
 void		set_spawn(t_game *g, int x, int y);
 void		ft_clear(t_game *g);
-void		ft_error(t_game *g);
+void		ft_error(t_game *g, char *text);
 void		ft_exit(t_game *g);
 void		ft_map_error(t_game *g, char *map_file, char *text, int fd);
 void		ft_parse_error(t_game *g, char *text);

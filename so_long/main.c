@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:57:15 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/15 10:14:19 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/16 10:17:04 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,27 @@ static t_game	*init_game(t_game *g)
 	return (g);
 }
 
+static void check_textures(char *txt, int num)
+{
+	int	fd;
+
+	fd = open(txt, O_RDONLY);
+	if (fd <= 0)
+	{
+		close(fd);
+		ft_printf("Error\nSome textures are missing/can't be open\n");
+		exit(EXIT_FAILURE);
+	}
+	if (num == 1)
+		check_textures("./img/1.png", 2);
+	if (num == 2)
+		check_textures("./img/2.png", 3);
+	if (num == 3)
+		check_textures("./img/3.png", 4);
+	if (num == 4)
+		check_textures("./img/4.png", 5);
+}
+
 int32_t	main(int argc, char **argv)
 {
 	mlx_t		*mlx;
@@ -47,6 +68,7 @@ int32_t	main(int argc, char **argv)
 	char		*map_name;
 	char		*map;
 
+	check_textures("./img/0.png", 1);
 	g = malloc(sizeof(t_game));
 	if (!g)
 		ft_g_init_error();

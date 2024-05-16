@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 15:53:40 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/15 10:14:06 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/16 10:02:10 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,12 @@ void	ft_clear(t_game *g)
 		mlx_delete_image(g->mlx, g->player);
 }
 
-void	ft_error(t_game *g)
+void	ft_error(t_game *g, char *text)
 {
-	write(2, "Error\n", 6);
+	ft_printf("Error\n%s\n", text);
 	ft_clear(g);
+	if (g->level)
+		ft_clear(g);
 	mlx_terminate(g->mlx);
 	free(g);
 	exit(EXIT_FAILURE);

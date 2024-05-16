@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:48:50 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/15 10:07:04 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/16 10:00:43 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	load_error(t_game *g, char *map)
 {
 	free(map);
-	ft_error(g);
+	ft_error(g, "Unable to load the map texture");
 }
 
 static void	load_level(t_game *g, char *m, int x, int y)

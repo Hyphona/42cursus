@@ -6,15 +6,15 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:35:21 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/16 09:30:26 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/16 09:44:34 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static int	ft_strlen_nonl(char *str)
+static size_t	ft_strlen_nonl(char *str)
 {
-	int	len;
+	size_t	len;
 
 	if (!str)
 		return (0);
@@ -86,7 +86,6 @@ static int	check_char(t_game *g, char *map)
 static char	*load_map_file(t_game *g, char *map_name)
 {
 	int		fd;
-	int		line_len;
 	char	*line;
 	char	*map;
 
@@ -94,18 +93,20 @@ static char	*load_map_file(t_game *g, char *map_name)
 	if (fd < 0)
 		ft_parse_error(g, "Cannot open the map file");
 	line = get_next_line(fd);
-	line_len = ft_strlen_nonl(line);
+	g->map_w = ft_strlen_nonl(line);
 	map = NULL;
 	while (line)
 	{
-		if (ft_strlen_nonl(line) != line_len)
+		if (ft_strlen_nonl(line) != g->map_w)
+		{
+			free(line);
 			ft_map_error(g, map, "Map is not a rectangle/square", fd);
+		}
 		map = ft_strjoin(map, line);
 		g->map_h++;
 		free(line);
 		line = get_next_line(fd);
 	}
-	g->map_w = line_len;
 	free(line);
 	close(fd);
 	return (map);
