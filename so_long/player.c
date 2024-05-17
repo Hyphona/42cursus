@@ -6,21 +6,24 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:27:20 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/17 09:33:08 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/17 09:50:34 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./lib/MLX42/include/MLX42/MLX42.h"
 #include "./include/so_long.h"
 
-int	can_move_to(t_game *game, int x, int y)
+int	can_move_to(t_game *game, int x, int y, int i)
 {
 	if (is_wall(game, x, y))
 		return (0);
 	else if (is_exit(game, x, y))
 	{
 		if (game->collectibles == 0)
+		{
+			ft_printf("Move count: %d\n", i + 1);
 			ft_exit(game);
+		}
 	}
 	return (1);
 }
@@ -48,9 +51,9 @@ void	spawn_player(t_game *g, int x, int y)
 	g->player = player_img;
 }
 
-int	update_player_pos(t_game *g, int x, int y)
+int	update_player_pos(t_game *g, int x, int y, int i)
 {
-	if (can_move_to(g, x, y))
+	if (can_move_to(g, x, y, i))
 	{
 		if (is_collectible(g, x, y))
 		{

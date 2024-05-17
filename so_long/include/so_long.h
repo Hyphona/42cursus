@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:19:25 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/16 09:55:00 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/17 09:51:15 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ int			check_args(t_game *g, int argc, char **argv);
 char		*get_map(t_game *g, char *map_name);
 int			check_path(char *map);
 int			check_wall(char *map);
-int			can_move_to(t_game *game, int x, int y);
+int			can_move_to(t_game *game, int x, int y, int i);
 void		spawn_player(t_game *g, int x, int y);
-int			update_player_pos(t_game *g, int x, int y);
+int			update_player_pos(t_game *g, int x, int y, int i);
 void		set_spawn(t_game *g, int x, int y);
 void		ft_clear(t_game *g);
 void		ft_error(t_game *g, char *text);
