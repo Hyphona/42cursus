@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:27:20 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/16 10:35:15 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/17 09:33:08 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	spawn_player(t_game *g, int x, int y)
 		close(fd);
 		ft_error(g, "Cannot open/find player texture");
 	}
+	close(fd);
 	png = mlx_load_png("./img/0.png");
 	player_img = mlx_texture_to_image(g->mlx, png);
 	mlx_delete_texture(png);

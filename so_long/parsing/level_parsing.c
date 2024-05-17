@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:35:21 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/16 09:44:34 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/17 09:40:14 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static int	check_char(t_game *g, char *map)
 				g->collectibles++;
 		}
 		else
-			return (0);
+			ft_map_error(g, map, "Unknow character in map file", 0);
 		i++;
 	}
 	if (g->has_exit != 1 || g->has_spawn != 1 || g->collectibles == 0)
@@ -121,7 +121,7 @@ char	*get_map(t_game *g, char *map_name)
 		ft_map_error(g, map, "Map is empty", 0);
 	if (!check_char(g, map))
 		ft_map_error(g, map,
-			"Missing collectibles or missing/duplicated exit/player", 0);
+			"No collectibles or missing/duplicated exit/player", 0);
 	if (!check_wall(map))
 		ft_map_error(g, map, "Map is not surounded by walls", 0);
 	if (!check_path(map))
