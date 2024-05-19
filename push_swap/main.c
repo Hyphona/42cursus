@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:27:56 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/18 12:53:05 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/19 15:26:16 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	s_b = NULL;
+	set_index(s_a);
 	sort(&s_a, &s_b);
 	free_stack(s_a);
 	if (s_b)

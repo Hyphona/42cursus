@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 10:04:37 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/19 11:42:53 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/19 15:41:01 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,23 @@ int	stack_size(t_stack *s)
 
 void	set_index(t_stack *s)
 {
+	t_stack	*tmp;
+	t_stack	*current;
 	int		i;
-	int		median;
 
-	i = 0;
-	median = stack_size(s) / 2;
-	while (s)
+	tmp = s;
+	current = s;
+	while (tmp)
 	{
-		s->index = i;
-		if (i > median)
-			s->above_median = 1;
-		else
-			s->above_median = 0;
-		s = s->next;
-		i++;
+		i = 0;
+		while (current)
+		{
+			if (current->nb < tmp->nb)
+				i++;
+			current = current->next;
+		}
+		tmp->index = i;
+		tmp = tmp->next;
+		current = s;
 	}
 }

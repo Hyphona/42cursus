@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rev_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:07:33 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/24 17:00:34 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/19 15:49:51 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,21 @@
 
 static void	rev_rotate(t_stack *s)
 {
-	int		tmp;
+	int	n_tmp;
+	int	i_tmp;
 
 	while (s->next)
 		s = s->next;
-	tmp = s->nb;
+	n_tmp = s->nb;
+	i_tmp = s->index;
 	while (s->prev)
 	{
 		s->nb = s->prev->nb;
+		s->index = s->prev->index;
 		s = s->prev;
 	}
-	s->nb = tmp;
+	s->nb = n_tmp;
+	s->index = i_tmp;
 }
 
 void	rev_rotate_a(t_stack *s)

@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 13:55:31 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/19 11:40:19 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/19 15:24:55 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_stack	*create_node(long nb)
 		return (NULL);
 	new->nb = nb;
 	new->index = 0;
-	new->target = 0;
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);

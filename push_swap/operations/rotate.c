@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 13:37:23 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/24 16:43:53 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/19 15:49:00 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,19 @@
 
 static void	rotate(t_stack *s)
 {
-	int	tmp;
+	int	n_tmp;
+	int	i_tmp;
 
-	tmp = s->nb;
+	n_tmp = s->nb;
+	i_tmp = s->index;
 	while (s->next)
 	{
 		s->nb = s->next->nb;
+		s->index = s->next->index;
 		s = s->next;
 	}
-	s->nb = tmp;
+	s->nb = n_tmp;
+	s->index = i_tmp;
 }
 
 void	rotate_a(t_stack *s)

@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 09:04:02 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/19 11:40:31 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/19 15:28:20 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,18 @@ typedef struct s_stack
 {
 	long			nb;
 	int				index;
-	int				cost;
-	int				above_median;
-	int				cheapest;
-	struct s_stack	*target;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }					t_stack;
 
 void	add_node(t_stack **s, t_stack *new);
+void	butterfly(t_stack **s_a, t_stack **s_b, int size);
 int		check_args(char **av);
-t_stack	*create_node(int nb);
+t_stack	*create_node(long nb);
 void	free_stack(t_stack *s);
 int		ft_atoi(const char *str);
 char	*ft_joinchar(char *s1, char const s2);
-int		get_median(int *tab, int size);
+int		get_max(t_stack *s, int max);
 int		has_space(char *str);
 int		is_sorted(t_stack *s);
 int		is_space(char c);
@@ -48,11 +45,13 @@ void	rev_rotate_r(t_stack *s_a, t_stack *s_b);
 void	rotate_a(t_stack *s);
 void	rotate_b(t_stack *s);
 void	rotate_r(t_stack *s_a, t_stack *s_b);
+void	set_index(t_stack *s);
 void	sort(t_stack **s_a, t_stack **s_b);
+void	sort_selector(t_stack **s_a, t_stack **s_b);
 int		stack_size(t_stack *s);
-int		*stack_to_tab(t_stack *s, int size);
 void	swap_a(t_stack *s);
 void	swap_b(t_stack *s);
 void	swap_s(t_stack *s_a, t_stack *s_b);
+void	three_sort(t_stack **s);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 18:24:39 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/24 18:25:26 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/19 15:55:22 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	is_sorted(t_stack *s)
 {
+	if (!s)
+		return (0);
 	while (s->next)
 	{
 		if (s->nb > s->next->nb)

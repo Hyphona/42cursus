@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 09:02:56 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/24 18:22:10 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/19 15:50:48 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 static void	swap(t_stack *s)
 {
-	int	tmp;
+	int	n_tmp;
+	int	i_tmp;
 
-	tmp = s->nb;
+	n_tmp = s->nb;
+	i_tmp = s->index;
 	s->nb = s->next->nb;
-	s->next->nb = tmp;
+	s->next->nb = n_tmp;
+	s->next->index = i_tmp;
 }
 
 void	swap_a(t_stack *s)
