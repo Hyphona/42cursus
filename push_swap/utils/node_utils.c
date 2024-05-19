@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   node_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 13:55:31 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/25 13:32:48 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/19 11:40:19 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_stack	*create_node(int nb)
+t_stack	*create_node(long nb)
 {
 	t_stack	*new;
 
@@ -20,6 +20,8 @@ t_stack	*create_node(int nb)
 	if (!new)
 		return (NULL);
 	new->nb = nb;
+	new->index = 0;
+	new->target = 0;
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);
@@ -43,6 +45,17 @@ t_stack	*get_last(t_stack *s)
 	while (s->next)
 		s = s->next;
 	return (s);
+}
+
+t_stack	*get_node_at(t_stack *s, int index)
+{
+	while (s)
+	{
+		if (s->index == index)
+			return (s);
+		s = s->next;
+	}
+	return (NULL);
 }
 
 void	free_stack(t_stack *s)
