@@ -6,50 +6,45 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:07:33 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/19 15:49:51 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/19 18:54:46 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	rev_rotate(t_stack *s)
+static void	rev_rotate(t_stack **s)
 {
-	int	n_tmp;
-	int	i_tmp;
+	t_stack	*tmp;
 
-	while (s->next)
-		s = s->next;
-	n_tmp = s->nb;
-	i_tmp = s->index;
-	while (s->prev)
-	{
-		s->nb = s->prev->nb;
-		s->index = s->prev->index;
-		s = s->prev;
-	}
-	s->nb = n_tmp;
-	s->index = i_tmp;
+	if (!*s || !(*s)->next)
+		return ;
+	tmp = get_last(*s);
+	tmp->prev->next = NULL;
+	tmp->next = *s;
+	tmp->prev = NULL;
+	*s = tmp;
+	tmp->next->prev = tmp;
 }
 
-void	rev_rotate_a(t_stack *s)
+void	rev_rotate_a(t_stack **s)
 {
-	if (!s || !s->next)
+	if (!*s || !(*s)->next)
 		return ;
 	rev_rotate(s);
 	write(1, "rra\n", 4);
 }
 
-void	rev_rotate_b(t_stack *s)
+void	rev_rotate_b(t_stack **s)
 {
-	if (!s || !s->next)
+	if (!*s || !(*s)->next)
 		return ;
 	rev_rotate(s);
 	write(1, "rrb\n", 4);
 }
 
-void	rev_rotate_r(t_stack *s_a, t_stack *s_b)
+void	rev_rotate_r(t_stack **s_a, t_stack **s_b)
 {
-	if (!s_a || !s_b || !s_a->next || !s_b->next)
+	if (!*s_a || !*s_b || !(*s_a)->next || !(*s_b)->next)
 		return ;
 	rev_rotate(s_a);
 	rev_rotate(s_b);

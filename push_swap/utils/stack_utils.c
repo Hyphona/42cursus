@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 10:04:37 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/19 15:41:01 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/19 19:05:02 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	stack_size(t_stack *s)
 {
 	int		size;
 
+	if (!s)
+		return (0);
 	size = 0;
 	while (s)
 	{
