@@ -6,12 +6,11 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 09:53:40 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/20 12:10:04 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:13:05 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
 void	three_sort(t_stack **s)
 {
@@ -54,32 +53,6 @@ void	five_sort(t_stack **s_a, t_stack **s_b)
 		swap_b(s_b);
 	push_a(s_a, s_b);
 	push_a(s_a, s_b);
-}
-
-static void print_stack(t_stack *s_a, t_stack *s_b)
-{
-	while (s_a)
-	{
-		if (s_b){
-			printf("%d  %d\n", (int)s_a->nb, (int)s_b->nb);
-			s_a = s_a->next;
-			s_b = s_b->next;
-		}
-		else
-		{
-			printf("%d  -\n", (int)s_a->nb);
-			s_a = s_a->next;
-		}
-	}
-	if (s_b)
-	{
-		while (s_b)
-		{
-			printf("-  %d\n", (int)s_b->nb);
-			s_b = s_b->next;
-		}
-	}
-	printf("_  _\nA  B\n\n");
 }
 
 static void	finish_sort(t_stack **s_a, t_stack **s_b)
@@ -129,11 +102,10 @@ void	butterfly(t_stack **s_a, t_stack **s_b, int chunk)
 		track += elem_in_chunk;
 	}
 }
+
 void	sort(t_stack **s_a, t_stack **s_b)
 {
 	sort_selector(s_a, s_b);
-	print_stack(*s_a, *s_b);
 	if (!is_sorted(*s_a))
 		finish_sort(s_a, s_b);
-	print_stack(*s_a, *s_b);
 }
