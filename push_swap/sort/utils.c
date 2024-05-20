@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 15:55:05 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/19 15:31:14 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:04:38 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int get_max(t_stack *s, int max)
 	pos = 0;
 	while (tmp && tmp->index != max)
 	{
-		tmp = tmp->next;
 		pos++;
+		tmp = tmp->next;
 	}
 	return (pos);
 }
@@ -35,10 +35,14 @@ void	sort_selector(t_stack **s_a, t_stack **s_b)
 	if (size == 2)
 	{
 		if ((*s_a)->nb > (*s_a)->next->nb)
-			swap_a(*s_a);
+			swap_a(s_a);
 	}
 	else if (size == 3)
 		three_sort(s_a);
+	else if (size == 4)
+		butterfly(s_a, s_b, 1);
+	else if (size == 5)
+		five_sort(s_a, s_b);
 	else if (size >= 6 && size <= 100)
 		butterfly(s_a, s_b, 3);
 	else if (size > 100 && size <= 200)

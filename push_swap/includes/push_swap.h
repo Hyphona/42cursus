@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 09:04:02 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/19 19:24:33 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:05:12 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	add_node(t_stack **s, t_stack *new);
 void	butterfly(t_stack **s_a, t_stack **s_b, int size);
 int		check_args(char **av);
 t_stack	*create_node(long nb);
+void	five_sort(t_stack **s_a, t_stack **s_b);
 void	free_stack(t_stack *s);
 int		ft_atoi(const char *str);
 char	*ft_joinchar(char *s1, char const s2);

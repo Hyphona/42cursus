@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 09:53:40 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/19 19:27:39 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:10:04 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,28 @@ void	three_sort(t_stack **s)
 		swap_a(s);
 		rotate_a(s);
 	}
+}
+
+void	five_sort(t_stack **s_a, t_stack **s_b)
+{
+	int		i;
+
+	i = 5;
+	while (i > 3)
+	{
+		if ((*s_a)->index == 0 || (*s_a)->index == 1)
+		{
+			push_b(s_a, s_b);
+			i--;
+		}
+		else
+			rotate_a(s_a);
+	}
+	three_sort(s_a);
+	if (*s_b && (*s_b)->next && (*s_b)->index < (*s_b)->next->index)
+		swap_b(s_b);
+	push_a(s_a, s_b);
+	push_a(s_a, s_b);
 }
 
 static void print_stack(t_stack *s_a, t_stack *s_b)
@@ -67,14 +89,11 @@ static void	finish_sort(t_stack **s_a, t_stack **s_b)
 
 	while (*s_b)
 	{
-		size = stack_size(*s_b);
-		pos = get_max(*s_b, size) - 1;
+		size = stack_size(*s_b) - 1;
+		pos = get_max(*s_b, size);
 		if (pos > stack_size(*s_b) / 2)
 			while ((*s_b)->index != size)
-			{
-				printf("size = %d/%d:%d\n", size, stack_size((*s_b)), (*s_b)->index);
 				rev_rotate_b(s_b);
-			}
 		else
 			while ((*s_b)->index != size)
 				rotate_b(s_b);

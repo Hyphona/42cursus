@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 10:04:37 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/19 19:05:02 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/19 19:43:50 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	set_index(t_stack *s)
 		i = 0;
 		while (current)
 		{
-			if (current->nb < tmp->nb)
+			if (tmp->nb > current->nb)
 				i++;
 			current = current->next;
 		}
