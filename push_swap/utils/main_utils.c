@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 22:03:09 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/20 13:01:36 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/20 13:09:54 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static void	error(t_stack **s)
 	exit(0);
 }
 
-long ft_atoi(const char *str, t_stack **s)
+long	ft_atoi(const char *str, t_stack **s)
 {
-	long n;
-	int i;
-	int neg;
+	long	n;
+	int		i;
+	int		neg;
 
 	i = 0;
 	n = 0;

@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 15:55:05 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/20 12:15:27 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/20 13:09:07 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	is_sorted(t_stack *s)
 	return (1);
 }
 
-int get_max(t_stack *s, int max)
+int	get_max(t_stack *s, int max)
 {
 	t_stack	*tmp;
 	int		pos;
