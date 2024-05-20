@@ -6,11 +6,24 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 15:55:05 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/20 12:04:38 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:15:27 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+int	is_sorted(t_stack *s)
+{
+	if (!s)
+		return (0);
+	while (s->next)
+	{
+		if (s->nb > s->next->nb)
+			return (0);
+		s = s->next;
+	}
+	return (1);
+}
 
 int get_max(t_stack *s, int max)
 {

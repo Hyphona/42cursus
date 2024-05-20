@@ -3,7 +3,6 @@ SRC	:= 	./operations/push.c\
 		./operations/rotate.c\
 		./operations/swap.c\
 		./sort/algorithm.c\
-		./sort/checker.c\
 		./sort/utils.c\
 		./utils/main_utils.c\
 		./utils/node_utils.c\
