@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:26:47 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/20 12:22:05 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:40:38 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	sub_parsing(char *av, t_stack **s_a)
 					error(s_a);
 				i++;
 			}
-			add_node(s_a, create_node(ft_atoi(nb)));
+			add_node(s_a, create_node(ft_atoi(nb, s_a)));
 			free(nb);
 			nb = "";
 			if (av[i])
@@ -74,7 +74,7 @@ t_stack	*parse(char **av, t_stack **s_a)
 		if (has_space(*av))
 			sub_parsing(*av, s_a);
 		else
-			add_node(s_a, create_node(ft_atoi(*av)));
+			add_node(s_a, create_node(ft_atoi(*av, s_a)));
 		av++;
 	}
 	check_double(s_a);

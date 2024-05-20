@@ -6,18 +6,24 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 22:03:09 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/20 12:14:07 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:42:12 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-long	ft_atoi(const char *str)
+static void	error(t_stack **s)
 {
+	free_stack(*s);
+	write(2, "Error\n", 6);
+	exit(0);
+}
 
-	long	n;
-	int		i;
-	int		neg;
+long ft_atoi(const char *str, t_stack **s)
+{
+	long n;
+	int i;
+	int neg;
 
 	i = 0;
 	n = 0;
@@ -33,10 +39,13 @@ long	ft_atoi(const char *str)
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		n = (n * 10) + (str[i] - 48);
+		n = (n * 10) + (str[i] - '0');
 		i++;
 	}
-	return (n * neg);
+	n *= neg;
+	if (n > 2147483647 && n < -2147483648)
+		error(s);
+	return (n);
 }
 
 int	check_args(char **av)
