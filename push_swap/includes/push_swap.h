@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 09:04:02 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/22 10:03:53 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/22 11:24:55 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		check_args(char **av);
 t_stack	*create_node(long nb);
 void	five_sort(t_stack **s_a, t_stack **s_b);
 void	free_stack(t_stack *s);
-long	ft_atoi(const char *str, t_stack **s);
+long	ft_atoi(const char *str, t_stack **s, int nfree);
 char	*ft_joinchar(char *s1, char const s2);
 int		get_max(t_stack *s, int max);
 int		has_space(char *str);

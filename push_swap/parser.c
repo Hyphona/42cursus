@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:26:47 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/22 11:20:19 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/22 11:26:44 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ static int	is_valid(char *str)
 	int	i;
 
 	i = 0;
-	while(is_space(str[i]))
+	while (is_space(str[i]))
 		i++;
-	while(str[i])
+	while (str[i])
 	{
 		if (str[i] == '-' || str[i] == '+')
 		{
@@ -82,7 +82,7 @@ static void	sub_parsing(char *av, t_stack **s_a)
 					error(s_a);
 				i++;
 			}
-			add_node(s_a, create_node(ft_atoi(nb, s_a)));
+			add_node(s_a, create_node(ft_atoi(nb, s_a, 1)));
 			free(nb);
 			nb = "";
 			if (av[i])
@@ -104,7 +104,7 @@ t_stack	*parse(char **av, t_stack **s_a)
 			sub_parsing(*av, s_a);
 		}
 		else
-			add_node(s_a, create_node(ft_atoi(*av, s_a)));
+			add_node(s_a, create_node(ft_atoi(*av, s_a, 0)));
 		av++;
 	}
 	check_double(s_a);

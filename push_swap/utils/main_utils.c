@@ -6,22 +6,22 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 22:03:09 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/22 10:26:50 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/22 11:24:27 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	error(t_stack **s, char *nb)
+static void	error(t_stack **s, char *nb, int nfree)
 {
 	free_stack(*s);
-	if (nb)
+	if (nfree)
 		free(nb);
 	write(2, "Error\n", 6);
 	exit(0);
 }
 
-long	ft_atoi(const char *str, t_stack **s)
+long	ft_atoi(const char *str, t_stack **s, int nfree)
 {
 	long	n;
 	int		i;
@@ -43,7 +43,7 @@ long	ft_atoi(const char *str, t_stack **s)
 	{
 		n = (n * 10) + (str[i] - '0');
 		if (n > 2147483647 || n < -2147483648)
-			error(s, (char *)str);
+			error(s, (char *)str, nfree);
 		i++;
 	}
 	n *= neg;
