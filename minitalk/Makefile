@@ -6,7 +6,7 @@ NAME_CLIENT		:= client
 NAME_SERVER		:= server
 PRINTF			:= ft_printf/libftprintf.a
 CC				:= cc
-CFLAGS			:= -Wall -Werror -Wextra
+CFLAGS			:= -Wall -Werror -Wextra -g
 
 all: $(NAME_CLIENT) $(NAME_SERVER)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:26:47 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/20 12:40:38 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/22 11:20:19 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,30 @@ static void	check_double(t_stack **s)
 		}
 		tmp = tmp->next;
 	}
+}
+
+static int	is_valid(char *str)
+{
+	int	i;
+
+	i = 0;
+	while(is_space(str[i]))
+		i++;
+	while(str[i])
+	{
+		if (str[i] == '-' || str[i] == '+')
+		{
+			if (str[i + 1] <= '0' || str[i + 1] >= '9')
+				return (0);
+			if (str[i - 1])
+			{
+				if (!is_space(str[i - 1]))
+					return (0);
+			}
+		}
+		i++;
+	}
+	return (1);
 }
 
 static void	sub_parsing(char *av, t_stack **s_a)
@@ -71,8 +95,14 @@ t_stack	*parse(char **av, t_stack **s_a)
 {
 	while (*av)
 	{
+		if (!is_valid(*av))
+			error(s_a);
 		if (has_space(*av))
+		{
+			if (is_empty(*av))
+				error(s_a);
 			sub_parsing(*av, s_a);
+		}
 		else
 			add_node(s_a, create_node(ft_atoi(*av, s_a)));
 		av++;

@@ -3,18 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 22:03:09 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/20 13:09:54 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/22 10:26:50 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	error(t_stack **s)
+static void	error(t_stack **s, char *nb)
 {
 	free_stack(*s);
+	if (nb)
+		free(nb);
 	write(2, "Error\n", 6);
 	exit(0);
 }
@@ -40,11 +42,11 @@ long	ft_atoi(const char *str, t_stack **s)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		n = (n * 10) + (str[i] - '0');
+		if (n > 2147483647 || n < -2147483648)
+			error(s, (char *)str);
 		i++;
 	}
 	n *= neg;
-	if (n > 2147483647 || n < -2147483648)
-		error(s);
 	return (n);
 }
 

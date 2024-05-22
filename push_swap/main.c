@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:27:56 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/21 09:56:32 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/22 09:57:31 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,10 @@ static t_stack	*init_stack_a(char **av)
 	return (s_a);
 }
 
-static int	check(int ac, char **av)
+static int	check(char **av)
 {
 	int	i;
 
-	if (ac < 2)
-		return (0);
 	i = 0;
 	while (av[i])
 	{
@@ -49,7 +47,9 @@ int	main(int ac, char **av)
 	t_stack	*s_a;
 	t_stack	*s_b;
 
-	if (!check(ac, av))
+	if (ac < 2)
+		return (0);
+	if (!check(av))
 	{
 		write(2, "Error\n", 6);
 		return (0);

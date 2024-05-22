@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:28:48 by alperrot          #+#    #+#             */
-/*   Updated: 2024/04/24 19:30:58 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/22 10:03:34 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,18 @@ int	has_space(char *str)
 			return (1);
 		str++;
 	}
+	return (0);
+}
+
+int	is_empty(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (is_space(str[i]) && str[i])
+			i++;
+	if (str[i] == '\0')
+		return (1);
 	return (0);
 }
 

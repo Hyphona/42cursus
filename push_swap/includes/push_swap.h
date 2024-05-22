@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 09:04:02 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/20 12:40:10 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/22 10:03:53 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ long	ft_atoi(const char *str, t_stack **s);
 char	*ft_joinchar(char *s1, char const s2);
 int		get_max(t_stack *s, int max);
 int		has_space(char *str);
+int		is_empty(char *str);
 int		is_sorted(t_stack *s);
 int		is_space(char c);
 t_stack	*get_last(t_stack *s);
