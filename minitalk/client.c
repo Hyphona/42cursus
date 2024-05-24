@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:35:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/12 12:31:02 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/24 10:29:50 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "./minitalk.h"
+
+int	handshake;
 
 static int	ft_atoi(const char *str)
 {
@@ -39,6 +41,7 @@ static int	ft_atoi(const char *str)
 static void	send_bit(int pid, unsigned char c)
 {
 	int				i;
+	int				time;
 	unsigned char	tmp;
 
 	i = 8;
@@ -51,14 +54,22 @@ static void	send_bit(int pid, unsigned char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		pause();
+		handshake = 0;
+		time = 0;
+		while (handshake == 0)
+		{
+			usleep(100);
+			if (time >= 500)
+				break ;
+			time += 100;
+		}
 	}
 }
 
 static void	handler(int signum)
 {
-	if (signum != SIGUSR1)
-		exit(1);
+	(void)signum;
+	handshake = 1;
 }
 
 int	main(int ac, char **av)
@@ -72,7 +83,7 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	pid = ft_atoi(av[1]);
-	if (pid)
+	if (kill(pid, 0) == 0 && pid > 0)
 	{
 		i = 0;
 		signal(SIGUSR1, handler);

@@ -1,33 +1,16 @@
-SRC_CLIENT		:=  client.c
-SRC_SERVER		:=  server.c
-OFILES_CLIENT	:= $(SRC_CLIENT:.c=.o)
-OFILES_SERVER	:= $(SRC_SERVER:.c=.o)
-NAME_CLIENT		:= client
-NAME_SERVER		:= server
-PRINTF			:= ft_printf/libftprintf.a
-CC				:= cc
-CFLAGS			:= -Wall -Werror -Wextra -g
-
-all: $(NAME_CLIENT) $(NAME_SERVER)
-
-$(NAME_CLIENT): $(OFILES_CLIENT)
+all: client.o server.o
 	@make -C ft_printf
-	$(CC) $(CFLAGS) $(OFILES_CLIENT) $(PRINTF) -o $(NAME_CLIENT)
-
-$(NAME_SERVER): $(OFILES_SERVER)
-	@make -C ft_printf
-	$(CC) $(CFLAGS) $(OFILES_SERVER) $(PRINTF) -o $(NAME_SERVER)
+	cc -Wall -Werror -Wextra -I./ -o client client.o ft_printf/libftprintf.a
+	cc -Wall -Werror -Wextra -I./ -o server server.o ft_printf/libftprintf.a
 
 clean:
 	@make -C ft_printf clean
-	rm -f $(OFILES_CLIENT)
-	rm -f $(OFILES_SERVER)
+	rm -f client.o server.o
 
 fclean: clean
 	@make -C ft_printf fclean
-	rm -f $(NAME_CLIENT)
-	rm -f $(NAME_SERVER)
+	rm -f client server
 
 re: fclean all
 
-.PHONY: all client server clean fclean re
+.PHONY: all clean fclean re
