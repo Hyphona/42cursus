@@ -6,13 +6,13 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:35:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/24 14:55:52 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/24 15:12:06 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./minitalk.h"
 
-int	handshake;
+int	g_handshake;
 
 static int	ft_atoi(const char *str)
 {
@@ -43,7 +43,7 @@ static void	handshake_handler(void)
 	int	i;
 
 	i = 0;
-	while (handshake == 0)
+	while (g_handshake == 0)
 	{
 		usleep(100);
 		if (i >= 1000000)
@@ -70,7 +70,7 @@ static void	send_bit(int pid, unsigned char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		handshake = 0;
+		g_handshake = 0;
 		handshake_handler();
 	}
 }
@@ -78,7 +78,7 @@ static void	send_bit(int pid, unsigned char c)
 static void	handler(int signum)
 {
 	(void)signum;
-	handshake = 1;
+	g_handshake = 1;
 }
 
 int	main(int ac, char **av)
@@ -95,7 +95,7 @@ int	main(int ac, char **av)
 	if (kill(pid, 0) == 0 && pid > 0)
 	{
 		i = 0;
-		handshake = 0;
+		g_handshake = 0;
 		signal(SIGUSR1, handler);
 		while (av[2][i])
 		{
