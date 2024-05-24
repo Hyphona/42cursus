@@ -6,7 +6,7 @@
 /*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 22:03:09 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/22 11:24:27 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/24 09:50:53 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ long	ft_atoi(const char *str, t_stack **s, int nfree)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		n = (n * 10) + (str[i] - '0');
-		if (n > 2147483647 || n < -2147483648)
+		if ((n > 2147483647 && neg == 1) || (n > 2147483648 && neg == -1))
 			error(s, (char *)str, nfree);
 		i++;
 	}
