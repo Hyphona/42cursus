@@ -22,4 +22,4 @@ For more informations, visit the [42 website](https://42.fr/en/homepage/)
 - [x] **born2beroot** - 125/100 (Not in repo as it is a virtual machine)
 - [ ] **Minitalk** - Finished (Waiting for defense)
 - [x] **so_long** - 100/100
-- [ ] **push_swap** - Finished (Waiting for defense)
+- [x] **push_swap** - 96/100
