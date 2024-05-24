@@ -6,7 +6,7 @@
 /*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:35:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/24 15:12:06 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/24 20:34:04 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ static int	ft_atoi(const char *str)
 
 static void	handshake_handler(void)
 {
-	int	i;
+	int			i;
 
 	i = 0;
 	while (g_handshake == 0)
 	{
 		usleep(100);
-		if (i >= 1000000)
+		if (i >= 70000)
 		{
 			ft_printf("Signal lost (Sending bit anyway)\n");
 			break ;
@@ -88,7 +88,7 @@ int	main(int ac, char **av)
 
 	if (ac != 3)
 	{
-		ft_printf("Usage: %s <PID> <message>\n", av[0]);
+		ft_printf("Too much arguments, usage: %s <PID> <message>\n", av[0]);
 		return (1);
 	}
 	pid = ft_atoi(av[1]);
@@ -105,6 +105,6 @@ int	main(int ac, char **av)
 		send_bit(pid, '\0');
 	}
 	else
-		ft_printf("PID is not valid\nUsage: %s <PID> <message>\n", av[0]);
+		ft_printf("PID is not reachable\n", av[0]);
 	return (0);
 }
