@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alperrot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alperrot <alperrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:35:55 by alperrot          #+#    #+#             */
-/*   Updated: 2024/05/24 10:29:50 by alperrot         ###   ########.fr       */
+/*   Updated: 2024/05/24 14:55:52 by alperrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,26 @@ static int	ft_atoi(const char *str)
 	return (n * neg);
 }
 
+static void	handshake_handler(void)
+{
+	int	i;
+
+	i = 0;
+	while (handshake == 0)
+	{
+		usleep(100);
+		if (i >= 1000000)
+		{
+			ft_printf("Signal lost (Sending bit anyway)\n");
+			break ;
+		}
+		i += 100;
+	}
+}
+
 static void	send_bit(int pid, unsigned char c)
 {
 	int				i;
-	int				time;
 	unsigned char	tmp;
 
 	i = 8;
@@ -55,14 +71,7 @@ static void	send_bit(int pid, unsigned char c)
 		else
 			kill(pid, SIGUSR2);
 		handshake = 0;
-		time = 0;
-		while (handshake == 0)
-		{
-			usleep(100);
-			if (time >= 500)
-				break ;
-			time += 100;
-		}
+		handshake_handler();
 	}
 }
 
@@ -86,6 +95,7 @@ int	main(int ac, char **av)
 	if (kill(pid, 0) == 0 && pid > 0)
 	{
 		i = 0;
+		handshake = 0;
 		signal(SIGUSR1, handler);
 		while (av[2][i])
 		{
